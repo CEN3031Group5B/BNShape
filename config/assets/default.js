@@ -5,11 +5,14 @@ module.exports = {
     lib: {
       css: [
         'public/lib/bootstrap/dist/css/bootstrap.css',
-        'public/lib/bootstrap/dist/css/bootstrap-theme.css'
+        'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+        'http://fonts.googleapis.com/css?family=Open+Sans'
       ],
       js: [
         'public/lib/angular/angular.js',
         'public/lib/angular-resource/angular-resource.js',
+        'public/lib/angular-cookies/angular-cookies_1.3.17.js',
+        'public/lib/angular-bootstrap/ui-bootstrap.js',
         'public/lib/angular-animate/angular-animate.js',
         'public/lib/angular-messages/angular-messages.js',
         'public/lib/angular-ui-router/release/angular-ui-router.js',

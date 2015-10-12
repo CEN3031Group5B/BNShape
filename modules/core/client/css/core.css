@@ -1,5 +1,22 @@
+body {
+  font-family: "Open Sans";
+}
+.top-bar {
+  background: white;
+}
+
+header {
+  background: white;
+  height: 40px;
+  position: fixed;
+  top: 100;
+  transition: top 0.2s ease-in-out;
+  width: 100%;
+}
+
 .content {
   margin-top: 50px;
+  background-color: #f7f7f7;
 }
 .undecorated-link:hover {
   text-decoration: none;
@@ -146,4 +163,27 @@ body {
   display: inline-block;
 }
 
+img.AngularJS-small {
+  height: 35px;
+  margin-top: -7px;
+}
 
+.banner {
+    background: #000;
+    font-family: 'Open Sans';
+    font-style: italic;
+    margin-top: 25px;
+    padding-top: 110px;
+    padding-bottom: 65px;
+}
+
+.banner .device {
+    border: none;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    font-size: 18px;
+    color: #FFFFFF;
+}

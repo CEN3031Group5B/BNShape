@@ -284,5 +284,33 @@
         </div>
       </div>
     </div>
+
   </div>
+  <button popover-template="cart_popup" popover-title="Cart" popover-placement="right" type="button" class="btn btn-default">
+    <span class="glyphicon glyphicon-shopping-cart shopping-cart"></span>
+    <span class="badge">{{cart_items.length}}</span>
+  </button>
+  <span class="label label-success" ng-show="success_add">Successfully added to cart</span>
+  <script type="text/ng-template" id="cart_popup.html">
+        <table class="table table-striped">
+              <tr ng-repeat="id in cart_items track by $index">
+                  <td>
+                      <div>product pic</div>
+                  </td>
+                  <td>
+                      <a>product name - size</a>
+                  </td>
+                  <td>
+                      <div>prize</div>
+                  </td>
+                  <td>
+                    <span class="glyphicon glyphicon-remove quick-remove-cart" ng-click="quick_delete_cart($index)"></span>
+                  </td>
+              </tr>
+        </table>
+        <hr />
+        <a class="btn btn-primary" ui-sref="cart" role="button">Edit Cart</a>
+        <button type="button" class="btn btn-primary">Checkout</button>
+  </script>
 </section>
+

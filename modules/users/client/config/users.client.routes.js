@@ -13,10 +13,24 @@ angular.module('users').config(['$stateProvider',
           roles: ['user', 'admin']
         }
       })
+/*	 	Edit phone, email, name, etc. #104148896*/
       .state('settings.profile', {
         url: '/profile',
         templateUrl: 'modules/users/client/views/settings/edit-profile.client.view.html'
       })
+
+/* To make things easier manage addresses is not going to be attached to the rest this sprint. #104148896.
+      .state('settings.address', {
+        url: '/address',
+        templateUrl: 'modules/users/client/views/settings/manage-addresses.client.view.html'
+      })*/
+	  
+	  /*edit an address #104148896*/
+      .state('settings.address', {
+        url: '/address',
+        templateUrl: 'modules/users/client/views/settings/edit-addresses.client.view.html'
+      })
+/*#104148896 edit password*/
       .state('settings.password', {
         url: '/password',
         templateUrl: 'modules/users/client/views/settings/change-password.client.view.html'
