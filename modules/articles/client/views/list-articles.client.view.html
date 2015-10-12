@@ -1,24 +1,290 @@
-<section ng-controller="ArticlesController" ng-init="find()">
-  <div class="page-header">
-    <h1>Articles</h1>
-  </div>
-  <div class="list-group">
-    <div ng-repeat="article in articles" >
-      <a ui-sref="articles.view({articleId: article._id})" class="list-group-item">
-        <small class="list-group-item-text">
-          Posted on
-          <span ng-bind="article.created | date:'mediumDate'"></span>
-          by
-          <span ng-bind="article.user.displayName"></span>
-        </small>
-        <h4 class="list-group-item-heading" ng-bind="article.title"></h4>
-        <p class="list-group-item-text" ng-bind="article.content"></p>
-      </a>
-      <button type="button" class="btn btn-primary" ng-click="add_cart(article._id)"><span class="glyphicon glyphicon-plus"></span></button>
+<section ng-controller="ProductsController">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <!-- Categories -->
+        <div class="panel-heading">
+          <h4>
+              Categories
+          </h4>
+        </div>  
+        <div class="panel panel-default">
+          <!-- Collapsible "Men" -->  
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse1">
+                Men
+              </a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <a href="#">
+                  Shirts
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  Tank Tops
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  Hoodies
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  Pants
+                </a>
+              </li>
+            </ul>
+          </div>
+         <!-- Collapsible "Women" -->
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse2">
+                Women
+              </a>
+            </h4>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <a href="#">
+                  Shirts
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  Tank Tops
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  Hoodies
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  Pants
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Collapsible "Kids" -->
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse3">
+                Kids
+              </a>
+            </h4>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <a href="#">
+                  Shirts
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Refine By -->
+        <div class="panel-heading">
+          <h4>
+            Refine By
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <!-- New Arrivals -->
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#">
+                New Arrivals
+              </a>
+            </h4>
+          </div>
+          <!-- Best Sellers -->
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#">
+                Best Sellers
+              </a>
+            </h4>
+          </div>
+          <!-- Discounts -->
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#">
+                Discounts
+              </a>
+            </h4>
+          </div>
+          <!-- Price -->
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse4">
+                Price
+              </a>
+            </h4>
+          </div>
+          <div id="collapse4" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <a href="#">
+                  High to Low
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  Low to High
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Customer Reviews -->
+        <div class="panel-heading">
+          <h4>
+            Customer Reviews
+          </h4>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <a href="#">
+              <button type="button" class="btn btn-default btn-md">
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                &amp Up
+              </button>
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+              <button type="button" class="btn btn-default btn-md">
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                &amp Up
+              </button>
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+              <button type="button" class="btn btn-default btn-md">
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                &amp Up
+              </button>
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+              <button type="button" class="btn btn-default btn-md">
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                &amp Up
+              </button>
+            </a>
+          </li>
+        </ul>
+        </div>
+      </ul>
     </div>
-  </div>
-  <div class="alert alert-warning text-center" ng-if="articles.$resolved && !articles.length">
-    No articles yet, why don't you <a ui-sref="articles.create">create one</a>?
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">
+        Products
+      </h1>
+      <div class="row placeholders">
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <a href="#">
+            <img src="/modules/articles/client/views/tank.png" class="img-responsive" alt="Generic placeholder thumbnail">
+            <h5>
+              $20.00
+            </h5>
+          </a>
+          <a href="#">
+            <button type="button" class="btn btn-default btn-lg bnshape-button">
+              <span class="glyphicon glyphicon-shopping-cart">
+              </span>
+              <strong>
+                ADD TO CART
+              </strong>
+            </button>
+          </a>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <a href="#">
+            <img src="tank.png" class="img-responsive" alt="Generic placeholder thumbnail">
+            <h5>
+              $20.00
+            </h5>
+          </a>
+          <a href="#">
+            <button type="button" class="btn btn-default btn-lg">
+              <span class="glyphicon glyphicon-shopping-cart">
+              </span>
+              <strong>
+                ADD TO CART
+              </strong>
+            </button>
+          </a>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <a href="#">
+            <img src="tank.png" class="img-responsive" alt="Generic placeholder thumbnail">
+            <h5>
+              $20.00
+            </h5>
+          </a>
+          <a href="#">
+            <button type="button" class="btn btn-default btn-lg">
+              <span class="glyphicon glyphicon-shopping-cart">
+              </span>
+              <strong>
+                ADD TO CART
+              </strong>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+
   </div>
   <button popover-template="cart_popup" popover-title="Cart" popover-placement="right" type="button" class="btn btn-default">
     <span class="glyphicon glyphicon-shopping-cart shopping-cart"></span>
