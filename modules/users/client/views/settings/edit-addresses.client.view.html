@@ -1,0 +1,96 @@
+<section class="row" ng-controller="EditAddressesController">
+  <div class="col-xs-offset-1 col-xs-10 col-md-offset-4 col-md-4">
+    <form name="userForm" ng-submit="updateUserProfile(userForm.$valid)" class="signin" novalidate autocomplete="off">
+      <fieldset>
+        
+		<!-->To make things easier manage addresses is not going to be attached to the rest this sprint. This page is the editing of an Address. #104148896.<-->
+		
+		<div class="form-group" show-errors>
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" class="form-control" ng-model="user.firstName" placeholder="First Name" required>
+          <div ng-messages="userForm.firstName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">First name is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" class="form-control" ng-model="user.lastName" placeholder="Last Name" required>
+          <div ng-messages="userForm.lastName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Last name is required.</p>
+          </div>
+        </div>
+        
+		<div class="form-group" >
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" class="form-control" ng-model="user.company" placeholder="company">
+        </div>
+		
+        <div class="form-group" >
+          <label for="companyID">Company ID</label>
+          <input type="text" id="companyID" name="companyID" class="form-control" ng-model="user.companyID" placeholder="companyID">
+		 
+        </div>
+
+		<div class="form-group" show-errors>
+          <label for="address1">Address 1</label>
+          <input type="text" id="address1" name="address1" class="form-control" ng-model="user.address1" placeholder="Address 1" required>
+          <div ng-messages="userForm.address1.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Address 1 is required.</p>
+          </div>
+        </div>
+		
+		<div class="form-group" >
+          <label for="address2">Address 2</label>
+          <input type="text" id="address2" name="address2" class="form-control" ng-model="user.address2" placeholder="address2">
+        </div>
+		
+		<div class="form-group" show-errors>
+          <label for="city">City</label>
+          <input type="text" id="city" name="city" class="form-control" ng-model="user.city" placeholder="City" required>
+          <div ng-messages="userForm.city.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">City is required.</p>
+          </div>
+        </div>
+		
+		<div class="form-group">
+          <label for="zipCode">Zip Code</label>
+          <input type="text" id="zipCode" name="zipCode" class="form-control" ng-model="user.zipCode" placeholder="Zip Code">
+        </div>
+		
+		
+		
+		
+		<div class="form-group" show-errors>
+          <label for="country">Country</label>
+          <input type="text" id="country" name="country" class="form-control" ng-model="user.country" placeholder="Country" required>
+          <div ng-messages="userForm.country.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Country is required.</p>
+          </div>
+        </div>
+		
+		
+		<div class="form-group" show-errors>
+          <label for="state">Region / State</label>
+          <input type="text" id="state" name="state" class="form-control" ng-model="user.state" placeholder="Region / State" required>
+          <div ng-messages="userForm.state.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Region / State is required.</p>
+          </div>
+        </div>
+
+		<div class="checkbox">
+			<label><input type="checkbox" value="">Make this my default address.</label>
+		 </div>
+		
+        <div class="text-center form-group">
+          <button type="submit" class="btn btn-primary">Save Address</button>
+        </div>
+        <div ng-show="success" class="text-center text-success">
+          <strong>Address Saved Successfully</strong>
+        </div>
+        <div ng-show="error" class="text-center text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
