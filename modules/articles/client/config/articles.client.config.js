@@ -5,7 +5,7 @@ angular.module('articles').run(['Menus',
   function (Menus) {
     // Add the articles dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'Articles',
+      title: 'Products',
       state: 'articles',
       type: 'dropdown',
       roles: ['*']
@@ -13,7 +13,31 @@ angular.module('articles').run(['Menus',
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'articles', {
-      title: 'List Articles',
+      title: 'All Items',
+      state: 'articles.list'
+    });
+
+    Menus.addSubMenuItem('topbar', 'articles', {
+      title: 'Women',
+      state: 'articles.list'
+    });
+
+    Menus.addSubMenuItem('topbar', 'articles', {
+      title: 'Men',
+      state: 'articles.list'
+    });
+
+    Menus.addSubMenuItem('topbar', 'articles', {
+      title: 'Kid',
+      state: 'articles.list'
+    });
+
+    Menus.addSubMenuItem('topbar', 'articles', {
+      title: 'Accessories',
+      state: 'articles.list'
+    });
+    Menus.addSubMenuItem('topbar', 'articles', {
+      title: 'Clearance',
       state: 'articles.list'
     });
 
