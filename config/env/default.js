@@ -2,8 +2,8 @@
 
 module.exports = {
   app: {
-    title: 'MEAN.JS',
-    description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
+    title: 'B.N. Shape Clothing',
+    description: 'A fitness lifestyle brand that promotes the pursuit and maintenance of a healthy, fit community while encouraging the individuals who thrive within it.',
     keywords: 'mongodb, express, angularjs, node.js, mongoose, passport',
     googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'GOOGLE_ANALYTICS_TRACKING_ID'
   },
@@ -27,6 +27,6 @@ module.exports = {
   // for obsecurity reasons
   sessionKey: 'sessionId',
   sessionCollection: 'sessions',
-  logo: 'modules/core/client/img/brand/logo.png',
-  favicon: 'modules/core/client/img/brand/favicon.ico'
+  logo: 'modules/core/client/img/brand/bnshapelogo.png',
+  favicon: 'modules/core/client/img/brand/BN_favicon.png'
 };
