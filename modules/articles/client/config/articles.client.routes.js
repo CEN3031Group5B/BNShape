@@ -24,6 +24,9 @@ angular.module('articles').config(['$stateProvider',
       .state('articles.view', {
         url: '/:articleId',
         templateUrl: 'modules/articles/client/views/view-article.client.view.html'
+      }).state('product', {
+        url: '/products/view',
+        templateUrl: 'modules/articles/client/views/view-article.client.view.html'
       })
       .state('articles.edit', {
         url: '/:articleId/edit',
