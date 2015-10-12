@@ -1,0 +1,16 @@
+Juhi Thakore. Notes/comments for story #104148896.
+
+Settings and Password - Password Reset. After account has been created. Already exists
+
+Settings - edit profile (added phone number, fax and notification prefrence boxes)
+Settings - Edit shipping/location information
+	-Manage Address Home Page:
+		-label for address(es)
+		-click edit on an address to go to edit page.
+		-click add at bottom right to add an address. Goes to empty(no filled fields) edit page.
+
+	edit/add adress page:
+	-all address related fields
+	-location/region dropdowns
+	-continue & back buttons (ie save & cancel)
+	default address radio button
