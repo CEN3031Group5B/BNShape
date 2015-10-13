@@ -1,3 +1,5 @@
+<div class="container">
+
 <div ng-controller="AuthenticationController">
   <h3 class="col-md-12">Register Account</h3>
   <h5 class="col-md-12">If you already have an account with us, please login <a ui-sref="authentication.signin" class="here-link">here</a>.<br></br></h5> <h4 class="col-md-12">Your Personal Details<br></br></h4>
@@ -109,7 +111,7 @@
             <p class="help-block error-text" ng-message="required">Last name is required.</p> -->
       </div>
 
-      <div class="dropdown" show-errors>
+      <div class="dropdown form-group" show-errors>
 
       <form name="countryForm">
           <label for="singleSelect"> Country: </label> &nbsp; &nbsp;
@@ -197,4 +199,6 @@
         <div class="divider">
         <h4><br></br></h4>
     </div>
+</div>
+
 </div>

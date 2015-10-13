@@ -11,7 +11,7 @@ module.exports = {
       js: [
         'public/lib/angular/angular.js',
         'public/lib/angular-resource/angular-resource.js',
-        'public/lib/angular-cookies/angular-cookies_1.3.17.js',
+        'public/angular-cookie-prev-version/angular-cookies_1.3.17.js',
         'public/lib/angular-bootstrap/ui-bootstrap.js',
         'public/lib/angular-animate/angular-animate.js',
         'public/lib/angular-messages/angular-messages.js',

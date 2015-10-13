@@ -1,4 +1,4 @@
-<section ng-controller="ProductsController">
+<section ng-controller="ProductsController" ng-init="init_product()">
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
@@ -155,7 +155,7 @@
         <ul class="list-group">
           <li class="list-group-item">
             <a href="#">
-              <button type="button" class="btn btn-default btn-md">
+              <button type="button" class="btn bnshape-button btn-md">
                 <span class="glyphicon glyphicon-star" aria-hidden="true">
                 </span>
                 <span class="glyphicon glyphicon-star" aria-hidden="true">
@@ -172,7 +172,7 @@
           </li>
           <li class="list-group-item">
             <a href="#">
-              <button type="button" class="btn btn-default btn-md">
+              <button type="button" class="btn bnshape-button btn-md">
                 <span class="glyphicon glyphicon-star" aria-hidden="true">
                 </span>
                 <span class="glyphicon glyphicon-star" aria-hidden="true">
@@ -189,7 +189,7 @@
           </li>
           <li class="list-group-item">
             <a href="#">
-              <button type="button" class="btn btn-default btn-md">
+              <button type="button" class="btn bnshape-button btn-md">
                 <span class="glyphicon glyphicon-star" aria-hidden="true">
                 </span>
                 <span class="glyphicon glyphicon-star" aria-hidden="true">
@@ -206,7 +206,7 @@
           </li>
           <li class="list-group-item">
             <a href="#">
-              <button type="button" class="btn btn-default btn-md">
+              <button type="button" class="btn bnshape-button btn-md">
                 <span class="glyphicon glyphicon-star" aria-hidden="true">
                 </span>
                 <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
@@ -225,8 +225,14 @@
         </div>
       </ul>
     </div>
-
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <span class="label label-success" ng-show="success_add">Successfully added to cart</span>
+      <div class="cart" popover-template="cart_popup" popover-title="Cart" popover-placement="bottom">
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        <a class="cart-total">
+          <span>{{cart_items.length}} item(s) - $20.00</span>
+        </a>
+      </div>
       <h1 class="page-header">
         Products
       </h1>
@@ -239,7 +245,7 @@
             </h5>
           </a>
           <a href="#">
-            <button type="button" class="btn btn-default btn-lg bnshape-button">
+            <button type="button" class="btn bnshape-button btn-lg bnshape-button" ng-click="add_cart(0)">
               <span class="glyphicon glyphicon-shopping-cart">
               </span>
               <strong>
@@ -256,7 +262,7 @@
             </h5>
           </a>
           <a href="#">
-            <button type="button" class="btn btn-default btn-lg">
+            <button type="button" class="btn bnshape-button btn-lg" ng-click="add_cart(1)">
               <span class="glyphicon glyphicon-shopping-cart">
               </span>
               <strong>
@@ -273,7 +279,7 @@
             </h5>
           </a>
           <a href="#">
-            <button type="button" class="btn btn-default btn-lg">
+            <button type="button" class="btn bnshape-button btn-lg" ng-click="add_cart(1)">
               <span class="glyphicon glyphicon-shopping-cart">
               </span>
               <strong>
@@ -286,11 +292,6 @@
     </div>
 
   </div>
-  <button popover-template="cart_popup" popover-title="Cart" popover-placement="right" type="button" class="btn btn-default">
-    <span class="glyphicon glyphicon-shopping-cart shopping-cart"></span>
-    <span class="badge">{{cart_items.length}}</span>
-  </button>
-  <span class="label label-success" ng-show="success_add">Successfully added to cart</span>
   <script type="text/ng-template" id="cart_popup.html">
         <table class="table table-striped">
               <tr ng-repeat="id in cart_items track by $index">
@@ -309,8 +310,10 @@
               </tr>
         </table>
         <hr />
-        <a class="btn btn-primary" ui-sref="cart" role="button">Edit Cart</a>
-        <button type="button" class="btn btn-primary">Checkout</button>
+        <a class="cart-total" ui-sref="cart">Edit Cart</a>
+        &nbsp;
+        &nbsp;
+        <a class="cart-total">Checkout</button>
   </script>
 </section>
 
