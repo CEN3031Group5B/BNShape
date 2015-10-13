@@ -45,3 +45,24 @@
     text-decoration: none;
     color:white;
 }
+
+.cart {
+    float: right;
+    font-size: 18px;
+}
+
+.cart:hover {
+    color:red;
+}
+
+.cart-total {
+    cursor: pointer;
+    color: rgb(102, 102, 102);
+    text-decoration: none;
+}
+
+.cart-total:hover {
+    color:red;
+    text-decoration: none;
+}
+
