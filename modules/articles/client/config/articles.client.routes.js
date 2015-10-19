@@ -28,6 +28,10 @@ angular.module('articles').config(['$stateProvider',
         url: '/products/view',
         templateUrl: 'modules/articles/client/views/view-article.client.view.html'
       })
+      .state('cart', {
+        url: '/cart',
+        templateUrl: 'modules/articles/client/views/view-cart.client.view.html'
+      })
       .state('articles.edit', {
         url: '/:articleId/edit',
         templateUrl: 'modules/articles/client/views/edit-article.client.view.html',
