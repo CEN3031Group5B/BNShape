@@ -194,11 +194,16 @@ img.AngularJS-small {
   font-size: 14px;
 }
 
-.footer-menu-row {
+.footer {
   padding-bottom: 30px;
-  padding-top: 30px;
+  z-index: auto;
 }
 
-.footer {
-  z-index: 50;
+.footer h4 {
+  padding-left: 80px;
+  padding-top: 45px;
+}
+
+.footer ul {
+  padding-left: 80px;
 }
