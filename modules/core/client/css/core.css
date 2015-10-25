@@ -55,8 +55,8 @@ a:hover .header-profile-image {
 
 
 /*
- * Global add-ons
- */
+* Global add-ons
+*/
 
 .sub-header {
   padding-bottom: 10px;
@@ -64,16 +64,16 @@ a:hover .header-profile-image {
 }
 
 /*
- * Top navigation
- * Hide default border to remove 1px line.
- */
+* Top navigation
+* Hide default border to remove 1px line.
+*/
 .navbar-fixed-top {
   border: 0;
 }
 
 /*
- * Sidebar
- */
+* Sidebar
+*/
 
 /* Hide for mobile, show later */
 .sidebar {
@@ -119,8 +119,8 @@ a:hover .header-profile-image {
 
 
 /*
- * Main content
- */
+* Main content
+*/
 
 .main {
   padding: 20px;
@@ -137,8 +137,8 @@ a:hover .header-profile-image {
 
 
 /*
- * Placeholder dashboard ideas
- */
+* Placeholder dashboard ideas
+*/
 
 .placeholders {
   margin-bottom: 30px;
@@ -160,21 +160,45 @@ img.AngularJS-small {
 }
 
 .banner {
-    background: #000;
-    font-family: 'Open Sans';
-    font-style: italic;
-    margin-top: 25px;
-    padding-top: 110px;
-    padding-bottom: 65px;
+  background: #000;
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-style: italic;
+  margin-top: 25px;
+  padding-top: 110px;
+  padding-bottom: 65px;
 }
 
 .banner .device {
-    border: none;
-    width: auto;
-    height: auto;
-    margin: 0 auto;
-    padding: 0;
-    text-align: center;
-    font-size: 18px;
-    color: #FFFFFF;
+  border: none;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 20px;
+  color: #FFFFFF;
+}
+
+.payment li {
+  display: inline-block;
+  text-align: center;
+}
+
+.footer-menu {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: inline-block;
+  list-style-type: none;
+  font-size: 14px;
+}
+
+.footer-menu-row {
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.footer {
+  z-index: 50;
 }
