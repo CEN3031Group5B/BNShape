@@ -53,6 +53,14 @@ a:hover .header-profile-image {
   display: inline;
 }
 
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
 
 /*
  * Global add-ons
@@ -152,6 +160,173 @@ a:hover .header-profile-image {
 }
 .placeholder img {
   display: inline-block;
+}
+
+/*
+ * Product View
+ */
+
+ .product-info .right h1 {
+    font-size: 22px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.product-info .left {
+    vertical-align: top;
+}
+
+.product-info .review {
+    line-height: 1;
+}
+
+.product-info .price {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.product-info .description {
+    margin-bottom: 10px;
+    line-height: 2;
+    font-weight: 300;
+}
+
+.product-info .description span {
+    min-width: 120px;
+    display: inline-block;
+}
+
+.product-info .description h2 {
+    margin-bottom: 0px;
+}
+
+.product-info h2 {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-info .options {
+    margin-bottom: 10px;
+}
+
+.product-info .custom-block {
+    margin-bottom: 20px;
+    padding: 30px;
+    background-color: #F7F7F7;
+    font-weight: 300;
+}
+
+.product-info .quantity {
+    margin-bottom: 10px;
+}
+
+.product-info .details {
+    margin-bottom: 10px;
+}
+
+.share {
+    clear: both;
+}
+
+.product-info h2::after {
+
+    content: "";
+    width: 2500px;
+    height: 1px;
+    background-color: #DDD;
+    position: absolute;
+    top: 41%;
+
+}
+
+/* Quantity buttons */
+
+.product-info .quantity button {
+    background: transparent none repeat scroll 0% 0%;
+    border: 1px solid #DDD;
+    padding: 5px 14px;
+    color: #000;
+}
+
+.product-info .quantity input {
+    padding: 7px 10px;
+    text-align: center;
+    border: 1px solid #DDD;
+    vertical-align: top;
+}
+
+input[type="text"], input[type="password"] {
+    max-width: 100%;
+}
+
+/* Cart, wishlist, compare buttons */
+
+.product-info .details .cart,
+.product-info .details .wishlist,
+.product-info .details .compare {
+    font-size: 13px;
+    cursor: pointer;
+    background-color: #888;
+    margin-bottom: 5px;
+    display: inline-block;
+    float: left;
+}
+
+.product-info .details .cart a,
+.product-info .details .wishlist a,
+.product-info .details .compare a {
+    color: #FFF;
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 15px 25px;
+    line-height: 1;
+    transition-delay: 0s;
+    transition-duration: 0.5s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.product-info .details .cart a:hover,
+.product-info .details .wishlist a:hover,
+.product-info .details .compare a:hover {
+    background-color: #444;
+}
+
+.product-info .details .wishlist,
+.product-info .details .compare {
+    margin-left: 5px;
+    float: right;
+}
+
+.image-panel {
+}
+
+/*
+ * General
+ */
+
+h1, h2, h3, h4, h5, h6, .box-heading {
+    color: #666;
+}
+h1, h2, h3, h4, h5, h6, .box-heading {
+    font-family: "Open Sans";
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Open Sans Light"), local("OpenSans-Light"), url("http://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTfk_vArhqVIZ0nv9q090hN8.woff2") format("woff2");
+}
+
+.required {
+    color: #FF2626;
+    margin-left: 4px;
 }
 
 img.AngularJS-small {
