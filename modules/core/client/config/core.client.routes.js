@@ -37,6 +37,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       data: {
         ignoreState: true
       }
+    })
+    .state('cart', {
+        url: '/cart',
+        templateUrl: 'modules/products/client/views/view-cart.client.view.html'
     });
   }
 ]);

@@ -1,4 +1,4 @@
-<div class="container" ng-controller="HeaderController">
+<div class="" ng-controller="HeaderController" ng-init="init_header()">
 
   <div class="navbar-header">
     <button class="navbar-toggle" type="button" ng-click="toggleCollapsibleMenu()">
@@ -7,57 +7,102 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a ui-sref="home" class="navbar-brand"><img class="AngularJS-small" src="modules/core/client/img/brand/bnshapelogo.png"></a>
+
   </div>
 
   <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-    <ul class="nav navbar-nav" ng-if="menu.shouldRender(authentication.user);">
-      <li ng-repeat="item in menu.items | orderBy: 'position'" ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" ng-class="{ active: $state.includes(item.state), dropdown: item.type === 'dropdown' }" class="{{item.class}}" dropdown="item.type === 'dropdown'">
-        <a ng-switch-when="dropdown" class="dropdown-toggle" dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
-        <ul ng-switch-when="dropdown" class="dropdown-menu">
-          <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(authentication.user);" ui-sref-active="active">
-            <a ui-sref="{{subitem.state}}" ng-bind="subitem.title"></a>
-          </li>
-        </ul>
-        <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
-      <li ui-sref-active="active">
-        <a ui-sref="authentication.signup">Register</a>
-      </li>
-      <li class="divider-vertical"></li>
-      <li ui-sref-active="active">
-        <a ui-sref="authentication.signin">Login</a>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right" ng-show="authentication.user">
-      <li class="dropdown" dropdown>
-        <a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button">
-          <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
-          <span ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu" role="menu">
-          <li ui-sref-active="active">
-            <a ui-sref="settings.profile">Edit Profile</a>
-          </li>
-          <li ui-sref-active="active">
-            <a ui-sref="settings.picture">Change Profile Picture</a>
-          </li>
-          <li ui-sref-active="active" ng-show="authentication.user.provider === 'local'">
-            <a ui-sref="settings.password">Change Password</a>
-          </li>
-          <!--
-          <li ui-sref-active="active">
-            <a ui-sref="settings.accounts">Manage Social Accounts</a>
-          </li> -->
-          <li class="divider"></li>
-          <li>
-            <a href="/api/auth/signout" target="_self">Signout</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+      <div class = "row bnshape-nav-top">
+        <div class="col-lg-12">
+          <div class="col-md-6 col-xs-12">          
+              <a href="https://www.facebook.com/BNShape" target="_blank" class="facebook"><img src="/modules/core/client/img/social/facebook.png" class="social"/></a>
+              <a href="https://twitter.com/BN_Shape" target="_blank" class="twitter"><img src="/modules/core/client/img/social/twitter.png" class="social"/></a>
+              <a href="http://instagram.com/bnshapeclothing" target="_blank" class="instagram"><img src="/modules/core/client/img/social/instagram.png" class="social"/></a>
+          </div>
+          <div class="col-md-6 cart-col">
+            <!-- <div class="cart" popover-template="cart_popup" popover-title="Cart" popover-placement="left"> -->
+            <div class="cart">  
+              <span class="glyphicon glyphicon-shopping-cart"></span>
+              <a class="cart-total" ui-sref="cart">
+                <span>{{cart_items.length}} item(s) - $0.00</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class = "row  bnshape-nav">
+        <div class = "col-lg-12">
+          <a ui-sref="home" class="navbar-brand"><img class="AngularJS-small" src="modules/core/client/img/brand/bnshapelogo.png"></a>
+          <ul class="nav navbar-nav" ng-if="menu.shouldRender(authentication.user);">
+            <li ng-repeat="item in menu.items | orderBy: 'position'" ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" ng-class="{ active: $state.includes(item.state), dropdown: item.type === 'dropdown' }" class="{{item.class}} nav-drop" dropdown="item.type === 'dropdown'">
+              <a ng-switch-when="dropdown" class="dropdown-toggle" dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
+              <ul ng-switch-when="dropdown" class="dropdown-menu">
+                <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(authentication.user);" ui-sref-active="active">
+                  <a ui-sref="{{subitem.state}}" ng-bind="subitem.title" class="a-subitem"></a>
+                </li>
+              </ul>
+              <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title" class="fix-header-nav"></a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
+              <li ui-sref-active="active">
+                <a ui-sref="authentication.signup" class="fix-header-nav">Register</a>
+              </li>
+              <li class="divider-vertical"></li>
+              <li ui-sref-active="active">
+                <a ui-sref="authentication.signin" class="fix-header-nav">Login</a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-show="authentication.user">
+              <li class="dropdown nav-drop" dropdown>
+                <a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button">
+                  <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
+                  <span ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li ui-sref-active="active">
+                    <a ui-sref="settings.profile">Edit Profile</a>
+                  </li>
+                  <li ui-sref-active="active">
+                    <a ui-sref="settings.picture">Change Profile Picture</a>
+                  </li>
+                  <li ui-sref-active="active" ng-show="authentication.user.provider === 'local'">
+                    <a ui-sref="settings.password">Change Password</a>
+                  </li>
+                  <!--
+                  <li ui-sref-active="active">
+                    <a ui-sref="settings.accounts">Manage Social Accounts</a>
+                  </li> -->
+                  <li class="divider"></li>
+                  <li>
+                    <a href="/api/auth/signout" target="_self">Sign Out</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+        </div>
+    </div>
   </nav>
-  
+  <script type="text/ng-template" id="cart_popup.html">
+        <table class="table table-striped">
+              <tr ng-repeat="id in cart_items track by $index">
+                  <td>
+                      <div>product pic</div>
+                  </td>
+                  <td>
+                      <a>product name - size</a>
+                  </td>
+                  <td>
+                      <div>prize</div>
+                  </td>
+                  <td>
+                    <span class="glyphicon glyphicon-remove quick-remove-cart" ng-click="quick_delete_cart($index)"></span>
+                  </td>
+              </tr>
+        </table>
+        <hr />
+        <a class="cart-total" ui-sref="cart">Edit Cart</a>
+        &nbsp;
+        &nbsp;
+        <a class="cart-total">Checkout</button>
+  </script>
 </div>
