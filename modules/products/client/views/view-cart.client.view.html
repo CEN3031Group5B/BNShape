@@ -1,0 +1,85 @@
+<section class="cart-page container" ng-controller="CartController" ng-init="getItems()">
+	  <div class="page-header">
+    		<h2>Shopping Cart</h2>
+  	  </div>
+      <h1 ng-show="cart_items.length === 0">No items in cart</h1>
+      <div ng-hide="cart_items.length === 0">
+      	<div>
+			<div class="cart-info">
+			          <table class="table">
+			            <thead>
+			            <tr class="cart-header-row">
+			              <td class="image">Image</td>
+			              <td class="name">Product Name</td>
+			              <td class="size">Size</td>
+			              <td class="model">Model</td>
+			              <td class="quantity">Quantity</td>
+			              <td class="price">Unit Price</td>
+			              <td class="total">Total</td>
+			              <td class="action"></td>
+			            </tr>
+			            </thead>
+			            <tbody>
+			              <tr ng-repeat="item in display_items track by $index">
+				                <td class="image">
+				                	<img src="http://bnshapeclothing.com/image/cache/data/website_DSC_0967-90x115.jpg" alt="Yellow Lifestyle Leggings" title="Yellow Lifestyle Leggings">
+				                </td>
+				                <td class="name">
+				                	{{item.name}}
+				                </td>
+				                <td class="size">{{item.sizes[0]}}</td>
+				                <td class="model">{{item.code}}</td>
+				                <td class="quantity">{{quantity_dict[item._id]}}</td>
+				                <td class="price">{{item.price}}</td>
+				                <td class="total">${{(quantity_dict[item._id] * parse_price(item.price)).toFixed(2)}}</td>
+				                <td class="action"><span class="glyphicon glyphicon-remove remove" ng-click="quick_delete_cart(item._id,quantity_dict[item._id],$index)"></span></td>
+			              </tr>
+			              </tbody>
+			          </table>
+			        </div>
+			</div>
+			<div class="cart-what-to-do">
+				<h2>What would you like to do next?</h2>
+				<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+				<table class="radio">
+                   	<tbody>
+                   		<tr class="highlight">
+	                			<td>                    
+	                				<input type="radio" style="position:static; margin-left:0" name="next" value="coupon" id="use_coupon" class="radio-but">
+	                  			</td>
+	                			<td><label for="use_coupon">Use Coupon Code</label></td>
+              				</tr>
+                            <tr class="highlight">
+			                	<td>                    
+			                		<input type="radio" style="position:static; margin-left:0" name="next" value="voucher" id="use_voucher" class="radio-but">
+			                  	</td>
+	                			<td><label for="use_voucher">Use Gift Voucher</label></td>
+              				</tr>
+                            <tr class="highlight">
+                				<td>                    
+                					<input type="radio" style="position:static; margin-left:0" name="next" value="shipping" id="shipping_estimate" class="radio-but">
+                  				</td>
+                				<td><label for="shipping_estimate">Estimate Shipping &amp; Taxes</label></td>
+              				</tr>
+              		</tbody>
+              	</table>
+			</div>
+			<div class="cart-total">
+				<table id="table total">
+                    <tbody>
+                      	<tr>
+              				<td class="right"><b>Total:&nbsp;</b></td>
+              				<td class="right">${{cart_total.toFixed(2)}}</td>
+            			</tr>
+                	</tbody>
+                </table>
+			</div>
+			<div class="cart-buttons">
+        		<div class="center">
+	          		<a ui-sref="products.list" class="bnshape-button">Continue Shopping</a>
+		        	<a href="" class="bnshape-button">Checkout</a>
+        		</div>
+      		</div>
+	   </div>
+	   <!-- test -->
+</section>
