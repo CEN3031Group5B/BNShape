@@ -80,7 +80,7 @@ var UserSchema = new Schema({
   company: String,
   companyID: Number,
   address1: String,
-  address1: String,
+  address2: String,
   city: String,
   state: String,
   zip: Number,
