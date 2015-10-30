@@ -1,0 +1,9 @@
+Juhi Thakore. Notes/comments for story #106010170. (also see user.server and user.view)
+
+DONE:
+Will start testing after merging of code at end of sprint [10/30].
+
+TO DO:
+Test changing user info (username, password, email, cell, address, notification settings, etc.)
+
+[NOT PART OF THIS STORY - BUT NEED TO TEST... Create new account. Login. Add to Shopping Cart, etc.]

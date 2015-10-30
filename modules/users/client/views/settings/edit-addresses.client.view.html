@@ -1,4 +1,4 @@
-<section class="row" ng-controller="EditAddressesController">
+<section class="row" ng-controller="EditProfileController">
   <div class="col-xs-offset-1 col-xs-10 col-md-offset-4 col-md-4">
     <form name="userForm" ng-submit="updateUserProfile(userForm.$valid)" class="signin" novalidate autocomplete="off">
       <fieldset>
@@ -78,7 +78,7 @@
         </div>
 
 		<div class="checkbox">
-			<label><input type="checkbox" value="">Make this my default address.</label>
+			<label><input type="checkbox" id="defaultFlag" name="defaultFlag" ng-model="user.defaultFlag" value="">Make this my default address.</label>
 		 </div>
 		
         <div class="text-center form-group">
