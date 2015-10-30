@@ -48,8 +48,8 @@
          <fieldset>
                   <div class="form-group" show-errors>
                   <label for="firstName"><span class="required">*</span>Telephone:</label>
-                  <input type="text" id="telephone" name="telephone" class="form-control" ng-model="credentials.telephone" placeholder="Telephone" required>
-                  <div ng-messages="userForm.telephone.$error" role="alert">
+                  <input type="text" id="phone" name="phone" class="form-control" ng-model="credentials.phone" placeholder="Telephone" required>
+                  <div ng-messages="userForm.phone.$error" role="alert">
                 <p class="help-block error-text" ng-message="required">Telephone is required.</p>
               </div>
                 </div>
@@ -73,7 +73,7 @@
                 <label for="address1"><span class="required">*</span>Address 1:</label>
                 <input type="text" id="address1" name="address1" class="form-control" ng-model="credentials.address1" placeholder="Address 1" required>
                 <div ng-messages="userForm.address1.$error" role="alert">
-                  <p class="help-block error-text" ng-message="required">Address is required.</p> 
+                  <p class="help-block error-text" ng-message="required">Address is required.</p>
                 </div>
             </div>
             <div class="form-group" show-errors>
@@ -84,7 +84,7 @@
                 <label for="city"><span class="required">*</span>City:</label>
                 <input type="text" id="city" name="city" class="form-control" ng-model="credentials.city" placeholder="City" required>
                 <div ng-messages="userForm.city.$error" role="alert">
-                  <p class="help-block error-text" ng-message="required">City is required.</p> 
+                  <p class="help-block error-text" ng-message="required">City is required.</p>
                 </div>
             </div>
                 <div class="form-group">
@@ -115,7 +115,7 @@
                         <div ng-messages="userForm.region.$error" role="alert">
                           <p class="help-block error-text" ng-message="required">Region is required.</p>
                         </div>
-                </div>   
+                </div>
            </fieldset>
         </div>
 
@@ -126,7 +126,7 @@
               <fieldset>
                  <h4>Your Password<br></br>
                  </h4>
-  
+
               </fieldset>
           </div>
 

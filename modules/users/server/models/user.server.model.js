@@ -77,26 +77,10 @@ var UserSchema = new Schema({
     trim: true
   },
   /*physical address. 106010170*/
-  company: String,
-  companyID: Number,
-  address1: String,
-  address2: String,
-  city: String,
-  state: String,
-  zip: Number,
-  country: String,
   defaultFlag: Boolean,
   password: {
     type: String,
     required: 'Please fill in a password'
-  },
-  telephone: {
-    type: String, 
-    required: 'Please fill in a telephone number'
-  },
-  fax: {
-    type: String,
-    //default: ''
   },
   company: {
     type: String,
@@ -133,7 +117,7 @@ var UserSchema = new Schema({
     required: 'Please select a region/state'
     //default: ''
   },
-  
+
   /*
   yes: {
     type: String,
@@ -142,10 +126,10 @@ var UserSchema = new Schema({
   radio: {
     type: String,
     //default: ''
-  }, 
+  },
   policy: {
     type: String,
-    required: 'You must agree to create a new account'
+    //required: 'You must agree to create a new account'
   },
   salt: {
     type: String
@@ -262,7 +246,7 @@ UserSchema.statics.generateRandomPassphrase = function () {
     var password = '';
     var repeatingCharacters = new RegExp('(.)\\1{2,}', 'g');
 
-    // iterate until the we have a valid passphrase. 
+    // iterate until the we have a valid passphrase.
     // NOTE: Should rarely iterate more than once, but we need this to ensure no repeating characters are present.
     while (password.length < 20 || repeatingCharacters.test(password)) {
       // build the random password

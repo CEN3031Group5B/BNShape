@@ -2,9 +2,9 @@
   <div class="col-xs-offset-1 col-xs-10 col-md-offset-4 col-md-4">
     <form name="userForm" ng-submit="updateUserProfile(userForm.$valid)" class="signin" novalidate autocomplete="off">
       <fieldset>
-        
+
 		<!--To make things easier manage addresses is not going to be attached to the rest this sprint. This page is the editing of an Address. #104148896.-->
-		
+
 		<div class="form-group" show-errors>
           <label for="firstName">First Name</label>
           <input type="text" id="firstName" name="firstName" class="form-control" ng-model="user.firstName" placeholder="First Name" required>
@@ -19,16 +19,16 @@
             <p class="help-block error-text" ng-message="required">Last name is required.</p>
           </div>
         </div>
-        
+
 		<div class="form-group" >
           <label for="company">Company</label>
           <input type="text" id="company" name="company" class="form-control" ng-model="user.company" placeholder="company">
         </div>
-		
+
         <div class="form-group" >
-          <label for="companyID">Company ID</label>
-          <input type="text" id="companyID" name="companyID" class="form-control" ng-model="user.companyID" placeholder="companyID">
-		 
+          <label for="companyId">Company ID</label>
+          <input type="text" id="companyId" name="companyId" class="form-control" ng-model="user.companyId" placeholder="companyId">
+
         </div>
 
 		<div class="form-group" show-errors>
@@ -38,12 +38,12 @@
             <p class="help-block error-text" ng-message="required">Address 1 is required.</p>
           </div>
         </div>
-		
+
 		<div class="form-group" >
           <label for="address2">Address 2</label>
           <input type="text" id="address2" name="address2" class="form-control" ng-model="user.address2" placeholder="address2">
         </div>
-		
+
 		<div class="form-group" show-errors>
           <label for="city">City</label>
           <input type="text" id="city" name="city" class="form-control" ng-model="user.city" placeholder="City" required>
@@ -51,15 +51,15 @@
             <p class="help-block error-text" ng-message="required">City is required.</p>
           </div>
         </div>
-		
+
 		<div class="form-group">
-          <label for="zipCode">Zip Code</label>
-          <input type="text" id="zipCode" name="zipCode" class="form-control" ng-model="user.zipCode" placeholder="Zip Code">
+          <label for="postCode">Zip Code</label>
+          <input type="text" id="postCode" name="postCode" class="form-control" ng-model="user.postCode" placeholder="Post Code">
         </div>
-		
-		
-		
-		
+
+
+
+
 		<div class="form-group" show-errors>
           <label for="country">Country</label>
           <input type="text" id="country" name="country" class="form-control" ng-model="user.country" placeholder="Country" required>
@@ -67,12 +67,12 @@
             <p class="help-block error-text" ng-message="required">Country is required.</p>
           </div>
         </div>
-		
-		
+
+
 		<div class="form-group" show-errors>
-          <label for="state">Region / State</label>
-          <input type="text" id="state" name="state" class="form-control" ng-model="user.state" placeholder="Region / State" required>
-          <div ng-messages="userForm.state.$error" role="alert">
+          <label for="region">Region / State</label>
+          <input type="text" id="region" name="region" class="form-control" ng-model="user.region" placeholder="Region / region" required>
+          <div ng-messages="userForm.region.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Region / State is required.</p>
           </div>
         </div>
@@ -80,7 +80,7 @@
 		<div class="checkbox">
 			<label><input type="checkbox" id="defaultFlag" name="defaultFlag" ng-model="user.defaultFlag" value="">Make this my default address.</label>
 		 </div>
-		
+
         <div class="text-center form-group">
           <button type="submit" class="btn btn-primary">Save Address</button>
         </div>
