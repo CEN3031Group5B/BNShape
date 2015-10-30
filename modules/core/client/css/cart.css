@@ -1,0 +1,29 @@
+.shopping-cart {
+	font-size: 24px;
+}
+
+.quick-remove-cart {
+	cursor:pointer;
+}
+
+.cart {
+    float: right;
+    cursor:pointer;
+    color:black;
+}
+
+.cart a.cart-total {
+    text-decoration: none;
+    color:black;
+
+}
+
+/*
+idk why this has to be done with the anchor tag*/
+.cart:hover > a{
+    color:red;
+}
+
+.cart:hover {
+    color:red;
+}

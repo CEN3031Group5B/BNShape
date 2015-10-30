@@ -4,14 +4,14 @@ angular.module('core').run(['Menus',
   function (Menus) {
     Menus.addMenuItem('topbar', {
       title: 'Team',
-      state: 'articles.list',
+      state: 'products.list',
       type: '',
       roles: ['*']
     });
 
 	Menus.addMenuItem('topbar', {
       title: 'About Us',
-      state: 'articles.list',
+      state: 'products.list',
       type: '',
       roles: ['*']
     });

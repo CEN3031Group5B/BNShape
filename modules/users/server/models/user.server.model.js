@@ -52,6 +52,23 @@ var UserSchema = new Schema({
     default: '',
     validate: [validateLocalStrategyEmail, 'Please fill a valid email address']
   },
+  /*Notification abilities. 106010170*/
+  emailNotification: Boolean,
+  /*adding phone and fax. 106010170*/
+  phone: {
+    type: Number,
+	unique: true,
+    trim: true,
+    default: ''
+  },
+  /*Notification. 106010170*/
+  phoneNotification: Boolean,
+  fax: {
+    type: Number,
+	unique: true,
+    trim: true,
+    default: ''
+  },
   username: {
     type: String,
     unique: 'Username already exists',
@@ -59,9 +76,60 @@ var UserSchema = new Schema({
     lowercase: true,
     trim: true
   },
+  /*physical address. 106010170*/
+  defaultFlag: Boolean,
   password: {
     type: String,
-    default: ''
+    required: 'Please fill in a password'
+  },
+  company: {
+    type: String,
+    //default: ''
+  },
+  companyId: {
+    type: String,
+    //default: ''
+  },
+  address1: {
+    type: String,
+    required: 'Please fill in an address'
+    //default: ''
+  },
+  address2: {
+    type: String,
+    //default: ''
+  },
+  city: {
+    type: String,
+    //default: ''
+  },
+  postCode: {
+    type: String,
+    //default: ''
+  },
+  country: {
+    type: String,
+    required: 'Please select a country'
+    //default: ''
+  },
+  region: {
+    type: String,
+    required: 'Please select a region/state'
+    //default: ''
+  },
+
+  /*
+  yes: {
+    type: String,
+    //default: ''
+  }, */
+  radio: {
+    type: String,
+    //default: ''
+  },
+  policy: {
+    type: String,
+    //required: 'You must agree to create a new account'
   },
   salt: {
     type: String
@@ -98,6 +166,7 @@ var UserSchema = new Schema({
   resetPasswordExpires: {
     type: Date
   }
+
 });
 
 /**
@@ -177,7 +246,7 @@ UserSchema.statics.generateRandomPassphrase = function () {
     var password = '';
     var repeatingCharacters = new RegExp('(.)\\1{2,}', 'g');
 
-    // iterate until the we have a valid passphrase. 
+    // iterate until the we have a valid passphrase.
     // NOTE: Should rarely iterate more than once, but we need this to ensure no repeating characters are present.
     while (password.length < 20 || repeatingCharacters.test(password)) {
       // build the random password

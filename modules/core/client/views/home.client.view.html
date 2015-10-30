@@ -1,28 +1,45 @@
 <section ng-controller="HomeController" id="carouselImg">
 
-  <div ng-controller="CarouselCtrl">
-    <div style="height: 660px">
-      <carousel interval="myInterval" no-wrap="noWrapSlides">
-        <slide ng-repeat="slide in slides" active="slide.active">
-          <img src="{{slide.image}}" style="margin:auto; height:660px; width:100%";>
-        </slide>
-      </carousel>
-    </div>
-  </div>
-
-
-	<div class="banner">
-		<div class="device">
-			<div>
-				<p style="color:#fff; font-size:21px;">
-					<img alt="" src="http://bnshapeclothing.com/image/data/bnshapelogo.png">
-						<br/>
-						<br/>
-						is a <strong>fitness lifestyle brand</strong> that promotes the pursuit and maintenance of a healthy, fit community while encouraging the individuals who thrive within it.</p>
-						<br>
+	<div class="col-md-9">
+		<div class="row">
+			<div ng-controller="CarouselCtrl">
+				<div style="height: 660px">
+					<carousel interval="myInterval" no-wrap="noWrapSlides">
+						<slide ng-repeat="slide in slides" active="slide.active">
+							<img src="{{slide.image}}" style="margin:auto; height:660px; width:100%";>
+						</slide>
+					</carousel>
+				</div>
 			</div>
 		</div>
 	</div>
 
+	<div class="col-md-3">
+		<div class="row">
+			<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/BN_Shape" data-widget-id="658083828863340544">Tweets by @BN_Shape</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</div>
+	</div>
+
+
+	<div class="col-md-12">
+		<div class="row">
+			<div class="banner">
+				<div class="device">
+					<div class="container-fluid">
+						<p>
+							<img alt="" src="http://bnshapeclothing.com/image/data/bnshapelogo.png">
+							<br/>
+							<br/>
+							is a <strong>fitness lifestyle brand</strong> that promotes
+							the pursuit and maintenance of a healthy, fit<br/> community
+							while encouraging the individuals who thrive within it.
+						</p>
+						<br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </section>

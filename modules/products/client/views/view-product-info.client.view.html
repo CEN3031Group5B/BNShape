@@ -1,0 +1,326 @@
+<section ng-controller="ProductViewController" ng-init="findOne()">
+<div class="container-fluid">
+  <div class="row">
+
+      <!-- Stolen from Peach -->
+
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <!-- Categories -->
+        <div class="panel-heading">
+          <h4>
+              Categories
+          </h4>
+        </div>  
+        <div class="panel panel-default">
+          <!-- Collapsible "Men" -->  
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse1">
+                Men
+              </a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <a href="#">
+                  Shirts
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  Tank Tops
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  Hoodies
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  Pants
+                </a>
+              </li>
+            </ul>
+          </div>
+         <!-- Collapsible "Women" -->
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse2">
+                Women
+              </a>
+            </h4>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <a href="#">
+                  Shirts
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  Tank Tops
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  Hoodies
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  Pants
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Collapsible "Kids" -->
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse3">
+                Kids
+              </a>
+            </h4>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <a href="#">
+                  Shirts
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Refine By -->
+        <div class="panel-heading">
+          <h4>
+            Refine By
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <!-- New Arrivals -->
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#">
+                New Arrivals
+              </a>
+            </h4>
+          </div>
+          <!-- Best Sellers -->
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#">
+                Best Sellers
+              </a>
+            </h4>
+          </div>
+          <!-- Discounts -->
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a href="#">
+                Discounts
+              </a>
+            </h4>
+          </div>
+          <!-- Price -->
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse4">
+                Price
+              </a>
+            </h4>
+          </div>
+          <div id="collapse4" class="panel-collapse collapse">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <a href="#">
+                  High to Low
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  Low to High
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Customer Reviews -->
+        <div class="panel-heading">
+          <h4>
+            Customer Reviews
+          </h4>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <a href="#">
+              <button type="button" class="btn bnshape-button btn-md">
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                &amp Up
+              </button>
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+              <button type="button" class="btn bnshape-button btn-md">
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                &amp Up
+              </button>
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+              <button type="button" class="btn bnshape-button btn-md">
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                &amp Up
+              </button>
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+              <button type="button" class="btn bnshape-button btn-md">
+                <span class="glyphicon glyphicon-star" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                </span>
+                &amp Up
+              </button>
+            </a>
+          </li>
+        </ul>
+        </div>
+      </ul>
+    </div>
+
+    <!-- From BNShape -->
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 product-info">
+      <div>
+        <div class="col-md-4 left image-panel">
+          <div class="image"><a href="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg" class="product-image-link"><div style="height:414px; width:324px;" class="zoomWrapper"><img style="position: absolute; height:414px; width:324px;" id="main-image" src="/modules/products/client/views/tank.png" data-zoom-image="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg"></div></a></div>
+          <button ng-click="admin = !admin">Toggle Admin</button>
+          <button ng-show="admin == true" ng-click="saveChanges()">Save Changes</button>
+        </div>
+        <div class="col-md-6 right">
+          <!-- Name -->
+          <h1 ng-if="admin==false">{{this_product.name}}</h1>
+          <span ng-if="admin==true" class="admin-label"><input ng-model="this_product.name" class="admin-field"></input> - Name<br></span>
+          <!-- Reviews -->
+          <div ng-if="admin==false" class="review">
+            <div>
+              <img src="/modules/products/client/views/stars.png" alt="Rating">
+              &nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');">{{this_product.reviews.length}} reviews</a>
+            </div>
+          </div>
+          <!-- Price -->
+          <div ng-if="admin==false" class="price">{{this_product.price}}
+            <br><span class="reward"><small>Price in reward points: {{this_product.reward_price}}</small></span>
+          </div>
+          <span ng-if="admin==true" class="admin-label">
+            <input ng-model="this_product.price" class="admin-field"></input> - Price<br>
+            <input ng-model="this_product.reward_price" class="admin-field"></input> - Reward Price
+          </span>
+          <!-- Description
+                * Product Code
+                * Reward Points
+                * Availability -->
+          <div class="description">
+            <h2>
+              Product Details
+            </h2>
+            <span ng-if="admin==false">
+              <span>Product Code:</span> {{this_product.code}}<br>
+              <span>Reward Points:</span> {{this_product.reward_points}}<br>
+              <span>Availability:</span> {{this_product.availability}}
+            </span>
+            <span ng-if="admin==true" class="admin-label">
+              <input ng-model="this_product.code" class="admin-field"></input> - Product Code<br>
+              <input ng-model="this_product.reward_points" class="admin-field"></input> - Reward Points<br>
+              <input ng-model="this_product.availability" class="admin-field"></input> - Availability
+            </span>
+          </div>
+          <!-- Available Options -->
+          <div class="options">
+            <h2>Available Options</h2>
+              <span ng-if="admin==false">
+                <br><div id="option-138" class="option">
+                  <span class="required">*</span>
+                  <b>Select Size:</b>
+                  <ul ng-repeat="size in this_product.sizes">
+                    <input name="size" type="radio">
+                    <label for="size">{{size}}</label>
+                  </ul>
+                </div>
+              </span>
+              <span ng-if="admin==true" class="admin-label">
+                <b>Available Sizes:</b>
+                <ul ng-repeat="size in this_product.sizes track by $index">
+                  <input ng-model="this_product.sizes[$index]" class="admin-field"></input><button ng-click="removeSize($index)">Remove</button><br>
+                </ul>
+                <button ng-click="addSize()">Add Size</button>
+              </span>
+            </br>
+          </div>
+          <div class="custom-block"><span style="color: rgb(102, 102, 102); font-family: 'arial black', 'avant garde'; font-size: 14px; line-height: 18.2000007629395px;">***INTERNATIONAL ORDERS: ALLOW 14 BUSINESS DAYS FOR DELIVERY***</span></div>
+          <div class="quantity">
+            Quantity: 
+            <button type="button" id="qty-dec">-</button>
+            <input name="quantity" size="2" class="dynamic-number" value="1" data-min="1" data-dec="#qty-dec" data-inc="#qty-inc" type="text">
+            <button type="button" id="qty-inc">+</button>
+            <input name="product_id" size="2" value="212" type="hidden">
+          </div>
+          <div class="details">
+            <div>
+              <div class="cart" id="button-cart"><a><span>Add to Cart</span></a></div>
+              <div class="wishlist"><a onclick="addToWishList('212');">Add to Wish List</a></div>
+              <div class="compare"><a onclick="addToCompare('212');">Add to Compare</a></div>
+            </div>
+          </div>
+          <div class="share"><!-- AddThis Button BEGIN -->
+            <div class="addthis_default_style"><a href="#" class="addthis_button_compact at300m"><span style="background-color: rgb(252, 109, 76);" class="at4-icon-left at4-icon aticon-compact"><span>More Sharing Services</span></span>Share</a> <a href="#" title="Email" target="_blank" class="addthis_button_email at300b"><span style="background-color: rgb(115, 138, 141);" class="at4-icon-left at4-icon aticon-email"><span class="at_a11y">Share on email</span></span></a><a href="#" title="Print" class="addthis_button_print at300b"><span style="background-color: rgb(115, 138, 141);" class="at4-icon-left at4-icon aticon-print"><span class="at_a11y">Share on print</span></span></a> <a href="#" title="Facebook" class="addthis_button_facebook at300b"><span style="background-color: rgb(48, 88, 145);" class="at4-icon-left at4-icon aticon-facebook"><span class="at_a11y">Share on facebook</span></span></a> <a href="#" title="Tweet" class="addthis_button_twitter at300b"><span style="background-color: rgb(44, 168, 210);" class="at4-icon-left at4-icon aticon-twitter"><span class="at_a11y">Share on twitter</span></span></a></div>
+            <script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js"></script>
+          <!-- AddThis Button END -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
