@@ -33,13 +33,22 @@ exports.read = function (req, res) {
   res.json(req.product);
 };
 
-
 exports.update = function (req, res) {
- var product = req.product;
+  var product = req.product;
 
-  //ToDo: set the fields of the product
+  product.name = req.body.name;
+  product.code = req.body.code;
+  product.reviews = req.body.reviews;
+  product.price = req.body.price;
+  product.reward_price = req.body.reward_price;
+  product.reward_points = req.body.reward_points;
+  product.description = req.body.description;
+  product.availability = req.body.availability;
+  product.sizes = req.body.sizes;
+
   product.save(function (err) {
     if (err) {
+      console.log(err);
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
@@ -84,7 +93,7 @@ exports.list = function (req, res) {
 /**
  * Article middleware
  */
-exports.articleByID = function (req, res, next, id) {
+exports.productByID = function (req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
