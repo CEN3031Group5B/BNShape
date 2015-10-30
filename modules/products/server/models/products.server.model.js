@@ -30,9 +30,17 @@ var ProductSchema = new Schema({
     default: '',
     required: 'Price cannot be blank'
   },
-  rating: {
+  reward_price: {
     type: String,
     default: '',
+  },
+  reward_points: {
+    type: String,
+    default: '',
+  },
+  reviews: {
+    type: Array,
+    default: [],
   },
   description: {
     type: String,

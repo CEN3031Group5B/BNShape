@@ -27,13 +27,15 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
     $scope.create = function () {
       //fill with actual data
       var product = new Products({
-        name: 'juhis scarf',
-        code: 'LBJ788',
-        rating: '5',
-        price: '$15.00',
-        description: 'probably creepy',
-        availability: 'in stock',
-        sizes: ['s','m']
+        name: 'New Product',
+        code: 'NOCODE',
+        reviews: [],
+        price: '$0.00',
+        reward_price: '0',
+        reward_points: '0',
+        description: 'No description.',
+        availability: 'Out of stock',
+        sizes: ['S', 'M', 'L']
       });
 
       // Redirect after save
