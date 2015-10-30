@@ -52,6 +52,23 @@ var UserSchema = new Schema({
     default: '',
     validate: [validateLocalStrategyEmail, 'Please fill a valid email address']
   },
+  /*Notification abilities. 106010170*/
+  emailNotification: Boolean,
+  /*adding phone and fax. 106010170*/
+  phone: {
+    type: Number,
+	unique: true,
+    trim: true,
+    default: ''
+  },
+  /*Notification. 106010170*/
+  phoneNotification: Boolean,
+  fax: {
+    type: Number,
+	unique: true,
+    trim: true,
+    default: ''
+  },
   username: {
     type: String,
     unique: 'Username already exists',
@@ -59,6 +76,16 @@ var UserSchema = new Schema({
     lowercase: true,
     trim: true
   },
+  /*physical address. 106010170*/
+  company: String,
+  companyID: Number,
+  address1: String,
+  address1: String,
+  city: String,
+  state: String,
+  zip: Number,
+  country: String,
+  defaultFlag: Boolean,
   password: {
     type: String,
     default: ''

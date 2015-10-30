@@ -1,0 +1,10 @@
+Juhi Thakore. Notes/comments for story #106010170. (also see user.server.model)
+
+Edit Profile - provide functionality to pages made last sprint
+Edit Address - ""
+
+Wishlist, OrderHistory, Downloads - new pages added. Need to add more functionality (checkout, add to wishlist) before I can add functionality to these pages. Next Sprint
+
+NOT COMPLETED:
+-multiple address functionality, will be added next sprint.
+-bring up: save card info/billing info? Or entirely from paypal like current site.
