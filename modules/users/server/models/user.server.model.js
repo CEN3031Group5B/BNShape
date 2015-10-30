@@ -88,7 +88,64 @@ var UserSchema = new Schema({
   defaultFlag: Boolean,
   password: {
     type: String,
-    default: ''
+    required: 'Please fill in a password'
+  },
+  telephone: {
+    type: String, 
+    required: 'Please fill in a telephone number'
+  },
+  fax: {
+    type: String,
+    //default: ''
+  },
+  company: {
+    type: String,
+    //default: ''
+  },
+  companyId: {
+    type: String,
+    //default: ''
+  },
+  address1: {
+    type: String,
+    required: 'Please fill in an address'
+    //default: ''
+  },
+  address2: {
+    type: String,
+    //default: ''
+  },
+  city: {
+    type: String,
+    //default: ''
+  },
+  postCode: {
+    type: String,
+    //default: ''
+  },
+  country: {
+    type: String,
+    required: 'Please select a country'
+    //default: ''
+  },
+  region: {
+    type: String,
+    required: 'Please select a region/state'
+    //default: ''
+  },
+  
+  /*
+  yes: {
+    type: String,
+    //default: ''
+  }, */
+  radio: {
+    type: String,
+    //default: ''
+  }, 
+  policy: {
+    type: String,
+    required: 'You must agree to create a new account'
   },
   salt: {
     type: String
@@ -125,6 +182,7 @@ var UserSchema = new Schema({
   resetPasswordExpires: {
     type: Date
   }
+
 });
 
 /**
