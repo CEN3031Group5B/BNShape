@@ -1,0 +1,111 @@
+.page-header {
+    padding-bottom: 9px;
+    margin: 35px 0px 20px;
+    border-bottom: 1px solid #EEE;
+}
+
+.page-header .header-text {
+    color: #666;
+    font-family: "Open Sans";
+    font-size: 35px;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.sidebar-products {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f7f7f7;
+}
+
+.nav-sidebar {
+	position: relative;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.box-heading {
+    color: #666;
+    font-family: "Open Sans";
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 0px;
+}
+
+.category-heading {
+    color: #878787;
+    padding: 8px 8px 8px 0px;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0px;
+}
+
+.category-heading .heading-text {
+    color: #878787;
+    font-family: "Open Sans";
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.subcategory {
+    list-style: outside none none;
+    padding: 8px 5px 8px 10px;;
+}
+
+.subcategory .subcategory-text {
+    color: #878787;
+    font-size: 13px;
+}
+
+.list-group {
+    box-shadow: none;
+    margin-bottom: 0px;
+}
+
+.product-grid .col-lg-4 {
+    width: 25%;
+    padding: 0px 5px;
+    vertical-align: top;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.product-grid .wrapper {
+    position: relative;
+    background-color: #FFF;
+    padding: 10px;
+}
+.product-grid .wrapper .thumb {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 25px;
+}
+.product-grid .thumb .image {
+    max-width: 100%;
+    vertical-align: top;
+    border: 0px none;
+}
+.product-grid .wrapper .name {
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.product-grid .wrapper .name .product-text {
+    color: #878787;
+}
