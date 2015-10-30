@@ -20,7 +20,7 @@
           <label for="email">Email</label>
           <input type="email" id="email" name="email" class="form-control" ng-model="user.email" placeholder="Email" lowercase required>
 		  <div class="checkbox">
-			<label><input type="checkbox" value="">Yes! I would like to receive notifications by email.</label>
+			<label><input type="checkbox" id="emailNotification" name="emailNotification" ng-model="user.emailNotification" value="">Yes! I would like to receive notifications by email.</label>
 		  </div>
           <div ng-messages="userForm.email.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Email address is required.</p>
@@ -30,7 +30,7 @@
           <label for="phone">Phone</label>
           <input type="phone" id="phone" name="phone" class="form-control" ng-model="user.phone" placeholder="Phone" numbers only>
 		  <div class="checkbox">
-			<label><input type="checkbox" value="">Yes! I would like to receive notifications by text.</label>
+			<label><input type="checkbox" id="phoneNotification" name="phoneNotification" ng-model="user.phoneNotification" value="">Yes! I would like to receive notifications by text.</label>
 		  </div>
           <div ng-messages="userForm.phone.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Phone number is required.</p>

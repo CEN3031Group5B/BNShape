@@ -35,6 +35,23 @@ angular.module('users').config(['$stateProvider',
         url: '/password',
         templateUrl: 'modules/users/client/views/settings/change-password.client.view.html'
       })
+	  
+	  /*order-history, wish-list, downloads 106010170*/
+      .state('settings.order-history', {
+        url: '/order-history',
+        templateUrl: 'modules/users/client/views/settings/order-history.client.view.html'
+      })
+	  
+	  .state('settings.wish-list', {
+        url: '/wish-list',
+        templateUrl: 'modules/users/client/views/settings/wish-list.client.view.html'
+      })
+	  
+	  .state('settings.downloads', {
+        url: '/downloads',
+        templateUrl: 'modules/users/client/views/settings/downloads.client.view.html'
+      })
+	  
       .state('settings.accounts', {
         url: '/accounts',
         templateUrl: 'modules/users/client/views/settings/manage-social-accounts.client.view.html'
