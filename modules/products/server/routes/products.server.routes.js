@@ -19,5 +19,5 @@ module.exports = function (app) {
     .delete(products.delete);
 
   // Finish by binding the  middleware
-  app.param('productId', products.articleByID);
+  app.param('productId', products.productByID);
 };

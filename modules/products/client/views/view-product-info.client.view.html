@@ -4,57 +4,77 @@
 
       <!-- Stolen from Peach -->
     <!-- From BNShape -->
-
+    <section ng-include="'/modules/products/client/views/side-bar.client.view.html'"></section>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 product-info">
-      <section ng-include="'/modules/products/client/views/side-bar.client.view.html'"></section>
       <div>
         <div class="col-md-4 left image-panel">
-          <div class="image"><a href="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg" class="product-image-link"><div style="height:414px; width:324px;" class="zoomWrapper"><img style="position: absolute; height:414px; width:324px;" id="main-image" src="/modules/products/client/views/tank.png" data-zoom-image="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg"></div></a></div>
+          <div class="image"><a href="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg" class="product-image-link"><div style="height:414px; width:324px;" class="zoomWrapper"><img style="position: absolute; height:414px; width:324px;" id="main-image" src="/modules/products/client/img/tank.png" data-zoom-image="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg"></div></a></div>
+          <button ng-click="admin = !admin">Toggle Admin</button>
+          <button ng-show="admin == true" ng-click="saveChanges()">Save Changes</button>
         </div>
         <div class="col-md-6 right">
-          <h1>*PRE-ORDER* - SEXY AF Muscle Tank</h1>
-          <div class="review">
+          <!-- Name -->
+          <h1 ng-if="admin==false">{{this_product.name}}</h1>
+          <span ng-if="admin==true" class="admin-label"><input ng-model="this_product.name" class="admin-field"></input> - Name<br></span>
+          <!-- Reviews -->
+          <div ng-if="admin==false" class="review">
             <div>
-              <img src="/modules/products/client/views/stars.png" alt="0 reviews">
-              &nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');">0 reviews</a>
+              <img src="/modules/products/client/img/stars.png" alt="Rating">
+              &nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');">{{this_product.reviews.length}} reviews</a>
             </div>
           </div>
-          <div class="price">
-            $22.00
-            <br><span class="reward"><small>Price in reward points: 125</small></span><br>
+          <!-- Price -->
+          <div ng-if="admin==false" class="price">{{this_product.price}}
+            <br><span class="reward"><small>Price in reward points: {{this_product.reward_price}}</small></span>
           </div>
+          <span ng-if="admin==true" class="admin-label">
+            <input ng-model="this_product.price" class="admin-field"></input> - Price<br>
+            <input ng-model="this_product.reward_price" class="admin-field"></input> - Reward Price
+          </span>
+          <!-- Description
+                * Product Code
+                * Reward Points
+                * Availability -->
           <div class="description">
             <h2>
               Product Details
             </h2>
-            <span>Product Code:</span> GWSAF1<br>
-            <span>Reward Points:</span> 5<br>
-            <span>Availability:</span> In Stock
+            <span ng-if="admin==false">
+              <span>Product Code:</span> {{this_product.code}}<br>
+              <span>Reward Points:</span> {{this_product.reward_points}}<br>
+              <span>Availability:</span> {{this_product.availability}}
+            </span>
+            <span ng-if="admin==true" class="admin-label">
+              <input ng-model="this_product.code" class="admin-field"></input> - Product Code<br>
+              <input ng-model="this_product.reward_points" class="admin-field"></input> - Reward Points<br>
+              <input ng-model="this_product.availability" class="admin-field"></input> - Availability
+            </span>
           </div>
+          <!-- Available Options -->
           <div class="options">
             <h2>Available Options</h2>
-            <br>
-              <div id="option-138" class="option">
-              <span class="required">*</span>
-              <b>Select Size:</b><br>
-                <input name="option[138]" value="562" id="option-value-562" type="radio">
-                <label for="option-value-562">S</label>
-                <br>
-                <input name="option[138]" value="563" id="option-value-563" type="radio">
-                <label for="option-value-563">M</label>
-                <br>
-                <input name="option[138]" value="561" id="option-value-561" type="radio">
-                <label for="option-value-561">L</label>
-                <br>
-                <input name="option[138]" value="564" id="option-value-564" type="radio">
-                <label for="option-value-564">XL</label>
-                <br>
-              </div>
-                <br>
+              <span ng-if="admin==false">
+                <br><div id="option-138" class="option">
+                  <span class="required">*</span>
+                  <b>Select Size:</b>
+                  <ul ng-repeat="size in this_product.sizes">
+                    <input name="size" type="radio">
+                    <label for="size">{{size}}</label>
+                  </ul>
+                </div>
+              </span>
+              <span ng-if="admin==true" class="admin-label">
+                <b>Available Sizes:</b>
+                <ul ng-repeat="size in this_product.sizes track by $index">
+                  <input ng-model="this_product.sizes[$index]" class="admin-field"></input><button ng-click="removeSize($index)">Remove</button><br>
+                </ul>
+                <button ng-click="addSize()">Add Size</button>
+              </span>
+            </br>
           </div>
           <div class="custom-block"><span style="color: rgb(102, 102, 102); font-family: 'arial black', 'avant garde'; font-size: 14px; line-height: 18.2000007629395px;">***INTERNATIONAL ORDERS: ALLOW 14 BUSINESS DAYS FOR DELIVERY***</span></div>
           <div class="quantity">
-            Qty: 
+            Quantity: 
             <button type="button" id="qty-dec">-</button>
             <input name="quantity" size="2" class="dynamic-number" value="1" data-min="1" data-dec="#qty-dec" data-inc="#qty-inc" type="text">
             <button type="button" id="qty-inc">+</button>

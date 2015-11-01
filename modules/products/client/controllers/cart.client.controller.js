@@ -4,6 +4,7 @@
 angular.module('products').controller('CartController', ['$scope', '$rootScope','$stateParams', '$location', 'Authentication', 'Products', '$cookieStore',
   function ($scope, $rootScope,$stateParams, $location, Authentication, Products, $cookieStore) {
     $scope.authentication = Authentication;
+    $scope.editing_index = -1;
     $scope.cart_items = []; //all the ids of the products in cart
     $scope.cart_total = 0.00;
     $scope.display_items = []; //the actual products with attributes
@@ -50,6 +51,34 @@ angular.module('products').controller('CartController', ['$scope', '$rootScope',
     // Find existing Article
     $scope.findOne = function (_product_id,cb) {
       return Products.get({productId: _product_id},cb);
+    };
+
+    $scope.save_edit_cart = function(_id, updated_quantity){
+        if(updated_quantity !== undefined){ //if no change in select then this occurs
+            var current_quantity = $scope.quantity_dict[_id];
+            if(current_quantity !== updated_quantity){
+                $scope.quantity_dict[_id] = updated_quantity;
+                if(updated_quantity < current_quantity){
+                    var num_to_delete = current_quantity - updated_quantity;  
+                    $scope.cart_items.sort(); //organize so we can easily splice
+                    var index = $scope.cart_items.indexOf(_id);
+                    $scope.cart_items.splice(index, num_to_delete);
+                } else {
+                    var num_to_add = updated_quantity - current_quantity;
+                    for(var i = 0; i < num_to_add; i++){
+                        $scope.cart_items.push(_id);
+                    }
+                }
+                $cookieStore.remove('cart');
+                $cookieStore.put('cart', $scope.cart_items.join("&"));
+                $rootScope.$broadcast('cart_update', { newCookie: $scope.cart_items.join("&")});
+            }
+        }
+        $scope.editing_index = -1;
+    };
+
+    $scope.start_edit = function(index){
+        $scope.editing_index = index;
     };
 
     $scope.quick_delete_cart = function(productId, quantity, index_to_delete){
