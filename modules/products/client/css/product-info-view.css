@@ -3,9 +3,13 @@
  * Product View
  */
 
+.product-info {
+    padding-top: 15px;
+    margin-left: 25%;
+}
  .product-info .right h1 {
     font-size: 22px;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 10px;
     font-weight: 300;
 }
@@ -36,7 +40,7 @@
 }
 
 .product-info .description h2 {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .product-info h2 {
@@ -53,8 +57,8 @@
 
 .product-info .options ul {
   list-style-type: none;
-  margin-bottom: 0px;
-  padding: 0px;
+  margin-bottom: 0;
+  padding: 0;
 }
 
 .product-info .custom-block {
@@ -87,7 +91,7 @@
 /* Quantity buttons */
 
 .product-info .quantity button {
-    background: transparent none repeat scroll 0% 0%;
+    background: transparent none repeat scroll 0 0;
     border: 1px solid #DDD;
     padding: 5px 14px;
     color: #000;
@@ -113,8 +117,8 @@ input[type="text"], input[type="password"] {
     cursor: pointer;
     background-color: #888;
     margin-bottom: 5px;
-    display: inline-block;
-    float: left;
+/*    display: inline-block;
+*/    float: left;
 }
 
 .product-info .details .cart a,
@@ -125,7 +129,7 @@ input[type="text"], input[type="password"] {
     text-transform: uppercase;
     padding: 15px 25px;
     line-height: 1;
-    transition-delay: 0s;
+    transition-delay: 0;
     transition-duration: 0.5s;
     transition-property: all;
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -143,9 +147,6 @@ input[type="text"], input[type="password"] {
     float: right;
 }
 
-.image-panel {
-}
-
 .admin-field {
     padding: 3px;
     padding-left: 8px;
@@ -161,7 +162,7 @@ input[type="text"], input[type="password"] {
 }
 
 .admin-label button {
-    background: transparent none repeat scroll 0% 0%;
+    background: transparent none repeat scroll 0 0;
     border: 1px solid #DDD;
     padding: 5px 14px;
     color: #000;

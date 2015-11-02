@@ -34,9 +34,8 @@ header {
 }
 
 .content {
-  margin-top: 50px;
+  margin-top: 25px;
   background-color: #f7f7f7;
-  padding-top: 10px;
 }
 .undecorated-link:hover {
   text-decoration: none;
@@ -265,8 +264,8 @@ h1, h2, h3, h4, h5, h6, .box-heading {
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
-  src: local("Open Sans Light"), local("OpenSans-Light"), url("http://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTfk_vArhqVIZ0nv9q090hN8.woff2") format("woff2");
-}
+/*  src: local("Open Sans Light"), local("OpenSans-Light"), url("http://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTfk_vArhqVIZ0nv9q090hN8.woff2") format("woff2");
+*/}
 
 .required {
     color: #FF2626;

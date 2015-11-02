@@ -1,6 +1,6 @@
 .page-header {
     padding-bottom: 9px;
-    margin: 35px 0px 20px;
+    margin: 35px 0 20px;
     border-bottom: 1px solid #EEE;
 }
 
@@ -45,16 +45,16 @@
     overflow: hidden;
     margin-top: 30px;
     margin-bottom: 30px;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .category-heading {
     color: #878787;
-    padding: 8px 8px 8px 0px;
+    padding: 8px 8px 8px 0;
     letter-spacing: 1px;
     position: relative;
     overflow: hidden;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .category-heading .heading-text {
@@ -76,12 +76,12 @@
 
 .list-group {
     box-shadow: none;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .product-grid .col-lg-4 {
     width: 25%;
-    padding: 0px 5px;
+    padding: 0 5px;
     vertical-align: top;
     margin-bottom: 30px;
     text-align: center;
@@ -99,7 +99,7 @@
 .product-grid .thumb .image {
     max-width: 100%;
     vertical-align: top;
-    border: 0px none;
+    border: 0 none;
 }
 .product-grid .wrapper .name {
     margin-bottom: 10px;

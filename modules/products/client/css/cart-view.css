@@ -20,5 +20,13 @@
 }
 
 .remove:hover {
-    cursor:pointer;
+    cursor: pointer;
+}
+
+.edit:hover {
+    cursor: pointer;
+}
+
+.save:hover {
+    cursor: pointer;
 }

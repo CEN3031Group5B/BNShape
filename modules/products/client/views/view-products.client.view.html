@@ -1,244 +1,43 @@
 <section ng-controller="ProductsController" ng-init="init_product()">
   <div class="container-fluid">
     <div class="row">
-      <div class="sidebar-products col-md-3 col-sm-3 col-xs-12">
-        <ul class="nav nav-sidebar">
-          <!-- Categories -->
-          <div class="box-heading">
-            Categories
+      <!--sidebar-->
+      <section ng-include="'/modules/products/client/views/side-bar.client.view.html'"></section>
+      <div class="main-view col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3">
+        <div class="page-header">
+          <div class="header-text">
+            Products
           </div>
-          <div>
-            <!-- Collapsible "Men" -->
-            <div class="category-heading">
-              <a class="heading-text" data-toggle="collapse" href="#collapse1">
-                Men
-              </a>
-            </div>
-            <div id="collapse1" class="collapse">
-              <ul class="list-group">
-                <li class="subcategory">
-                  <a class="subcategory-text" href="#">
-                    Shirts
-                  </a>
-                </li>
-                <li class="subcategory">
-                  <a class="subcategory-text" href="#">
-                    Tank Tops
-                  </a>
-                </li>
-                <li class="subcategory">
-                  <a class="subcategory-text" href="#">
-                    Hoodies
-                  </a>
-                </li>
-                <li class="subcategory">
-                  <a class="subcategory-text" href="#">
-                    Pants
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <!-- Collapsible "Women" -->
-            <div class="category-heading">
-              <a class="heading-text" data-toggle="collapse" href="#collapse2">
-                Women
-              </a>
-            </div>
-            <div id="collapse2" class="panel-collapse collapse">
-              <ul class="list-group">
-                <li class="subcategory">
-                  <a class="subcategory-text" href="#">
-                    Shirts
-                  </a>
-                </li>
-                <li class="subcategory">
-                  <a class="subcategory-text" href="#">
-                    Tank Tops
-                  </a>
-                </li>
-                <li class="subcategory">
-                  <a class="subcategory-text" href="#">
-                    Hoodies
-                  </a>
-                </li>
-                <li class="subcategory">
-                  <a class="subcategory-text" href="#">
-                    Pants
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <!-- Collapsible "Kids" -->
-            <div class="category-heading">
-              <a class="heading-text" data-toggle="collapse" href="#collapse3">
-                Kids
-              </a>
-            </div>
-            <div id="collapse3" class="panel-collapse collapse">
-              <ul class="list-group">
-                <li class="subcategory">
-                  <a class="subcategory-text" href="#">
-                    Shirts
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- Refine By -->
-          <div class="box-heading">
-            Refine By
-          </div>
-          <div>
-            <!-- New Arrivals -->
-            <div class="category-heading">
-              <a class="heading-text" href="#">
-                New Arrivals
-              </a>
-            </div>
-            <!-- Best Sellers -->
-            <div class="category-heading">
-              <a class="heading-text" href="#">
-                Best Sellers
-              </a>
-            </div>
-            <!-- Discounts -->
-            <div class="category-heading">
-              <a class="heading-text" href="#">
-                Discounts
-              </a>
-            </div>
-            <!-- Price -->
-            <div class="category-heading">
-              <a class="heading-text" data-toggle="collapse" href="#collapse4">
-                Price
-              </a>
-            </div>
-            <div id="collapse4" class="panel-collapse collapse">
-              <ul class="list-group">
-                <li class="subcategory">
-                  <a class="subcategory-text" href="#">
-                    High to Low
-                  </a>
-                </li>
-                <li class="subcategory">
-                  <a class="subcategory-text" href="#">
-                    Low to High
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- Customer Reviews -->
-          <div class="box-heading">
-            Customer Reviews
-          </div>
-          <ul class="list-group">
-            <li class="subcategory">
-              <a href="#">
-                <button type="button" class="btn bnshape-button btn-md">
-                  <span class="glyphicon glyphicon-star" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
-                  </span>
-                  &amp Up
-                </button>
-              </a>
-            </li>
-            <li class="subcategory">
-              <a href="#">
-                <button type="button" class="btn bnshape-button btn-md">
-                  <span class="glyphicon glyphicon-star" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
-                  </span>
-                  &amp Up
-                </button>
-              </a>
-            </li>
-            <li class="subcategory">
-              <a href="#">
-                <button type="button" class="btn bnshape-button btn-md">
-                  <span class="glyphicon glyphicon-star" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
-                  </span>
-                  &amp Up
-                </button>
-              </a>
-            </li>
-            <li class="subcategory">
-              <a href="#">
-                <button type="button" class="btn bnshape-button btn-md">
-                  <span class="glyphicon glyphicon-star" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
-                  </span>
-                  <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
-                  </span>
-                  &amp Up
-                </button>
-              </a>
-            </li>
-          </ul>
         </div>
-      </ul>
-    </div>
-    <div class="main-view col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3">
-      <div class="page-header">
-        <div class="header-text">
-          Products
-        </div>
-      </div>
-      <div class="product-grid">
-        <div class="col-lg-4 col-md-4 col-sm-6">
-          <div class="wrapper">
-            <div class="thumb">
-              <div class="image">
-                <a href="#" ui-sref="products.view({productId: '562bc2f8b82bbbf8f91f72ba'})">
-                  <img src="/modules/products/client/views/sample-tee.jpg" class="img-responsive">
+        <div class="product-grid">
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="wrapper">
+              <div class="thumb">
+                <div class="image">
+                  <a href="#" ui-sref="products.view({productId: '562bc2f8b82bbbf8f91f72ba'})">
+                    <img src="/modules/products/client/img/sample-tee.jpg" class="img-responsive">
+                  </a>
+                </div>
+              </div>
+              <div class="name">
+                <a class="product-text" href="#">
+                  BN SHAPE HABITS 3/4 Sleeve Henley
                 </a>
               </div>
-            </div>
-            <div class="name">
-              <a class="product-text" href="#">
-                BN SHAPE HABITS 3/4 Sleeve Henley
-              </a>
-            </div>
-            <div class="price">
-              <h5>
-                $20.00
-              </h5>
-              <a href="#">
-                <button type="button" class="btn bnshape-button btn-lg bnshape-button" ng-click="add_cart(0)">
-                  <span class="glyphicon glyphicon-shopping-cart">
-                  </span>
-                  <strong>
-                    ADD TO CART
-                  </strong>
-                </button>
-              </a>
+              <div class="price">
+                <h5>
+                  $20.00
+                </h5>
+                <a href="#">
+                  <button type="button" class="btn bnshape-button btn-lg bnshape-button" ng-click="add_cart('562bc2f8b82bbbf8f91f72ba')">
+                    <span class="glyphicon glyphicon-shopping-cart">
+                    </span>
+                    <strong>
+                      ADD TO CART
+                    </strong>
+                  </button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
