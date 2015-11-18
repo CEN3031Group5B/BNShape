@@ -4,10 +4,13 @@
 
       <!-- Stolen from Peach -->
     <!-- From BNShape -->
-    <section ng-include="'/modules/products/client/views/side-bar.client.view.html'"></section>
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 product-info">
+    <div class="col-md-3">
+      <section ng-include="'/modules/products/client/views/side-bar.client.view.html'" class="sidebar-products"></section>
+
+    </div>
+    <div class="col-md-9">
       <div>
-        <div class="col-md-4 left image-panel">
+        <div class="col-md-5 left image-panel">
           <div class="image"><a href="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg" class="product-image-link"><div style="height:414px; width:324px;" class="zoomWrapper"><img style="position: absolute; height:414px; width:324px;" id="main-image" src="/modules/products/client/img/tank.png" data-zoom-image="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg"></div></a></div>
           <button ng-click="admin = !admin">Toggle Admin</button>
           <button ng-show="admin == true" ng-click="saveChanges()">Save Changes</button>
@@ -74,7 +77,7 @@
           </div>
           <div class="custom-block"><span style="color: rgb(102, 102, 102); font-family: 'arial black', 'avant garde'; font-size: 14px; line-height: 18.2000007629395px;">***INTERNATIONAL ORDERS: ALLOW 14 BUSINESS DAYS FOR DELIVERY***</span></div>
           <div class="quantity">
-            Quantity: 
+            Quantity:
             <button type="button" id="qty-dec">-</button>
             <input name="quantity" size="2" class="dynamic-number" value="1" data-min="1" data-dec="#qty-dec" data-inc="#qty-inc" type="text">
             <button type="button" id="qty-inc">+</button>

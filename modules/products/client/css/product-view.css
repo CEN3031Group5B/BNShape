@@ -12,6 +12,10 @@
     letter-spacing: 1px;
 }
 
+.sidebar-scroll {
+    position: fixed;
+  }
+
 .sidebar-products {
     /*position: fixed;*/
     top: 51px;
