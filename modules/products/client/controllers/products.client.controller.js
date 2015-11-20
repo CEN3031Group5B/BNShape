@@ -5,11 +5,12 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
   function ($scope, $rootScope, $stateParams, $state, Authentication, Products, $cookieStore) {
     $scope.authentication = Authentication;
     $scope.success_add = false;
+    $scope.products = [];
 
     $scope.init_product = function(){
-      //$scope.create();
+      $scope.products = Products.query();
+      console.log($scope.products);
     };
-
 
     $scope.add_cart = function(_id){
         var prevCookie = "";
