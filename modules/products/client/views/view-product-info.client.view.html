@@ -8,13 +8,13 @@
         <section ng-include="'/modules/products/client/views/side-bar.client.view.html'" class="sidebar-products"></section>
       </div>
       <div class="col-md-9">
-        <div>
-          <div class="col-md-6 left image-panel">
+        <div class="product-info">
+          <div class="col-md-5 left image-panel">
             <div class="image"><a href="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg" class="product-image-link"><div style="height:414px; width:324px;" class="zoomWrapper"><img style="position: absolute; height:414px; width:324px;" id="main-image" src="/modules/products/client/img/tank.png" data-zoom-image="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg"></div></a></div>
             <button ng-click="admin = !admin">Toggle Admin</button>
             <button ng-show="admin == true" ng-click="saveChanges()">Save Changes</button>
           </div>
-          <div class="col-md-6 right">
+          <div class="col-md-7 right">
             <!-- Name -->
             <h1 ng-if="admin==false">{{this_product.name}}</h1>
             <span ng-if="admin==true" class="admin-label"><input ng-model="this_product.name" class="admin-field"></input> - Name<br></span>
