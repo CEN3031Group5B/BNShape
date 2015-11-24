@@ -41,6 +41,18 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     .state('cart', {
         url: '/cart',
         templateUrl: 'modules/products/client/views/view-cart.client.view.html'
+    })
+    .state('about', {
+        url: '/about',
+        templateUrl: 'modules/core/client/views/pages/about.client.view.html'
+    })
+    .state('privacy-policy', {
+        url: '/privacy-policy',
+        templateUrl: 'modules/core/client/views/pages/policy.client.view.html'
+    })
+    .state('terms-conditions', {
+        url: '/terms-conditions',
+        templateUrl: 'modules/core/client/views/pages/terms.client.view.html'
     });
   }
 ]);
