@@ -328,5 +328,11 @@ img.AngularJS-small {
 
 .body-info {
   text-align: justify;
-  text-justify: inter-word;
+}
+
+.policy-info {
+  font-family: Times;
+  font-size: 15px;
+  line-height: normal;
+  text-align: justify;
 }
