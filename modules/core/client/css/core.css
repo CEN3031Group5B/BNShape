@@ -325,3 +325,8 @@ img.AngularJS-small {
 .footer ul {
   padding-left: 80px;
 }
+
+.body-info {
+  text-align: justify;
+  text-justify: inter-word;
+}
