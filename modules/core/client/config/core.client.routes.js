@@ -53,6 +53,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     .state('terms-conditions', {
         url: '/terms-conditions',
         templateUrl: 'modules/core/client/views/pages/terms.client.view.html'
+    })
+    .state('contact', {
+        url: '/contact',
+        templateUrl: 'modules/core/client/views/pages/contact.client.view.html'
     });
   }
 ]);
