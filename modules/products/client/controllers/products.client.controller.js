@@ -31,12 +31,15 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
         name: 'New Product',
         code: 'NOCODE',
         reviews: [],
-        price: '$0.00',
+        price: '$20.00',
         reward_price: '0',
         reward_points: '0',
         description: 'No description.',
         availability: 'Out of stock',
-        sizes: ['S', 'M', 'L']
+        sizes: ['S', 'M', 'L'],
+        category: ['Men'],
+        subcategory: 'Shirts',
+        discount: 0
       });
 
       // Redirect after save
