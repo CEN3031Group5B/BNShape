@@ -6,7 +6,7 @@ module.exports = {
       css: [
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-        '//fonts.googleapis.com/css?family=Open+Sans'
+        'https://fonts.googleapis.com/css?family=Open+Sans'
       ],
       js: [
         'public/lib/angular/angular.js',
