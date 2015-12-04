@@ -8,6 +8,7 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
     $scope.products = [];
 
     $scope.init_product = function(){
+      console.log("hi");
       $scope.products = Products.query();
       console.log($scope.products);
     };
