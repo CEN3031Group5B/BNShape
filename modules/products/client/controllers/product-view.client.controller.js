@@ -1,14 +1,15 @@
 'use strict';
 
 // Product View controller
-angular.module('products').controller('ProductViewController', ['$scope', '$stateParams', '$location', 'Authentication', 'Products',
-  function ($scope, $stateParams, $location, Authentication, Products) {
+angular.module('products').controller('ProductViewController', ['$scope', '$rootScope','$stateParams', '$state', '$location', 'Authentication', 'Products', '$cookieStore',
+  function ($scope, $rootScope, $stateParams, $state, $location, Authentication, Products, $cookieStore) {
     $scope.authentication = Authentication;
     $scope.this_product_id = $stateParams.productId;
     $scope.this_product = Products.get({ productId: $scope.this_product_id }, function() {
             console.log($scope.this_product);
         });
     $scope.admin = false;
+    $scope.qty = 1;
 
     // Get average rating
     $scope.getRating = function() {
@@ -30,6 +31,18 @@ angular.module('products').controller('ProductViewController', ['$scope', '$stat
     	$scope.this_product.sizes.splice(_index, 1);//remove(_size);
     };
 
+    // Increment quantity to add to cart
+    $scope.incQty = function(_index) {
+        ++$scope.qty;
+    };
+    
+
+    // Increment quantity to add to cart
+    $scope.decQty = function(_index) {
+        if ($scope.qty > 1)
+            --$scope.qty;
+    };
+
     Array.prototype.remove = function() {
 	    var what, a = arguments, L = a.length, ax;
 	    while (L && this.length) {
@@ -40,6 +53,23 @@ angular.module('products').controller('ProductViewController', ['$scope', '$stat
 	    }
 	    return this;
 	};
+
+    $scope.add_cart = function(_id){
+        var prevCookie = "";
+        prevCookie = $cookieStore.get('cart');
+        var updatedCookie = _id;
+        if(prevCookie !== undefined){
+          $cookieStore.remove('cart');
+          updatedCookie = prevCookie + "&" + _id;
+        }
+        // Add the quantity of products
+        for ( var i = 0; i < $scope.qty - 1; ++i )
+          updatedCookie += "&" + _id;
+        $cookieStore.put('cart',updatedCookie);
+        $rootScope.$broadcast('cart_update', { newCookie: updatedCookie});
+        $state.go('cart');
+    };
+
 
     // Save changes
     $scope.saveChanges = function() {

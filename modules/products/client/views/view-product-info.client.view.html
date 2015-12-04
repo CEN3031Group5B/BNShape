@@ -13,42 +13,42 @@
           <button ng-show="admin == true" ng-click="saveChanges()">Save Changes</button>
         </div>
         <div class="col-md-6 right">
-          <!-- Name -->
-          <h1 ng-if="admin==false">{{this_product.name}}</h1>
-          <span ng-if="admin==true" class="admin-label"><input ng-model="this_product.name" class="admin-field"></input> - Name<br></span>
-          <!-- Reviews -->
-          <div ng-if="admin==false" class="review">
-            <div>
+          <!-- Product Description
+                * Product Name
+                * Reviews
+                * Prices -->
+          <div ng-if="admin==false" class="admin-label">
+            <h1>{{this_product.name}}</h1>
+            <div ng-if="admin==false" class="review">
               <img src="/modules/products/client/img/stars.png" alt="Rating">
               &nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');">{{this_product.reviews.length}} reviews</a>
             </div>
+            <div class="price">{{this_product.price}}</div>
+            <div class="reward">Price in reward points: {{this_product.reward_price}}</div>
           </div>
-          <!-- Price -->
-          <div ng-if="admin==false" class="price">{{this_product.price}}
-            <br><span class="reward"><small>Price in reward points: {{this_product.reward_price}}</small></span>
-          </div>
-          <span ng-if="admin==true" class="admin-label">
+          <!-- Name -->
+          <div ng-if="admin==true" class="admin-label">
+            <h2 ng-if="admin==true">Product Description</h2>
+            <input ng-model="this_product.name" class="admin-field"></input> - Name<br>
             <input ng-model="this_product.price" class="admin-field"></input> - Price<br>
-            <input ng-model="this_product.reward_price" class="admin-field"></input> - Reward Price
-          </span>
-          <!-- Description
+            <input ng-model="this_product.reward_price" class="admin-field"></input> - Reward Price<br>
+          </div>
+          <!-- Product Details
                 * Product Code
                 * Reward Points
                 * Availability -->
-          <div class="description">
-            <h2>
-              Product Details
-            </h2>
-            <span ng-if="admin==false">
-              <span>Product Code:</span> {{this_product.code}}<br>
-              <span>Reward Points:</span> {{this_product.reward_points}}<br>
-              <span>Availability:</span> {{this_product.availability}}
-            </span>
-            <span ng-if="admin==true" class="admin-label">
-              <input ng-model="this_product.code" class="admin-field"></input> - Product Code<br>
-              <input ng-model="this_product.reward_points" class="admin-field"></input> - Reward Points<br>
-              <input ng-model="this_product.availability" class="admin-field"></input> - Availability
-            </span>
+          <h2>
+            Product Details
+          </h2>
+          <div ng-if="admin==false" class="description">
+            <span>Product Code:</span> {{this_product.code}}<br>
+            <span>Reward Points:</span> {{this_product.reward_points}}<br>
+            <span>Availability:</span> {{this_product.availability}}
+          </div>
+          <div ng-if="admin==true" class="admin-label">
+            <input ng-model="this_product.code" class="admin-field"></input> - Product Code<br>
+            <input ng-model="this_product.reward_points" class="admin-field"></input> - Reward Points<br>
+            <input ng-model="this_product.availability" class="admin-field"></input> - Availability
           </div>
           <!-- Available Options -->
           <div class="options">
@@ -68,23 +68,29 @@
                 <ul ng-repeat="size in this_product.sizes track by $index">
                   <input ng-model="this_product.sizes[$index]" class="admin-field"></input><button ng-click="removeSize($index)">Remove</button><br>
                 </ul>
-                <button ng-click="addSize()">Add Size</button>
+                <div><button ng-click="addSize()">Add Size</button></div>
               </span>
             </br>
           </div>
-          <div class="custom-block"><span style="color: rgb(102, 102, 102); font-family: 'arial black', 'avant garde'; font-size: 14px; line-height: 18.2000007629395px;">***INTERNATIONAL ORDERS: ALLOW 14 BUSINESS DAYS FOR DELIVERY***</span></div>
+          <div class="custom-block"><span style="color: rgb(102, 102, 102); font-family: 'arial black', 'avant garde'; font-size: 14px; line-height: 18.2px;">***INTERNATIONAL ORDERS: ALLOW 14 BUSINESS DAYS FOR DELIVERY***</span></div>
           <div class="quantity">
             Quantity: 
-            <button type="button" id="qty-dec">-</button>
-            <input name="quantity" size="2" class="dynamic-number" value="1" data-min="1" data-dec="#qty-dec" data-inc="#qty-inc" type="text">
-            <button type="button" id="qty-inc">+</button>
-            <input name="product_id" size="2" value="212" type="hidden">
+            <button type="button" id="qty-dec" ng-click="decQty()">-</button>
+            <input name="quantity" size="2" ng-model="qty">
+            <button type="button" id="qty-inc" ng-click="incQty()">+</button>
           </div>
-          <div class="details">
+          <div>
             <div>
-              <div class="cart" id="button-cart"><a><span>Add to Cart</span></a></div>
-              <div class="wishlist"><a onclick="addToWishList('212');">Add to Wish List</a></div>
-              <div class="compare"><a onclick="addToCompare('212');">Add to Compare</a></div>
+              <button id="button-cart" type="button" class="btn bnshape-button btn-lg bnshape-button" ng-click="add_cart(this_product_id)">
+                <a>
+                  <span class="glyphicon glyphicon-shopping-cart"></span>
+                  <strong>ADD TO CART</strong>
+                </a>
+              </button>
+            </div>
+              <!--button class="cart" id="button-cart" ng-click="add_cart(this_product_id)"><a><span>Add to Cart</span></a></div-->
+              <!--div class="wishlist"><a onclick="addToWishList();">Add to Wish List</a></div>
+              <div class="compare"><a onclick="addToCompare();">Add to Compare</a></div-->
             </div>
           </div>
           <div class="share"><!-- AddThis Button BEGIN -->
