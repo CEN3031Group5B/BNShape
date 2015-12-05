@@ -235,7 +235,7 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
     $scope.authentication = Authentication;
     $scope.cart_items = [];
     $scope.cart_popup = "cart_popup.html";
-
+    $scope.price = 0.0;
     // Get the topbar menu
     $scope.menu = Menus.getMenu('topbar');
 
@@ -261,6 +261,11 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
           $scope.cart_items = newCartItems;
         } else {
           $scope.cart_items = [];
+        }
+        if(args.total === undefined){
+          $scope.price += args.price;
+        } else {
+          $scope.price = args.total;
         }
         //$scope.$apply(); //show the changes
     });
@@ -863,7 +868,7 @@ angular.module('products').controller('CartController', ['$scope', '$rootScope',
                 }
                 $cookieStore.remove('cart');
                 $cookieStore.put('cart', $scope.cart_items.join("&"));
-                $rootScope.$broadcast('cart_update', { newCookie: $scope.cart_items.join("&")});
+                $rootScope.$broadcast('cart_update', { newCookie: $scope.cart_items.join("&"), total:$scope.cart_total});
             }
         }
         $scope.editing_index = -1;
@@ -892,9 +897,9 @@ angular.module('products').controller('CartController', ['$scope', '$rootScope',
         $cookieStore.remove('cart');
         if($scope.display_items.length!==0){
           $cookieStore.put('cart', $scope.cart_items.join("&"));
-          $rootScope.$broadcast('cart_update', { newCookie: $scope.cart_items.join("&")});
+          $rootScope.$broadcast('cart_update', { newCookie: $scope.cart_items.join("&"), total:$scope.cart_total});
         } else {
-          $rootScope.$broadcast('cart_update', { newCookie: ''});
+          $rootScope.$broadcast('cart_update', { newCookie: '', total:0.0});
         }
 
     };
@@ -974,7 +979,7 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
       console.log($scope.products);
     };
 
-    $scope.add_cart = function(_id){
+    $scope.add_cart = function(_id, price){
         var prevCookie = "";
         prevCookie = $cookieStore.get('cart');
         var updatedCookie = _id;
@@ -983,7 +988,7 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
           updatedCookie = prevCookie + "&" + _id;
         }
         $cookieStore.put('cart',updatedCookie);
-        $rootScope.$broadcast('cart_update', { newCookie: updatedCookie});
+        $rootScope.$broadcast('cart_update', { newCookie: updatedCookie, price: parseFloat(price.split('$')[1])});
         $state.go('cart');
     };
 
