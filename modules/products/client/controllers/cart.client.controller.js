@@ -68,7 +68,7 @@ angular.module('products').controller('CartController', ['$scope', '$rootScope',
                 }
                 $cookieStore.remove('cart');
                 $cookieStore.put('cart', $scope.cart_items.join("&"));
-                $rootScope.$broadcast('cart_update', { newCookie: $scope.cart_items.join("&")});
+                $rootScope.$broadcast('cart_update', { newCookie: $scope.cart_items.join("&"), total:$scope.cart_total});
             }
         }
         $scope.editing_index = -1;
@@ -97,9 +97,9 @@ angular.module('products').controller('CartController', ['$scope', '$rootScope',
         $cookieStore.remove('cart');
         if($scope.display_items.length!==0){
           $cookieStore.put('cart', $scope.cart_items.join("&"));
-          $rootScope.$broadcast('cart_update', { newCookie: $scope.cart_items.join("&")});
+          $rootScope.$broadcast('cart_update', { newCookie: $scope.cart_items.join("&"), total:$scope.cart_total});
         } else {
-          $rootScope.$broadcast('cart_update', { newCookie: ''});
+          $rootScope.$broadcast('cart_update', { newCookie: '', total:0.0});
         }
 
     };

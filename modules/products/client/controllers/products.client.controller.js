@@ -13,7 +13,7 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
       console.log($scope.products);
     };
 
-    $scope.add_cart = function(_id){
+    $scope.add_cart = function(_id, price){
         var prevCookie = "";
         prevCookie = $cookieStore.get('cart');
         var updatedCookie = _id;
@@ -22,7 +22,7 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
           updatedCookie = prevCookie + "&" + _id;
         }
         $cookieStore.put('cart',updatedCookie);
-        $rootScope.$broadcast('cart_update', { newCookie: updatedCookie});
+        $rootScope.$broadcast('cart_update', { newCookie: updatedCookie, price: parseFloat(price.split('$')[1])});
         $state.go('cart');
     };
 

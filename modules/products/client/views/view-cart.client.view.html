@@ -27,7 +27,7 @@
 			            <tbody>
 			              <tr ng-repeat="item in display_items track by $index">
 				                <td class="image">
-				                	<img src="http://bnshapeclothing.com/image/cache/data/website_DSC_0967-90x115.jpg" alt="Yellow Lifestyle Leggings" title="Yellow Lifestyle Leggings">
+                    				<img ng-src="/modules/products/client/img/{{item.name}}.jpg" class="img-responsive" alt="{{item.name}}">
 				                </td>
 				                <td class="name">
 				                	{{item.name}}
