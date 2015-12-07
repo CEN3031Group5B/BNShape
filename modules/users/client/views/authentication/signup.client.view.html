@@ -1,8 +1,13 @@
+
 <div class="container">
 
   <div ng-controller="AuthenticationController">
     <h3 class="col-md-12">Register Account</h3>
-    <h5 class="col-md-12">If you already have an account with us, please login <a ui-sref="authentication.signin" class="here-link">here</a>.<br></br></h5> <h4 class="col-md-12">Your Personal Details<br></br></h4>
+    <h5 class="col-md-12">If you already have an account with us, please login <a ui-sref="authentication.signin" class="here-link">here</a>.<br></br></h5>
+    <br><br><br>
+            <div class="divider">
+         </div>
+     <h4 class="col-md-12">Your Personal Details<br></br></h4>
     <form name="userForm" ng-submit="signup(userForm.$valid)" class="signin" novalidate autocomplete="off">
     <div class="row">
         <div class="col-md-6">
@@ -34,7 +39,7 @@
               </div>
 
               <div class="form-group" show-errors>
-                <label for="username">Username</label>
+                <label for="username"><span class="required">*</span>Username</label>
                 <input type="text" id="username" name="username" class="form-control" ng-model="credentials.username" placeholder="Username" lowercase required>
               <div ng-messages="userForm.username.$error" role="alert">
                 <p class="help-block error-text" ng-message="required">Username is required.</p>
@@ -48,13 +53,13 @@
          <fieldset>
                   <div class="form-group" show-errors>
                   <label for="firstName"><span class="required">*</span>Telephone:</label>
-                  <input type="text" id="phone" name="phone" class="form-control" ng-model="credentials.phone" placeholder="Telephone" required>
-                  <div ng-messages="userForm.phone.$error" role="alert">
+                  <input type="text" id="telephone" name="telephone" class="form-control" ng-model="credentials.telephone" placeholder="Telephone" required>
+                  <div ng-messages="userForm.telephone.$error" role="alert">
                 <p class="help-block error-text" ng-message="required">Telephone is required.</p>
               </div>
                 </div>
 
-                <div class="form-group" show-errors>
+                <div class="form-group">
                   <label for="firstName">Fax:</label>
                   <input type="text" id="fax" name="fax" class="form-control" ng-model="credentials.fax" placeholder="Fax">
                   <div ng-messages="userForm.fax.$error" role="alert">
@@ -73,10 +78,10 @@
                 <label for="address1"><span class="required">*</span>Address 1:</label>
                 <input type="text" id="address1" name="address1" class="form-control" ng-model="credentials.address1" placeholder="Address 1" required>
                 <div ng-messages="userForm.address1.$error" role="alert">
-                  <p class="help-block error-text" ng-message="required">Address is required.</p>
+                  <p class="help-block error-text" ng-message="required">Address is required.</p> 
                 </div>
             </div>
-            <div class="form-group" show-errors>
+            <div class="form-group">
                 <label for="address2">Address 2:</label>
                 <input type="text" id="address2" name="address2" class="form-control" ng-model="credentials.address2" placeholder="Address 2">
             </div>
@@ -84,18 +89,34 @@
                 <label for="city"><span class="required">*</span>City:</label>
                 <input type="text" id="city" name="city" class="form-control" ng-model="credentials.city" placeholder="City" required>
                 <div ng-messages="userForm.city.$error" role="alert">
-                  <p class="help-block error-text" ng-message="required">City is required.</p>
+                  <p class="help-block error-text" ng-message="required">City is required.</p> 
                 </div>
             </div>
                 <div class="form-group">
                     <label for="postCode">Post Code:</label>
                     <input type="text" id="postCode" name="postCode" class="form-control" ng-model="credentials.postCode" placeholder="Post Code">
                 </div>
+                        
 
-                <div class="dropdown form-group" show-errors>
+                        <div class="dropdown form-group" show-errors>
+                          <label for="country"><span class="required">*</span>Country: </label> &nbsp; &nbsp;  
+                          <select id="country" name ="country" ng-model="credentials.country" required> </select> </br>
+                           <div ng-messages="userForm.country.$error" role="alert">
+                                <p class="help-block error-text" ng-message="required">Country is required.</p>
+                            </div> 
+                          <label for="selectstate"><span class="required">*</span>Region/State: </label> &nbsp; &nbsp;
+                          <select name ="region" id ="region" ng-model="credentials.region" required> </select>  </br> 
+                            <div ng-messages="userForm.region.$error" role="alert">
+                                <p class="help-block error-text" ng-message="required">Region or State is required.</p>
+                            </div> 
+                        </div> 
 
-                        <label for="singleSelect">Country: </label> &nbsp; &nbsp;
-                        <select name="singleSelect" ng-model="credentials.country" required>
+
+                        <!--
+                        <div class="dropdown form-group" show-errors>
+
+                        <label for="singleSelectCountry"><span class="required">*</span>Country: </label> &nbsp; &nbsp;
+                        <select name="singleSelectCountry" ng-model="credentials.country" required>
                           <option value="united-states">United States</option>
                           <option value="canada">Canada</option>
                           <option value="australia">Australia</option>
@@ -103,52 +124,46 @@
                           <option value="england">England</option>
                           <option value="china">China</option>
                         </select>
-                        <div ng-messages="userForm.country.$error" role="alert">
+                        <div ng-messages="userForm.singleSelectCountry.$error" role="alert">
                          <p class="help-block error-text" ng-message="required">Country is required.</p>
                         </div>
+                        </div>
 
-                        <label for="singleSelect"> Region/State: </label> &nbsp; &nbsp;
-                        <select name="singleSelect" ng-model="credentials.region" required>
+                        <div class="dropdown form-group" show-errors>
+                        <label for="singleSelectState"><span class="required">*</span>Region/State: </label> &nbsp; &nbsp;
+                        <select name="singleSelectState" ng-model="credentials.region" required>
                           <option value="florida">Florida</option>
                           <option value="georgia">Georgia</option>
                         </select>
-                        <div ng-messages="userForm.region.$error" role="alert">
+                        <div ng-messages="userForm.singleSelectState.$error" role="alert">
                           <p class="help-block error-text" ng-message="required">Region is required.</p>
                         </div>
-                </div>
+                        </div>   -->
            </fieldset>
         </div>
 
           <!--<div class="divider">
-          </div> -->
+          </div>-->
 
           <div class="col-md-6">
-              <fieldset>
-                 <h4>Your Password<br></br>
-                 </h4>
-
-              </fieldset>
+                 <h4>Your Password</h4>
           </div>
-
+            
           <div class="col-md-6">
           <fieldset>
               <h4>Newsletter</h4>
               <h5><br><strong>Subscribe:</strong>
-              <span name="radioButton" style="margin-left:100px" ng-model="credentials.radio">
-                <input type="radio" name="radio">Yes
-                <input type="radio" name="radio">No
+              <span name="radioButton" style="margin-left:100px">
+                <input type="radio" name="radio" value="true" ng-model="credentials.subscription">Yes
+                <input type="radio" name="radio" value="false" ng-model="credentials.subscription">No
               </span>
               </h5>
           </fieldset>
           </div>
 
-          <!--<div class="divider">
-          <h4><br></br></h4>
-          </div> -->
-
           <div class="col-md-6">
               <div class="form-group" show-errors>
-                <label for="password">Password</label>
+                <label for="password"><span class="required">*</span>Password</label>
                   <input type="password" id="password" name="password" class="form-control" ng-model="credentials.password" placeholder="Password" popover="{{popoverMsg}}" popover-trigger="focus" password-validator required>
                 <div ng-messages="userForm.password.$error" role="alert">
                   <p class="help-block error-text" ng-message="required">Password is required.</p>
@@ -163,19 +178,26 @@
                 <progressbar value="strengthProgress" type="{{strengthColor}}"><span style="color:white; white-space:nowrap;">{{strengthProgress}}%</span></progressbar>
               </div>
 
-              <div class="divider">
-                <h4><br></br></h4>
+              <div class="form-group" show-errors>
+                <label for="checkPolicy"><input type="checkbox" value="" name="checkPolicy" ng-model="credentials.policy" required>
+                I have read and agree to the Private Policy.</label> 
+                <div ng-messages="userForm.checkPolicy.$error" role="alert">
+                    <p class="help-block error-text" ng-message="required">You must agree to the terms!</p>
+                </div>
               </div>
 
-              <label show errors><input type="checkbox" value="" ng-model="credentials.policy" required>I have read and agree to the Private Policy.
-              </label>
 
               <div class="text-center form-group">
                   <button type="submit" class="btn btn-default">Continue</button>
               </div>
           </div>
-
+      </div>
       </div>
     </form>
   </div>
 </div>
+
+<script type= "text/javascript" src = "countries.js"></script>
+      <script language="javascript">
+         populateCountries("country", "region"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+</script>
