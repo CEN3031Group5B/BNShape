@@ -8,7 +8,7 @@
     <div class="col-md-9 product-info" style="padding-top:65px">
       <div>
         <div class="col-md-5 left image-panel">
-          <div class="image"><a href="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg" class="product-image-link"><div style="height:414px; width:324px;" class="zoomWrapper"><img style="position: absolute; height:414px; width:324px;" id="main-image" src="/modules/products/client/img/tank.png" data-zoom-image="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg"></div></a></div>
+          <div class="image"><a href="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg" class="product-image-link"><div style="height:414px; width:324px;" class="zoomWrapper"><img style="position: absolute; height:414px; width:324px;" id="main-image" ng-src="/modules/products/client/img/{{this_product.name}}.jpg"></div></a></div>
           <a href="#" ng-show="admin_eligible == true" ng-click="newProduct()" >Create New Product Page</a><br>
           <a href="#" ng-show="admin_eligible == true" ng-click="cloneProduct()" >Clone Product Page</a><br>
           <a href="#" ng-show="admin_eligible == true" ng-click="admin = !admin" >Toggle Administrative View</a><br>
