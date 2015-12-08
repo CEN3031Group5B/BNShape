@@ -12,16 +12,16 @@ angular.module('core').controller('CarouselCtrl', function ($scope) {
   $scope.noWrapSlides = false;
   var slides = $scope.slides = [
     {
-      image: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR002e7oOC-HCyjkqUN-PHIWK8sK95Lvg-0JV3Arnn1hXHL8zp9VQ'
+      image: 'https://scontent-mia1-1.xx.fbcdn.net/hphotos-xlp1/v/t1.0-9/11220461_973102212753036_5098071536240473268_n.jpg?oh=48f5deb1e654f27fca0d041b739547f2&oe=56F0F6B6'
     },
     {
-      image: 'https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/s320x320/e15/11236283_1601588623452939_22635068_n.jpg'
+      image: 'https://scontent-mia1-1.xx.fbcdn.net/hphotos-xtf1/v/t1.0-9/12243248_976845205712070_8234193161510904182_n.jpg?oh=308cd8ae189b7f96d483cd4b9ecadea5&oe=56B88437'
     },
     {
-      image: 'http://bnshapeclothing.com/image/cache/data/website_DSC_0024-800x1021.jpg'
+      image: 'https://scontent-mia1-1.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/12019985_969015559828368_6298243536650081959_n.jpg?oh=1f6ed7a2396076c58abc664d70e954d0&oe=56AE3BF7'
     },
     {
-      image: 'http://bnshapeclothing.com/image/cache/data/website_DSC_0895-800x1021.jpg'
+      image: 'https://scontent-mia1-1.xx.fbcdn.net/hphotos-xtp1/v/t1.0-9/12243400_980460845350506_2500918501691579590_n.jpg?oh=bb3dd7101955073a3e58b7a0ba27f2cf&oe=56F04EA7'
     }];
 
   // $scope.addSlide = function() {

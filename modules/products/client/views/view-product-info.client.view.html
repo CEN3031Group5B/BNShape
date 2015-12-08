@@ -1,19 +1,19 @@
 <section ng-controller="ProductViewController" ng-init="findOne()">
-<div class="container-fluid">
-  <div class="row">
-
-      <!-- Stolen from Peach -->
+  <div class="container-fluid">
+    <div class="row">
     <!-- From BNShape -->
-    <section ng-include="'/modules/products/client/views/side-bar.client.view.html'"></section>
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 product-info">
+    <div class="col-md-3">
+      <section ng-include="'/modules/products/client/views/side-bar.client.view.html'" class="sidebar-products"></section>
+    </div>
+    <div class="col-md-9 product-info" style="padding-top:65px">
       <div>
-        <div class="col-md-4 left image-panel">
+        <div class="col-md-5 left image-panel">
           <div class="image"><a href="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg" class="product-image-link"><div style="height:414px; width:324px;" class="zoomWrapper"><img style="position: absolute; height:414px; width:324px;" id="main-image" src="/modules/products/client/img/tank.png" data-zoom-image="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg"></div></a></div>
           <a href="#" ng-show="admin_eligible == true" ng-click="newProduct()" >Create New Product Page</a><br>
           <a href="#" ng-show="admin_eligible == true" ng-click="cloneProduct()" >Clone Product Page</a><br>
           <a href="#" ng-show="admin_eligible == true" ng-click="admin = !admin" >Toggle Administrative View</a><br>
         </div>
-        <div class="col-md-6 right">
+        <div class="col-md-7 right">
           <!-- Product Description
                 * Product Name
                 * Reviews
@@ -80,7 +80,7 @@
           </div>
           <div ng-if="admin==false">
             <div class="quantity">
-              Quantity: 
+              Quantity:
               <button type="button" id="qty-dec" ng-click="decQty()">-</button>
               <input name="quantity" size="2" ng-model="qty">
               <button type="button" id="qty-inc" ng-click="incQty()">+</button>
