@@ -325,3 +325,14 @@ img.AngularJS-small {
 .footer ul {
   padding-left: 80px;
 }
+
+.body-info {
+  text-align: justify;
+}
+
+.policy-info {
+  font-family: Times;
+  font-size: 15px;
+  line-height: normal;
+  text-align: justify;
+}

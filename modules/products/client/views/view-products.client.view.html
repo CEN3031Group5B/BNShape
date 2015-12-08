@@ -2,8 +2,10 @@
   <div class="container-fluid">
     <div class="row">
       <!--sidebar-->
-      <section ng-include="'/modules/products/client/views/side-bar.client.view.html'"></section>
-      <div class="main-view col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3">
+      <div class="col-md-3">
+        <section ng-include="'/modules/products/client/views/side-bar.client.view.html'" class="sidebar-products"></section>
+      </div>
+      <div class="main-view col-md-9">
         <div class="page-header">
           <div class="header-text">
             Products
@@ -29,7 +31,7 @@
                   {{item.price}}
                 </h5>
                 <a>
-                  <button type="button" class="btn bnshape-button btn-lg bnshape-button" ng-click="add_cart('{{item.name}}')">
+                  <button type="button" class="btn bnshape-button btn-lg bnshape-button" ng-click="add_cart(item._id,item.price)">
                     <span class="glyphicon glyphicon-shopping-cart">
                     </span>
                     <strong>
