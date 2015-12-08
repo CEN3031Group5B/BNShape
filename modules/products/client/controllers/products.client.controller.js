@@ -32,12 +32,15 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
         name: 'New Product',
         code: 'NOCODE',
         reviews: [],
-        price: '$0.00',
+        price: '$20.00',
         reward_price: '0',
         reward_points: '0',
         description: 'No description.',
         availability: 'Out of stock',
-        sizes: ['S', 'M', 'L']
+        sizes: ['S', 'M', 'L'],
+        category: ['Men'],
+        subcategory: 'Shirts',
+        discount: 0
       });
 
       // Redirect after save
@@ -47,6 +50,18 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
       }, function (errorResponse) {
         console.log("errored");
       });
+    };
+
+    $scope.filter_category = function (category, subcategory) {
+      console.log(category, subcategory);
+      console.log($scope.products);
+      for (var i = $scope.products.length-1; i >= 0; i--) {
+        if (((category !== $scope.products[i].category[0]) && (category !== $scope.products[i].category[1])) || (subcategory !== $scope.products[i].subcategory)) {
+          console.log($scope.products[i].category[0], $scope.products[i].category[1], $scope.products[i].subcategory);
+          $scope.products.splice(i, 1);
+        }
+      }
+      console.log($scope.products);
     };
   }
 ]);

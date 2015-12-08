@@ -14,22 +14,22 @@
       <div id="collapse1" class="collapse">
         <ul class="list-group">
           <li class="subcategory">
-            <a class="subcategory-text" href="#">
+            <a class="subcategory-text" ng-click="filter_category('Men', 'Shirts')" href="#">
               Shirts
             </a>
           </li>
           <li class="subcategory">
-            <a class="subcategory-text" href="#">
+            <a class="subcategory-text" ng-click="filter_category('Men', 'Tank Tops')" href="#">
               Tank Tops
             </a>
           </li>
           <li class="subcategory">
-            <a class="subcategory-text" href="#">
+            <a class="subcategory-text" ng-click="filter_category('Men', 'Hoodies')" href="#">
               Hoodies
             </a>
           </li>
           <li class="subcategory">
-            <a class="subcategory-text" href="#">
+            <a class="subcategory-text" ng-click="filter_category('Men', 'Pants')" href="#">
               Pants
             </a>
           </li>
@@ -44,22 +44,22 @@
       <div id="collapse2" class="panel-collapse collapse">
         <ul class="list-group">
           <li class="subcategory">
-            <a class="subcategory-text" href="#">
+            <a class="subcategory-text" ng-click="filter_category('Women', 'Shirts')" href="#">
               Shirts
             </a>
           </li>
           <li class="subcategory">
-            <a class="subcategory-text" href="#">
+            <a class="subcategory-text" ng-click="filter_category('Women', 'Tank Tops')" href="#">
               Tank Tops
             </a>
           </li>
           <li class="subcategory">
-            <a class="subcategory-text" href="#">
+            <a class="subcategory-text" ng-click="filter_category('Women', 'Hoodies')" href="#">
               Hoodies
             </a>
           </li>
           <li class="subcategory">
-            <a class="subcategory-text" href="#">
+            <a class="subcategory-text" ng-click="filter_category('Women', 'Pants')" href="#">
               Pants
             </a>
           </li>
@@ -74,8 +74,33 @@
       <div id="collapse3" class="panel-collapse collapse">
         <ul class="list-group">
           <li class="subcategory">
-            <a class="subcategory-text" href="#">
+            <a class="subcategory-text" ng-click="filter_category('Kids', 'Shirts')" href="#">
               Shirts
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- Collapsible "Accessories" -->
+      <div class="category-heading">
+        <a class="heading-text" data-toggle="collapse" href="#collapse4">
+          Accessories
+        </a>
+      </div>
+      <div id="collapse4" class="panel-collapse collapse">
+        <ul class="list-group">
+          <li class="subcategory">
+            <a class="subcategory-text" ng-click="filter_category('Accessories', 'Jewelry')" href="#">
+              Jewelry
+            </a>
+          </li>
+          <li class="subcategory">
+            <a class="subcategory-text" ng-click="filter_category('Accessories', 'Headwear')" href="#">
+              Headwear
+            </a>
+          </li>
+          <li class="subcategory">
+            <a class="subcategory-text" ng-click="filter_category('Accessories', 'Socks')" href="#">
+              Socks
             </a>
           </li>
         </ul>

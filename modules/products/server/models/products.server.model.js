@@ -51,11 +51,17 @@ var ProductSchema = new Schema({
     required: 'Availability can not be blank'
   }, sizes: {
     type: Array,
-    default:[],
+    default: [],
     required: 'Must have at least one size'
   }, category: {
+    type: Array,
+    default: [],
+  }, subcategory: {
     type: String,
-    default:'',
+    default: ''
+  }, discount: {
+    type: String,
+    default: 0
   }
   //,
   // user: {
