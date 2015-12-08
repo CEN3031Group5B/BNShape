@@ -5,6 +5,12 @@
       Categories
     </div>
     <div>
+      <!-- Collapsible "All Items" -->
+      <div class="category-heading">
+        <a class="heading-text" ng-click="display_all()" href='#'>
+          All Products
+        </a>
+      </div>
       <!-- Collapsible "Men" -->
       <div class="category-heading">
         <a class="heading-text" data-toggle="collapse" href="#collapse1">
@@ -13,6 +19,11 @@
       </div>
       <div id="collapse1" class="collapse">
         <ul class="list-group">
+          <li class="subcategory">
+            <a class="subcategory-text" ng-click="filter_category('Men', '')" href="#">
+              All Men Products
+            </a>
+          </li>
           <li class="subcategory">
             <a class="subcategory-text" ng-click="filter_category('Men', 'Shirts')" href="#">
               Shirts
@@ -44,6 +55,11 @@
       <div id="collapse2" class="panel-collapse collapse">
         <ul class="list-group">
           <li class="subcategory">
+            <a class="subcategory-text" ng-click="filter_category('Women', '')" href="#">
+              All Women Products
+            </a>
+          </li>
+          <li class="subcategory">
             <a class="subcategory-text" ng-click="filter_category('Women', 'Shirts')" href="#">
               Shirts
             </a>
@@ -74,6 +90,11 @@
       <div id="collapse3" class="panel-collapse collapse">
         <ul class="list-group">
           <li class="subcategory">
+            <a class="subcategory-text" ng-click="filter_category('Kids', '')" href="#">
+              All Kids Products
+            </a>
+          </li>
+          <li class="subcategory">
             <a class="subcategory-text" ng-click="filter_category('Kids', 'Shirts')" href="#">
               Shirts
             </a>
@@ -88,6 +109,11 @@
       </div>
       <div id="collapse4" class="panel-collapse collapse">
         <ul class="list-group">
+          <li class="subcategory">
+            <a class="subcategory-text" ng-click="filter_category('Accessories', '')" href="#">
+              All Accessories
+            </a>
+          </li>
           <li class="subcategory">
             <a class="subcategory-text" ng-click="filter_category('Accessories', 'Jewelry')" href="#">
               Jewelry
@@ -113,37 +139,37 @@
     <div>
       <!-- New Arrivals -->
       <div class="category-heading">
-        <a class="heading-text" href="#">
+        <a class="heading-text" ng-click="filter_new_arrivals()" href="#">
           New Arrivals
         </a>
       </div>
       <!-- Best Sellers -->
       <div class="category-heading">
-        <a class="heading-text" href="#">
+        <a class="heading-text" ng-click="filter_best_sellers()" href="#">
           Best Sellers
         </a>
       </div>
       <!-- Discounts -->
       <div class="category-heading">
-        <a class="heading-text" href="#">
+        <a class="heading-text" ng-click="filter_discounts()" href="#">
           Discounts
         </a>
       </div>
       <!-- Price -->
       <div class="category-heading">
-        <a class="heading-text" data-toggle="collapse" href="#collapse4">
+        <a class="heading-text" data-toggle="collapse" href="#collapse5">
           Price
         </a>
       </div>
-      <div id="collapse4" class="panel-collapse collapse">
+      <div id="collapse5" class="panel-collapse collapse">
         <ul class="list-group">
           <li class="subcategory">
-            <a class="subcategory-text" href="#">
+            <a class="subcategory-text" ng-click="filter_price('high')" href="#">
               High to Low
             </a>
           </li>
           <li class="subcategory">
-            <a class="subcategory-text" href="#">
+            <a class="subcategory-text" ng-click="filter_price('low')" href="#">
               Low to High
             </a>
           </li>
@@ -156,7 +182,7 @@
     </div>
     <ul class="list-group">
       <li class="subcategory">
-        <a href="#">
+        <a ng-click="filter_reviews(4)" href="#">
           <button type="button" class="btn bnshape-button btn-md">
             <span class="glyphicon glyphicon-star" aria-hidden="true">
             </span>
@@ -173,7 +199,7 @@
         </a>
       </li>
       <li class="subcategory">
-        <a href="#">
+        <a ng-click="filter_reviews(3)" href="#">
           <button type="button" class="btn bnshape-button btn-md">
             <span class="glyphicon glyphicon-star" aria-hidden="true">
             </span>
@@ -190,7 +216,7 @@
         </a>
       </li>
       <li class="subcategory">
-        <a href="#">
+        <a ng-click="filter_reviews(2)" href="#">
           <button type="button" class="btn bnshape-button btn-md">
             <span class="glyphicon glyphicon-star" aria-hidden="true">
             </span>
@@ -207,7 +233,7 @@
         </a>
       </li>
       <li class="subcategory">
-        <a href="#">
+        <a ng-click="filter_reviews(1)" href="#">
           <button type="button" class="btn bnshape-button btn-md">
             <span class="glyphicon glyphicon-star" aria-hidden="true">
             </span>

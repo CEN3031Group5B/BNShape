@@ -8,7 +8,7 @@
     <div class="col-md-9 product-info" style="padding-top:65px">
       <div>
         <div class="col-md-5 left image-panel">
-          <div class="image"><a href="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg" class="product-image-link"><div style="height:414px; width:324px;" class="zoomWrapper"><img style="position: absolute; height:414px; width:324px;" id="main-image" src="/modules/products/client/img/tank.png" data-zoom-image="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg"></div></a></div>
+          <div class="image"><a href="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg" class="product-image-link"><div style="height:414px; width:324px;" class="zoomWrapper"><img style="position: absolute; height:414px; width:324px;" id="main-image" ng-src="/modules/products/client/img/{{this_product.name}}.jpg"></div></a></div>
           <a href="#" ng-show="admin_eligible == true" ng-click="newProduct()" >Create New Product Page</a><br>
           <a href="#" ng-show="admin_eligible == true" ng-click="cloneProduct()" >Clone Product Page</a><br>
           <a href="#" ng-show="admin_eligible == true" ng-click="admin = !admin" >Toggle Administrative View</a><br>
@@ -24,7 +24,7 @@
               <img src="/modules/products/client/img/stars.png" alt="Rating">
               &nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');">{{this_product.reviews.length}} reviews</a>
             </div>
-            <div class="price">{{this_product.price}}</div>
+            <div class="price">${{this_product.price}}.00 {{this_product.discount}}</div>
             <div class="reward">Price in reward points: {{this_product.reward_price}}</div>
             <div class="share"><!-- AddThis Button BEGIN -->
               <div class="addthis_default_style"><a href="#" class="addthis_button_compact at300m"><span style="background-color: rgb(252, 109, 76);" class="at4-icon-left at4-icon aticon-compact"><span>More Sharing Services</span></span>Share</a> <a href="#" title="Email" target="_blank" class="addthis_button_email at300b"><span style="background-color: rgb(115, 138, 141);" class="at4-icon-left at4-icon aticon-email"><span class="at_a11y">Share on email</span></span></a><a href="#" title="Print" class="addthis_button_print at300b"><span style="background-color: rgb(115, 138, 141);" class="at4-icon-left at4-icon aticon-print"><span class="at_a11y">Share on print</span></span></a> <a href="#" title="Facebook" class="addthis_button_facebook at300b"><span style="background-color: rgb(48, 88, 145);" class="at4-icon-left at4-icon aticon-facebook"><span class="at_a11y">Share on facebook</span></span></a> <a href="#" title="Tweet" class="addthis_button_twitter at300b"><span style="background-color: rgb(44, 168, 210);" class="at4-icon-left at4-icon aticon-twitter"><span class="at_a11y">Share on twitter</span></span></a></div>

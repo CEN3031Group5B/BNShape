@@ -31,8 +31,8 @@ var ProductSchema = new Schema({
     required: 'Price cannot be blank'
   },
   reward_price: {
-    type: String,
-    default: '',
+    type: Number,
+    default: 10.00,
   },
   reward_points: {
     type: String,
@@ -61,7 +61,19 @@ var ProductSchema = new Schema({
     default: ''
   }, discount: {
     type: String,
-    default: 0
+    default: ''
+  },
+    new_arrival: {
+    type: Boolean,
+    default: false
+  },
+    best_seller: {
+    type: Boolean,
+    default: false
+  },
+    rating: {
+    type: Number,
+    default: 5
   }
   //,
   // user: {
