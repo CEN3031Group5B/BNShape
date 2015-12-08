@@ -65,6 +65,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     .state('team', {
         url: '/team',
         templateUrl: 'modules/core/client/views/pages/team.client.view.html'
+    })
+    .state('voucher', {
+        url: '/voucher',
+        templateUrl: 'modules/core/client/views/pages/voucher.client.view.html'
     });
   }
 ]);
