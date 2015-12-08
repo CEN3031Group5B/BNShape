@@ -61,6 +61,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     .state('returns', {
         url: '/returns',
         templateUrl: 'modules/core/client/views/pages/returns.client.view.html'
+    })
+    .state('team', {
+        url: '/team',
+        templateUrl: 'modules/core/client/views/pages/team.client.view.html'
     });
   }
 ]);
