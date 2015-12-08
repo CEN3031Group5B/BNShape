@@ -11,27 +11,27 @@
             Products
           </div>
         </div>
-        <div class="product-grid">
+        <div ng-repeat="item in products" class="product-grid">
           <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="wrapper">
               <div class="thumb">
                 <div class="image">
-                  <a href="#" ui-sref="products.view({productId: '562bc2f8b82bbbf8f91f72ba'})">
-                    <img src="/modules/products/client/img/sample-tee.jpg" class="img-responsive">
+                  <a ui-sref="products.view({productId:'{{item._id}}'})">
+                    <img ng-src="/modules/products/client/img/{{item.name}}.jpg" class="img-responsive">
                   </a>
                 </div>
               </div>
               <div class="name">
-                <a class="product-text" href="#">
-                  BN SHAPE HABITS 3/4 Sleeve Henley
+                <a class="product-text" ui-sref="products.view({productId:'{{item._id}}'})">
+                  {{item.name}}
                 </a>
               </div>
               <div class="price">
                 <h5>
-                  $20.00
+                  {{item.price}}
                 </h5>
-                <a href="#">
-                  <button type="button" class="btn bnshape-button btn-lg bnshape-button" ng-click="add_cart('562bc2f8b82bbbf8f91f72ba')">
+                <a>
+                  <button type="button" class="btn bnshape-button btn-lg bnshape-button" ng-click="add_cart(item._id,item.price)">
                     <span class="glyphicon glyphicon-shopping-cart">
                     </span>
                     <strong>

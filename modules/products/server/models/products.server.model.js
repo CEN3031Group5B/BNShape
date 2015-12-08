@@ -53,6 +53,9 @@ var ProductSchema = new Schema({
     type: Array,
     default:[],
     required: 'Must have at least one size'
+  }, category: {
+    type: String,
+    default:'',
   }
   //,
   // user: {
