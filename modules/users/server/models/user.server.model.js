@@ -52,23 +52,6 @@ var UserSchema = new Schema({
     default: '',
     validate: [validateLocalStrategyEmail, 'Please fill a valid email address']
   },
-  /*Notification abilities. 106010170*/
-  emailNotification: Boolean,
-  /*adding phone and fax. 106010170*/
-  phone: {
-    type: Number,
-	unique: true,
-    trim: true,
-    default: ''
-  },
-  /*Notification. 106010170*/
-  phoneNotification: Boolean,
-  fax: {
-    type: Number,
-	unique: true,
-    trim: true,
-    default: ''
-  },
   username: {
     type: String,
     unique: 'Username already exists',
@@ -76,11 +59,17 @@ var UserSchema = new Schema({
     lowercase: true,
     trim: true
   },
-  /*physical address. 106010170*/
-  defaultFlag: Boolean,
   password: {
     type: String,
     required: 'Please fill in a password'
+  },
+  telephone: {
+    type: String, 
+    required: 'Please fill in a telephone number'
+  },
+  fax: {
+    type: String,
+    //default: ''
   },
   company: {
     type: String,
@@ -117,19 +106,11 @@ var UserSchema = new Schema({
     required: 'Please select a region/state'
     //default: ''
   },
-
-  /*
-  yes: {
-    type: String,
-    //default: ''
-  }, */
-  radio: {
-    type: String,
-    //default: ''
+  subscription: {
+    type: Boolean, 
   },
   policy: {
     type: String,
-    //required: 'You must agree to create a new account'
   },
   salt: {
     type: String
@@ -246,7 +227,7 @@ UserSchema.statics.generateRandomPassphrase = function () {
     var password = '';
     var repeatingCharacters = new RegExp('(.)\\1{2,}', 'g');
 
-    // iterate until the we have a valid passphrase.
+    // iterate until the we have a valid passphrase. 
     // NOTE: Should rarely iterate more than once, but we need this to ensure no repeating characters are present.
     while (password.length < 20 || repeatingCharacters.test(password)) {
       // build the random password
