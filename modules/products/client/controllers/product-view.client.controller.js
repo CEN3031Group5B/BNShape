@@ -9,18 +9,23 @@ angular.module('products').controller('ProductViewController', ['$scope', '$root
         //, function() { console.log($scope.this_product); });
     $scope.qty = 1;
     $scope.user = $scope.authentication.user;
-    $scope.admin_eligible = ($scope.user !== 0) && ($scope.user.roles.indexOf("admin") > -1);
+
+    if ($scope.user.roles !== undefined)
+        $scope.admin_eligible = ($scope.user.roles.indexOf("admin") > -1);
+    else
+      $scope.admin_eligible = false;
+
     $scope.admin = false;
     $scope.modified_vars = -2;
     $scope.modified_sizes = -2;
 
     $scope.$watchCollection(
         function getValue() { return $scope.this_product; },
-        function collectionChanged() { ++$scope.modified_vars; console.log("blip1"); });
+        function collectionChanged() { ++$scope.modified_vars; });
 
     $scope.$watchCollection(
         function getValue() { return $scope.this_product.sizes; },
-        function collectionChanged() { ++$scope.modified_sizes; console.log("blip2"); });
+        function collectionChanged() { ++$scope.modified_sizes; });
 
     // Get average rating
     $scope.getRating = function() {
@@ -120,7 +125,6 @@ angular.module('products').controller('ProductViewController', ['$scope', '$root
         sizes: $scope.this_product.sizes
       });
 
-console.log(product);
       console.log("Tests: " + product._id);
       // Redirect after creating
       product.$save(function (response) {
