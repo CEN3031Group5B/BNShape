@@ -11,7 +11,7 @@
             Products
           </div>
         </div>
-        <div ng-repeat="item in products" class="product-grid">
+        <div ng-repeat="item in display_products" class="product-grid">
           <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="wrapper">
               <div class="thumb">
@@ -28,7 +28,7 @@
               </div>
               <div class="price">
                 <h5>
-                  {{item.price}}
+                  ${{item.price}}.00 {{item.discount}}
                 </h5>
                 <a>
                   <button type="button" class="btn bnshape-button btn-lg bnshape-button" ng-click="add_cart(item._id,item.price)">
