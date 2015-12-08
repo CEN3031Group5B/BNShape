@@ -5,11 +5,22 @@ angular.module('products').controller('ProductViewController', ['$scope', '$root
   function ($scope, $rootScope, $stateParams, $state, $location, Authentication, Products, $cookieStore) {
     $scope.authentication = Authentication;
     $scope.this_product_id = $stateParams.productId;
-    $scope.this_product = Products.get({ productId: $scope.this_product_id }, function() {
-            console.log($scope.this_product);
-        });
-    $scope.admin = false;
+    $scope.this_product = Products.get({ productId: $scope.this_product_id });
+        //, function() { console.log($scope.this_product); });
     $scope.qty = 1;
+    $scope.user = $scope.authentication.user;
+    $scope.admin_eligible = ($scope.user !== 0) && ($scope.user.roles.indexOf("admin") > -1);
+    $scope.admin = false;
+    $scope.modified_vars = -2;
+    $scope.modified_sizes = -2;
+
+    $scope.$watchCollection(
+        function getValue() { return $scope.this_product; },
+        function collectionChanged() { ++$scope.modified_vars; console.log("blip1"); });
+
+    $scope.$watchCollection(
+        function getValue() { return $scope.this_product.sizes; },
+        function collectionChanged() { ++$scope.modified_sizes; console.log("blip2"); });
 
     // Get average rating
     $scope.getRating = function() {
@@ -70,17 +81,67 @@ angular.module('products').controller('ProductViewController', ['$scope', '$root
         $state.go('cart');
     };
 
+    $scope.newProduct = function () {
+      //fill with actual data
+      var product = new Products({
+        name: 'New Product',
+        code: 'NOCODE',
+        reviews: [],
+        price: '$0.00',
+        reward_price: '0',
+        reward_points: '0',
+        description: 'No description.',
+        availability: 'Out of stock',
+        sizes: ['S', 'M', 'L']
+      });
+
+      // Redirect after creating
+      product.$save(function (response) {
+        console.log("New product created. Redirecting...");
+        $state.go('products.view', {productId: product._id});
+
+      }, function (errorResponse) {
+        console.log("Error");
+      });
+    };
+
+
+    $scope.cloneProduct = function () {
+      //fill with actual data
+      var product = new Products({
+        name: "New " + $scope.this_product.name,
+        code: $scope.this_product.code,
+        reviews: [],
+        price: $scope.this_product.price,
+        reward_price: $scope.this_product.reward_price,
+        reward_points: $scope.this_product.reward_points,
+        description: $scope.this_product.description,
+        availability: $scope.this_product.availability,
+        sizes: $scope.this_product.sizes
+      });
+
+console.log(product);
+      console.log("Tests: " + product._id);
+      // Redirect after creating
+      product.$save(function (response) {
+        console.log("New product cloned. Redirecting...");
+        $state.go('products.view', {productId: product._id});
+
+      }, function (errorResponse) {
+        console.log("Error");
+      });
+    };
 
     // Save changes
     $scope.saveChanges = function() {
       $scope.this_product.$update( function (response) {
         console.log("Saved changes");
-        console.log($scope.this_product.name);
         console.log(response);
+        $scope.modified_vars = -1;
+        $scope.modified_sizes = 0;
 
       }, function (errorResponse) {
         console.log("Error when trying to save changes!");
-        console.log($scope.this_product.name);
         console.log(errorResponse);
       });
     };
