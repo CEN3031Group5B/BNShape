@@ -50,5 +50,17 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
         console.log("errored");
       });
     };
+
+    $scope.filter_category = function (category, subcategory) {
+      console.log(category, subcategory);
+      console.log($scope.products);
+      for (var i = $scope.products.length-1; i >= 0; i--) {
+        if (((category !== $scope.products[i].category[0]) && (category !== $scope.products[i].category[1])) || (subcategory !== $scope.products[i].subcategory)) {
+          console.log($scope.products[i].category[0], $scope.products[i].category[1], $scope.products[i].subcategory);
+          $scope.products.splice(i, 1);
+        }
+      }
+      console.log($scope.products);
+    };
   }
 ]);
