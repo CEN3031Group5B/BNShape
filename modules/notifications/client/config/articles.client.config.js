@@ -5,7 +5,7 @@ angular.module('articles').run(['Menus',
   function (Menus) {
     // Add the articles dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'Ntofications',
+      title: 'Notifications',
       state: 'articles',
       type: 'dropdown',
       roles: ['user', 'admin']
@@ -15,7 +15,7 @@ angular.module('articles').run(['Menus',
     Menus.addSubMenuItem('topbar', 'articles', {
       title: 'List Notifications',
       state: 'articles.list',
-	  roles: ['user, admin']
+	    roles: ['user', 'admin']
     });
 
     // Add the dropdown create item
