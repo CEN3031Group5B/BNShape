@@ -69,6 +69,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     .state('voucher', {
         url: '/voucher',
         templateUrl: 'modules/core/client/views/pages/voucher.client.view.html'
+    })
+    .state('brands', {
+        url: '/brands',
+        templateUrl: 'modules/core/client/views/pages/brands.client.view.html'
     });
   }
 ]);
