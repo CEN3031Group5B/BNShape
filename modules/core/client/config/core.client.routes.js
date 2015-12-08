@@ -57,6 +57,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     .state('contact', {
         url: '/contact',
         templateUrl: 'modules/core/client/views/pages/contact.client.view.html'
+    })
+    .state('returns', {
+        url: '/returns',
+        templateUrl: 'modules/core/client/views/pages/returns.client.view.html'
     });
   }
 ]);
