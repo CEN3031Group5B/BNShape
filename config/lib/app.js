@@ -16,6 +16,7 @@ if (config.seedDB) {
   require('./seed');
 }
 
+
 module.exports.loadModels = function loadModels() {
   mongoose.loadModels();
 };

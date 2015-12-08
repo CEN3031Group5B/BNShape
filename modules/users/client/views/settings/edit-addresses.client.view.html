@@ -58,24 +58,19 @@
         </div>
 
 
+    <div class="dropdown form-group" show-errors>
+        <label for="country">Country: </label> &nbsp; &nbsp;  
+          <select id="country" name ="country" ng-model="credentials.country" required> </select> </br>
+              <div ng-messages="userForm.country.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">Country is required.</p>
+              </div> 
+        <label for="selectstate">Region/State: </label> &nbsp; &nbsp;
+          <select name ="region" id ="region" ng-model="credentials.region" required> </select>  </br> 
+              <div ng-messages="userForm.region.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">Region or State is required.</p>
+              </div> 
+    </div> 
 
-
-		<div class="form-group" show-errors>
-          <label for="country">Country</label>
-          <input type="text" id="country" name="country" class="form-control" ng-model="user.country" placeholder="Country" required>
-          <div ng-messages="userForm.country.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Country is required.</p>
-          </div>
-        </div>
-
-
-		<div class="form-group" show-errors>
-          <label for="region">Region / State</label>
-          <input type="text" id="region" name="region" class="form-control" ng-model="user.region" placeholder="Region / region" required>
-          <div ng-messages="userForm.region.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Region / State is required.</p>
-          </div>
-        </div>
 
 		<div class="checkbox">
 			<label><input type="checkbox" id="defaultFlag" name="defaultFlag" ng-model="user.defaultFlag" value="">Make this my default address.</label>
@@ -94,3 +89,8 @@
     </form>
   </div>
 </section>
+
+<script type= "text/javascript" src = "countries.js"></script>
+      <script language="javascript">
+         populateCountries("country", "region"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+</script>
