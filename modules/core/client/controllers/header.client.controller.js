@@ -7,7 +7,7 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
     $scope.authentication = Authentication;
     $scope.cart_items = [];
     $scope.cart_popup = "cart_popup.html";
-
+    $scope.price = 0.0;
     // Get the topbar menu
     $scope.menu = Menus.getMenu('topbar');
 
@@ -33,6 +33,11 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
           $scope.cart_items = newCartItems;
         } else {
           $scope.cart_items = [];
+        }
+        if(args.total === undefined){
+          $scope.price += args.price;
+        } else {
+          $scope.price = args.total;
         }
         //$scope.$apply(); //show the changes
     });

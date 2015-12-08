@@ -1,0 +1,11 @@
+.radio-align {
+	margin: 0;
+}
+
+.login-link:hover{
+	cursor:pointer;
+}
+
+.sign-in-modal {
+	height:400px; /*fix to go behind login form*/
+}

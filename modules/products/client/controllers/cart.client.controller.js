@@ -43,17 +43,12 @@ angular.module('products').controller('CartController', ['$scope', '$rootScope',
     $scope.parse_price = function(priceString) {
         return parseFloat(priceString.split('$')[1]);
     };
-        // Find a list of Articles
-    $scope.find = function () {
-      $scope.cart_products = Products.query();
-    };
 
-    // Find existing Article
     $scope.findOne = function (_product_id,cb) {
       return Products.get({productId: _product_id},cb);
     };
 
-    $scope.save_edit_cart = function(_id, updated_quantity){
+    $scope.save_edit_cart = function(_id, updated_quantity, price){
         if(updated_quantity !== undefined){ //if no change in select then this occurs
             var current_quantity = $scope.quantity_dict[_id];
             if(current_quantity !== updated_quantity){
@@ -63,15 +58,17 @@ angular.module('products').controller('CartController', ['$scope', '$rootScope',
                     $scope.cart_items.sort(); //organize so we can easily splice
                     var index = $scope.cart_items.indexOf(_id);
                     $scope.cart_items.splice(index, num_to_delete);
+                    $scope.cart_total -= num_to_delete * price;
                 } else {
                     var num_to_add = updated_quantity - current_quantity;
                     for(var i = 0; i < num_to_add; i++){
                         $scope.cart_items.push(_id);
                     }
+                    $scope.cart_total += num_to_add * price;
                 }
                 $cookieStore.remove('cart');
                 $cookieStore.put('cart', $scope.cart_items.join("&"));
-                $rootScope.$broadcast('cart_update', { newCookie: $scope.cart_items.join("&")});
+                $rootScope.$broadcast('cart_update', { newCookie: $scope.cart_items.join("&"), total:$scope.cart_total});
             }
         }
         $scope.editing_index = -1;
@@ -100,9 +97,9 @@ angular.module('products').controller('CartController', ['$scope', '$rootScope',
         $cookieStore.remove('cart');
         if($scope.display_items.length!==0){
           $cookieStore.put('cart', $scope.cart_items.join("&"));
-          $rootScope.$broadcast('cart_update', { newCookie: $scope.cart_items.join("&")});
+          $rootScope.$broadcast('cart_update', { newCookie: $scope.cart_items.join("&"), total:$scope.cart_total});
         } else {
-          $rootScope.$broadcast('cart_update', { newCookie: ''});
+          $rootScope.$broadcast('cart_update', { newCookie: '', total:0.0});
         }
 
     };
