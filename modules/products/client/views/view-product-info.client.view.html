@@ -24,7 +24,7 @@
               <img src="/modules/products/client/img/stars.png" alt="Rating">
               &nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');">{{this_product.reviews.length}} reviews</a>
             </div>
-            <div class="price">{{this_product.price}}</div>
+            <div class="price">{{this_product.price}} <span class="discount">{{this_product.discount}}</span></div>
             <div class="reward">Price in reward points: {{this_product.reward_price}}</div>
             <div class="share"><!-- AddThis Button BEGIN -->
               <div class="addthis_default_style"><a href="#" class="addthis_button_compact at300m"><span style="background-color: rgb(252, 109, 76);" class="at4-icon-left at4-icon aticon-compact"><span>More Sharing Services</span></span>Share</a> <a href="#" title="Email" target="_blank" class="addthis_button_email at300b"><span style="background-color: rgb(115, 138, 141);" class="at4-icon-left at4-icon aticon-email"><span class="at_a11y">Share on email</span></span></a><a href="#" title="Print" class="addthis_button_print at300b"><span style="background-color: rgb(115, 138, 141);" class="at4-icon-left at4-icon aticon-print"><span class="at_a11y">Share on print</span></span></a> <a href="#" title="Facebook" class="addthis_button_facebook at300b"><span style="background-color: rgb(48, 88, 145);" class="at4-icon-left at4-icon aticon-facebook"><span class="at_a11y">Share on facebook</span></span></a> <a href="#" title="Tweet" class="addthis_button_twitter at300b"><span style="background-color: rgb(44, 168, 210);" class="at4-icon-left at4-icon aticon-twitter"><span class="at_a11y">Share on twitter</span></span></a></div>
@@ -64,7 +64,7 @@
                   <span class="required">*</span>
                   <b>Select Size:</b>
                   <ul ng-repeat="size in this_product.sizes">
-                    <input name="size" type="radio">
+                    <input name="size" type="radio" ng-model="$parent.$parent.selected_size" value="{{size}}">
                     <label for="size">{{size}}</label>
                   </ul>
                 </div>
@@ -88,7 +88,7 @@
             <div>
             <div class="custom-block"><span style="color: rgb(102, 102, 102); font-family: 'arial black', 'avant garde'; font-size: 14px; line-height: 14px;">***INTERNATIONAL ORDERS: ALLOW 14 BUSINESS DAYS FOR DELIVERY***</span></div>
               <div>
-                <button id="button-cart" style="color:#FFF" type="button" class="btn-lg bnshape-button" ng-click="add_cart(this_product_id)">
+                <button id="button-cart" style="color:#FFF" type="button" class="btn-lg bnshape-button" ng-click="add_cart(this_product_id,this_product.price, qty)">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                     <strong>ADD TO CART</strong>
                 </button>

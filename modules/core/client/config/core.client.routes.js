@@ -73,6 +73,9 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     .state('brands', {
         url: '/brands',
         templateUrl: 'modules/core/client/views/pages/brands.client.view.html'
+    }).state('delivery-info', {
+        url: '/delivery-info',
+        templateUrl: 'modules/core/client/views/pages/delivery-info.client.view.html'
     });
   }
 ]);

@@ -10,6 +10,7 @@ angular.module('products').controller('OrderController', ['$scope', '$rootScope'
 	$scope.cart_items = [];
 	$scope.quantity_dict = {};
 	$scope.display_items = [];
+  $scope.filter_items = [];
 	$scope.cart_total = 0.00;
 	$scope.shipping_price = 5.00;
 
@@ -17,6 +18,7 @@ angular.module('products').controller('OrderController', ['$scope', '$rootScope'
 		var current_items = String($cookieStore.get('cart'));
       	if(current_items !== "undefined"){
         	$scope.cart_items = current_items.split('&');
+          $scope.filter_items = current_items.split('&');
         	$scope.filter();
       } 
 	};
@@ -25,7 +27,7 @@ angular.module('products').controller('OrderController', ['$scope', '$rootScope'
         //"562bc2f8b82bbbf8f91f72ba"
         var i = 0;
         for(i = 0; i < $scope.cart_items.length; i++){
-            var product = $scope.findOne($scope.cart_items[i],$scope.found_one_cb);
+            var product = $scope.findOne($scope.cart_items[i].split("-")[0],$scope.found_one_cb);
         }
     };
 
@@ -33,12 +35,24 @@ angular.module('products').controller('OrderController', ['$scope', '$rootScope'
         var priceString = data.price;
         var price = parseFloat(priceString.split('$')[1]);
         $scope.cart_total += price;
-        console.log(data._id);
-        if($scope.quantity_dict[data._id] !== undefined){
-            var current_quantity = $scope.quantity_dict[data._id];
-            $scope.quantity_dict[data._id] = current_quantity + 1;
+
+        var add_id = "";
+        var i = 0;
+        for(i = 0; i < $scope.filter_items.length; i++){
+            if($scope.filter_items[i].split("-")[0] === data._id){
+                add_id = $scope.filter_items[i].split("-")[1];
+                $scope.filter_items.splice(i, 1);
+                break;
+            }
+        }
+
+        data._size_id = add_id;
+        add_id = data._id + "-" + add_id;
+        if($scope.quantity_dict[add_id] !== undefined){
+            var current_quantity = $scope.quantity_dict[add_id];
+            $scope.quantity_dict[add_id] = current_quantity + 1;
         } else {
-            $scope.quantity_dict[data._id] = 1;
+            $scope.quantity_dict[add_id] = 1;
             $scope.display_items.push(data);
         }
     };
