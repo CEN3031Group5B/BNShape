@@ -83,3 +83,8 @@ input[type="radio"]{
   min-height: 150px;
   max-height: 150px;
 }
+
+.signup-error {
+  color:red;
+  font-size:32px;
+}
