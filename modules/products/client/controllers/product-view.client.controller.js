@@ -149,5 +149,33 @@ angular.module('products').controller('ProductViewController', ['$scope', '$root
         console.log(errorResponse);
       });
     };
+
+    $scope.add_cart = function(_id, price, quantity){
+        if($scope.this_product.sizes.length === 0){
+          $scope.selected_size = "N/A";
+        }
+        if($scope.selected_size !== undefined) {
+          var prevCookie = "";
+          prevCookie = $cookieStore.get('cart');
+          var updatedCookie = "";
+          var i = 0;
+          for(i = 0; i < quantity; i++){
+            updatedCookie += $scope.this_product_id + "-" + $scope.selected_size;
+            if(i !== quantity - 1){
+              updatedCookie += "&";
+            }
+          }
+          if(prevCookie !== undefined){
+            $cookieStore.remove('cart');
+            updatedCookie = prevCookie + "&" + updatedCookie;
+          }
+          $cookieStore.put('cart',updatedCookie);
+          $rootScope.$broadcast('cart_update', { newCookie: updatedCookie, price: quantity*parseFloat(price.split('$')[1])});
+          $state.go('cart');
+        } else {
+          alert("select size please");
+        }
+       
+    };
   }
 ]);

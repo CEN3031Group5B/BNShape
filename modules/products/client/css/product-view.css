@@ -115,3 +115,13 @@
 .product-grid .wrapper .name .product-text {
     color: #878787;
 }
+
+.discount {
+    color:red;
+    font-size: 32px;
+}
+
+.product-image {
+    width:100%;
+    height:300px;
+}

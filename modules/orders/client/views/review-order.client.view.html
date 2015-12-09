@@ -199,12 +199,12 @@
                                         <td class="name">
                                           <a href="/products/{{item._id}}">{{item.name}}</a>
                                           <br>
-                                          &nbsp;<small> - Select Size: {{item.sizes[0]}}</small>
+                                          &nbsp;<small> - Select Size: {{item._size_id}}</small>
                                         </td>
                                         <td class="model">{{item.code}}</td>
-                                        <td class="quantity">{{quantity_dict[item._id]}}</td>
+                                        <td class="quantity">{{quantity_dict[item._id + "-" + item._size_id]}}</td>
                                         <td class="price">{{item.price}}</td>
-                                        <td class="total">${{(quantity_dict[item._id] * parse_price(item.price)).toFixed(2)}}</td>
+                                        <td class="total">${{(quantity_dict[item._id + "-" + item._size_id] * parse_price(item.price)).toFixed(2)}}</td>
                                       </tr>
                                   </tbody>
                                   <tfoot>

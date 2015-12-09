@@ -17,7 +17,7 @@
               <div class="thumb">
                 <div class="image">
                   <a ui-sref="products.view({productId:'{{item._id}}'})">
-                    <img ng-src="/modules/products/client/img/{{item.name}}.jpg" class="img-responsive">
+                    <img ng-src="/modules/products/client/img/{{item.name}}.jpg" class="img-responsive product-image">
                   </a>
                 </div>
               </div>
@@ -28,10 +28,10 @@
               </div>
               <div class="price">
                 <h5>
-                  ${{item.price}}.00 {{item.discount}}
+                  {{item.price}} <span class="discount">{{item.discount}}</span>
                 </h5>
                 <a>
-                  <button type="button" class="btn bnshape-button btn-lg bnshape-button" ng-click="add_cart(item._id,item.price)">
+                  <button type="button" class="btn bnshape-button btn-lg bnshape-button" ng-click="add_cart(item._id,item.price, item.sizes)">
                     <span class="glyphicon glyphicon-shopping-cart">
                     </span>
                     <strong>
@@ -39,6 +39,17 @@
                     </strong>
                   </button>
                 </a>
+                <div ng-show="item.sizes.length > 0">
+                  <div ng-show="adding && adding_id == item._id">
+                    <span class="required">*</span>
+                    <b>Select Size:</b>
+                    <ul ng-repeat="size in item.sizes">
+                      <input name="s" type="radio" ng-model="$parent.$parent.selected_size" value="{{size}}">
+                      <label for="s">{{size}}</label>
+                    </ul>
+                    <a ng-click="un_add()">Cancel</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -7,25 +7,42 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
     $scope.success_add = false;
     $scope.products = [];
     $scope.display_products = [];
+    $scope.adding = false;
+    $scope.adding_id = "";
+    //$scope.selected_size = "";
 
     $scope.init_product = function(){
-      console.log("hi");
       $scope.products = Products.query();
       $scope.display_products = $scope.products;
       //console.log($scope.products);
     };
 
-    $scope.add_cart = function(_id, price){
-        var prevCookie = "";
-        prevCookie = $cookieStore.get('cart');
-        var updatedCookie = _id;
-        if(prevCookie !== undefined){
-          $cookieStore.remove('cart');
-          updatedCookie = prevCookie + "&" + _id;
+    $scope.add_cart = function(_id, price, sizes){
+        if(sizes.length === 0){
+          $scope.adding = true;
+          $scope.selected_size = "N/A";
         }
-        $cookieStore.put('cart',updatedCookie);
-        $rootScope.$broadcast('cart_update', { newCookie: updatedCookie, price: parseFloat(price.split('$')[1])});
-        $state.go('cart');
+        if($scope.adding === true){
+            if($scope.selected_size !== undefined) {
+            var prevCookie = "";
+            prevCookie = $cookieStore.get('cart');
+            var updatedCookie = _id + "-" + $scope.selected_size;
+            if(prevCookie !== undefined){
+              $cookieStore.remove('cart');
+              updatedCookie = prevCookie + "&" + _id + "-" + $scope.selected_size;
+            }
+            $cookieStore.put('cart',updatedCookie);
+            $rootScope.$broadcast('cart_update', { newCookie: updatedCookie, price: parseFloat(price.split('$')[1])});
+            $state.go('cart');
+          } else {
+            alert("select size please");
+          }
+        } else {
+          $scope.adding = true;
+          $scope.adding_id = _id;
+        }
+
+
     };
 
     $scope.create = function () {
@@ -52,6 +69,10 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
       }, function (errorResponse) {
         console.log("errored");
       });
+    };
+
+    $scope.parse_price = function(priceString) {
+        return parseFloat(priceString.split('$')[1]);
     };
 
     $scope.filter_category = function (category, subcategory) {
@@ -102,12 +123,12 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
       console.log($scope.display_products);
       if (str === "high") {
         $scope.display_products.sort(function(a, b) {
-          return b.price-a.price;
+          return $scope.parse_price(b.price)-$scope.parse_price(a.price);
         });
       }
       else if (str === "low") {
         $scope.display_products.sort(function(a, b) {
-          return a.price-b.price;
+          return $scope.parse_price(a.price)-$scope.parse_price(b.price);
         });
       }
     };
@@ -126,6 +147,11 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
 
     $scope.display_all = function () {
       $scope.display_products = $scope.products;
+    };
+
+    $scope.un_add = function () {
+      $scope.adding = false;
+      $scope.adding_id = "";
     };
   }
 ]);
