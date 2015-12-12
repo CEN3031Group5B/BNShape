@@ -2,18 +2,35 @@
   <div class="container-fluid">
     <div class="row">
     <!-- From BNShape -->
-    <div class="col-md-3">
+<!--     <div class="col-md-3">
       <section ng-include="'/modules/products/client/views/side-bar.client.view.html'" class="sidebar-products"></section>
-    </div>
-    <div class="col-md-9 product-info" style="padding-top:65px">
+    </div> -->
+    <div class="col-md-12 product-info" style="padding-top:65px">
       <div>
-        <div class="col-md-5 left image-panel">
-          <div class="image"><a href="http://bnshapeclothing.com/image/cache/data/website_DSC_0241-800x1021.jpg" class="product-image-link"><div style="height:414px; width:324px;" class="zoomWrapper"><img style="position: absolute; height:414px; width:324px;" id="main-image" ng-src="/modules/products/client/img/{{this_product.name}}.jpg"></div></a></div>
+        <div class="col-md-4 left image-panel">
+          <div class="image"><div style="height:414px; width:324px;" class="zoomWrapper"><img style="position: absolute; height:414px; width:324px;" id="main-image" ng-src="{{imageURL}}"></div></a></div>
+          <div ng-show="admin == true">
+            <div class="form-group product-pic-upload" ng-hide="uploader.queue.length">
+              <span class="btn btn-file bnshape-button">
+                  Select Image <input type="file" nv-file-select uploader="uploader">
+              </span>
+            </div>
+            <div class="form-group product-pic-upload" ng-show="uploader.queue.length">
+              <button class="btn bnshape-button" ng-click="uploadProfilePicture();">Upload</button>
+              <button class="btn bnshape-button" ng-click="cancelUpload();">Cancel</button>
+            </div>
+            <div ng-show="success" class="text-success">
+              <strong>Picture Uploaded Successfully</strong>
+            </div>
+            <div ng-show="error" class="text-danger">
+              <strong ng-bind="error"></strong>
+            </div>
+          </div>
           <a href="#" ng-show="admin_eligible == true" ng-click="newProduct()" >Create New Product Page</a><br>
           <a href="#" ng-show="admin_eligible == true" ng-click="cloneProduct()" >Clone Product Page</a><br>
           <a href="#" ng-show="admin_eligible == true" ng-click="admin = !admin" >Toggle Administrative View</a><br>
         </div>
-        <div class="col-md-7 right">
+        <div class="col-md-8 right">
           <!-- Product Description
                 * Product Name
                 * Reviews
@@ -88,7 +105,7 @@
             <div>
             <div class="custom-block"><span style="color: rgb(102, 102, 102); font-family: 'arial black', 'avant garde'; font-size: 14px; line-height: 14px;">***INTERNATIONAL ORDERS: ALLOW 14 BUSINESS DAYS FOR DELIVERY***</span></div>
               <div>
-                <button id="button-cart" style="color:#FFF" type="button" class="btn-lg bnshape-button" ng-click="add_cart(this_product_id,this_product.price, qty)">
+                <button id="button-cart" style="color:#FFF" type="button" class="btn-lg bnshape-button" ng-click="add_cart(this_product_id,this_product.price, qty, this_product.discount)">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                     <strong>ADD TO CART</strong>
                 </button>

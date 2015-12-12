@@ -34,7 +34,11 @@ angular.module('products').controller('OrderController', ['$scope', '$rootScope'
     $scope.found_one_cb = function(data){
         var priceString = data.price;
         var price = parseFloat(priceString.split('$')[1]);
-        $scope.cart_total += price;
+        var dis = 0.0;
+        if(data.discount !== ""){
+            dis = $scope.parse_discount(data.discount);
+        }
+        $scope.cart_total += price * (1+dis);
 
         var add_id = "";
         var i = 0;
@@ -77,6 +81,13 @@ angular.module('products').controller('OrderController', ['$scope', '$rootScope'
 				state_change(); //destroys event
 			});
 	};
+
+    $scope.parse_discount = function(discountString) {
+        var discNum =  discountString.split("%")[0];
+        var discFloat = parseFloat(discNum);
+        var lessThanOne = discFloat / 100;
+        return lessThanOne;
+    };
 
 	$scope.confirm = function(){
 		//all valid as well

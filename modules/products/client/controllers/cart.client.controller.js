@@ -8,10 +8,8 @@ angular.module('products').controller('CartController', ['$scope', '$rootScope',
     $scope.cart_items = []; //all the ids of the products in cart
     $scope.cart_total = 0.00;
     $scope.display_items = []; //the actual products with attributes
-    $scope.filter_items = [];
-    $scope.cart_products = [];
-    $scope.quantity_dict = {};
-    $scope.size_dict = {};
+    $scope.filter_items = []; //used to help filter sizes
+    $scope.quantity_dict = {}; //maps cookie string with quantity
 
     $scope.getItems = function () {
       var current_items = String($cookieStore.get('cart'));
@@ -23,7 +21,6 @@ angular.module('products').controller('CartController', ['$scope', '$rootScope',
     };
 
     $scope.filter = function() {
-        //"562bc2f8b82bbbf8f91f72ba"
         var i = 0;
         for(i = 0; i < $scope.cart_items.length; i++){
             var product = $scope.findOne($scope.cart_items[i].split("-")[0],$scope.found_one_cb);
@@ -32,7 +29,11 @@ angular.module('products').controller('CartController', ['$scope', '$rootScope',
     $scope.found_one_cb = function(data){
         var priceString = data.price;
         var price = parseFloat(priceString.split('$')[1]);
-        $scope.cart_total += price;
+        var dis = 0.0;
+        if(data.discount !== ""){
+            dis = $scope.parse_discount(data.discount);
+        }
+        $scope.cart_total += price * (1+dis);
 
         var add_id = "";
         var i = 0;
@@ -58,27 +59,38 @@ angular.module('products').controller('CartController', ['$scope', '$rootScope',
         return parseFloat(priceString.split('$')[1]);
     };
 
+    $scope.parse_discount = function(discountString) {
+        var discNum =  discountString.split("%")[0];
+        var discFloat = parseFloat(discNum);
+        var lessThanOne = discFloat / 100;
+        return lessThanOne;
+    };
+
     $scope.findOne = function (_product_id,cb) {
       return Products.get({productId: _product_id},cb);
     };
 
-    $scope.save_edit_cart = function(_id, updated_quantity, price, size){
+    $scope.save_edit_cart = function(_id, updated_quantity, price, size, discount){
         if(updated_quantity !== undefined){ //if no change in select then this occurs
             var current_quantity = $scope.quantity_dict[_id + "-" + size];
-            if(current_quantity !== updated_quantity){
+            if(current_quantity !== parseInt(updated_quantity)){
                 $scope.quantity_dict[_id + "-" + size] = updated_quantity;
-                if(updated_quantity < current_quantity){
-                    var num_to_delete = current_quantity - updated_quantity;  
+                var adj_price = parseFloat(price);
+                if(discount !== ""){
+                  adj_price = adj_price * (1+$scope.parse_discount(discount));
+                }
+                if(parseInt(updated_quantity) < current_quantity){
+                    var num_to_delete = current_quantity - parseInt(updated_quantity);  
                     $scope.cart_items.sort(); //organize so we can easily splice
                     var index = $scope.cart_items.indexOf(_id + "-" + size);
                     $scope.cart_items.splice(index, num_to_delete);
-                    $scope.cart_total -= num_to_delete * price;
+                    $scope.cart_total -= num_to_delete * adj_price;
                 } else {
-                    var num_to_add = updated_quantity - current_quantity;
+                    var num_to_add = parseInt(updated_quantity) - current_quantity;
                     for(var i = 0; i < num_to_add; i++){
                         $scope.cart_items.push(_id + "-" + size);
                     }
-                    $scope.cart_total += num_to_add * price;
+                    $scope.cart_total += num_to_add * adj_price;
                 }
                 $cookieStore.remove('cart');
                 $cookieStore.put('cart', $scope.cart_items.join("&"));
@@ -92,7 +104,7 @@ angular.module('products').controller('CartController', ['$scope', '$rootScope',
         $scope.editing_index = index;
     };
 
-    $scope.quick_delete_cart = function(productId, quantity, index_to_delete, size){
+    $scope.quick_delete_cart = function(productId, quantity, index_to_delete, size, discount){
         var num_to_delete = quantity;
         $scope.cart_items.sort(); //organize so we can easily splice
         for(var index = 0; index < $scope.cart_items.length; index++){
@@ -103,7 +115,11 @@ angular.module('products').controller('CartController', ['$scope', '$rootScope',
         }
         /**update total**/
         var deleted_product = $scope.display_items[index_to_delete];
-        var deleted_price = quantity * parseFloat(deleted_product.price.split('$')[1]);
+        var price = parseFloat(deleted_product.price.split('$')[1]);
+        if(discount !== ""){
+          price = price * (1+$scope.parse_discount(discount));
+        }
+        var deleted_price = quantity * price;
         $scope.cart_total -= deleted_price;
 
         /***update cart**/

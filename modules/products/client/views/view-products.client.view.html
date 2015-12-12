@@ -17,7 +17,7 @@
               <div class="thumb">
                 <div class="image">
                   <a ui-sref="products.view({productId:'{{item._id}}'})">
-                    <img ng-src="/modules/products/client/img/{{item.name}}.jpg" class="img-responsive product-image">
+                    <img ng-src="/modules/products/client/img/products/{{item.name}}.jpg" class="img-responsive product-image">
                   </a>
                 </div>
               </div>
@@ -31,7 +31,7 @@
                   {{item.price}} <span class="discount">{{item.discount}}</span>
                 </h5>
                 <a>
-                  <button type="button" class="btn bnshape-button btn-lg bnshape-button" ng-click="add_cart(item._id,item.price, item.sizes)">
+                  <button type="button" class="btn bnshape-button btn-lg bnshape-button" ng-click="add_cart(item._id,item.price, item.sizes, item.discount)">
                     <span class="glyphicon glyphicon-shopping-cart">
                     </span>
                     <strong>
@@ -50,6 +50,14 @@
                     <a ng-click="un_add()">Cancel</a>
                   </div>
                 </div>
+                <a ng-show="admin">
+                  <button type="button" class="btn btn-block btn-danger delete-button" ng-click="delete_product(item)">
+                    </span>
+                    <strong>
+                      DELETE
+                    </strong>
+                  </button>
+                </a>
               </div>
             </div>
           </div>

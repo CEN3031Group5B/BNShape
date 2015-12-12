@@ -203,8 +203,9 @@
                                         </td>
                                         <td class="model">{{item.code}}</td>
                                         <td class="quantity">{{quantity_dict[item._id + "-" + item._size_id]}}</td>
-                                        <td class="price">{{item.price}}</td>
-                                        <td class="total">${{(quantity_dict[item._id + "-" + item._size_id] * parse_price(item.price)).toFixed(2)}}</td>
+                                        <td class="price">{{item.price}} <span ng-show="item.discount !== ''"class="discount">{{item.discount}}</td>
+                                        <td ng-if="item.discount === ''" class="total">${{(quantity_dict[item._id + "-" + item._size_id] * parse_price(item.price)).toFixed(2)}}</td>
+                                        <td ng-if="item.discount !== ''" class="total">${{(quantity_dict[item._id + "-" + item._size_id] * (parse_price(item.price)).toFixed(2) * (1+parse_discount(item.discount))).toFixed(2)}}</td>
                                       </tr>
                                   </tbody>
                                   <tfoot>
@@ -213,7 +214,7 @@
                                         <td class="total">$ {{cart_total.toFixed(2)}}</td>
                                       </tr>
                                       <tr>
-                                        <td colspan="4" class="price"><b>USA  (Weight: 0.44lb):</b></td>
+                                        <td colspan="4" class="price"><b>USA:</b></td>
                                         <td class="total">$ {{shipping_price.toFixed(2)}}</td>
                                       </tr>
                                       <tr>

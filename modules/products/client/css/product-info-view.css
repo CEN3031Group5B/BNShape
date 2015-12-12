@@ -176,3 +176,7 @@ input[type="text"], input[type="password"] {
     color: #000;
     line-height: 2;
 }
+
+.product-pic-upload {
+    padding-top:10px;
+}
