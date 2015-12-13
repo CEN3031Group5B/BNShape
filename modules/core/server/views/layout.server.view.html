@@ -36,13 +36,15 @@
 </head>
 
 <body class="ng-cloak">
+  // Header
   <header ng-include="'/modules/core/client/views/header.client.view.html'" class="navbar navbar-fixed-top"></header>
   <section class="content">
+    // Body section of the site, changes according to the state view
     <section>
       {% block content %}{% endblock %}
     </section>
   </section>
-
+  // Footer
   <section class="footer">
     <footer ng-include="'/modules/core/client/views/footer.client.view.html'"></footer>
   </section>
