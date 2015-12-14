@@ -1,6 +1,42 @@
-[![BNShape Logo](./modules/core/client/img/brand/bnshapelogo_black.png)](http://bnshapeclothing.org/)
+[![BNShape Logo](./modules/core/client/img/brand/bnshapelogo_black.png)](http://bnshapeclothing.com/)
 
 B.N. Shape Clothing was founded by Dr. Dozie Onunkwo, but it is more than just a clothing brand. It focuses on encouraging individuals to maintain a healthy lifestyle through fitness and appropriate eating habits.
+
+## Deployed Site
+Browse our current site at [https://mysterious-brook-4241.herokuapp.com/](https://mysterious-brook-4241.herokuapp.com/).
+
+## Implented Features
+* Product browsing
+* Product creation and editing
+* BNShape Twitter feed
+* Notification system
+* Cart
+* Product viewing
+* Order page
+
+## Screenshots
+* Landing page
+	<img src="screenshots/12-14-2015/landing-page.jpg" />
+* Products page (user & admin)
+	* user
+	<img src="screenshots/12-14-2015/product-page.jpg" />
+	* admin
+	<img src="screenshots/12-14-2015/admin-product-view.jpg" />
+* Product view (user & admin)
+	* user
+	<img src="screenshots/12-14-2015/product-view.jpg" />
+	* admin
+	<img src="screenshots/12-14-2015/admin-product-edit-view.jpg" />
+* Notifications (creation & list)
+	* creation
+	<img src="screenshots/12-14-2015/admin-create-notification-view.jpg" />
+	* list
+	<img src="screenshots/12-14-2015/notification-view.jpg" />
+* Cart
+	<img src="screenshots/12-14-2015/cart-view.jpg" />
+* Order page
+	<img src="screenshots/12-14-2015/order-view.jpg" />
+* To view more checkout /screenshots directory!
 
 ## How To Get Started
 Make sure you have installed all of the following prerequisites on your development machine:
@@ -19,7 +55,7 @@ $ npm install -g grunt-cli
 ```
 
 ## Downloading Our Repository
-This should be used by future CEN3031 groups working with Dr. Dozie
+This should be used by future CEN3031 groups working with Dr. Dozie.
 
 ### Cloning The GitHub Repository
 The recommended way to download our repository is to use git to directly clone:
@@ -43,7 +79,7 @@ $ npm install
 This command does a few things:
 * First it will install the dependencies needed for the application to run.
 * If you're running in a development environment, it will then also install development dependencies needed for testing and running your application.
-* Finally, when the install process is over, npm will initiate a bower install command to install all the front-end modules needed for the application
+* Finally, when the install process is over, npm will initiate a bower install command to install all the front-end modules needed for the application.
 
 ## How To Run
 After the install process is over, you'll be able to run your application using Grunt, just run grunt default task:
@@ -52,16 +88,17 @@ After the install process is over, you'll be able to run your application using 
 $ grunt
 ```
 
-Your application should run on port 3000 with the *development* environment configuration, so in your browser just go to [http://localhost:3000](http://localhost:3000)
+The application should run on port 3000 with the *development* environment configuration, so in your browser just go to [http://localhost:3000](http://localhost:3000).
 
-That's it! Your application should be running.
+That's it! The application should be running.
 
 ## How To Troubleshoot
-Since our application was created using the MEAN.js boilerplate we recommend you visit the [MEAN](https://github.com/meanjs/mean) repository directly for more information. Also, we recommend you go over the [Official Documentation](http://meanjs.org/docs.html) for additional advice.
-
-## Deployed Site
-Browse our current site at [https://mysterious-brook-4241.herokuapp.com/](https://mysterious-brook-4241.herokuapp.com/).
+Since our application was created using the MEAN.js boilerplate we recommend you visit the [MEAN](https://github.com/meanjs/mean) repository directly for more information. Also, we recommend you go over the [Official MEAN.js Documentation](http://meanjs.org/docs.html) for additional advice.
 
 ## Credits
-Inspired by the great work of [Madhusudhan Srinivasa](https://github.com/madhums/)
-The MEAN name was coined by [Valeri Karpov](http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and)
+* MEAN.js (https://github.com/meanjs/mean)
+* Bootstrap (http://getbootstrap.com/)
+* Twitter Widget (https://support.twitter.com/articles/20170071?lang=en)
+* Angularjs (https://angularjs.org/)
+* BNShape clothing (http://bnshapeclothing.com/)
+* IshanDemon (https://github.com/IshanDemon/List_Country_State)
