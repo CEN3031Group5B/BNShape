@@ -1,14 +1,28 @@
 'use strict';
 
 // Product View controller
-angular.module('products').controller('ProductViewController', ['$scope', '$rootScope','$stateParams', '$state', '$location', 'Authentication', 'Products', '$cookieStore',
-  function ($scope, $rootScope, $stateParams, $state, $location, Authentication, Products, $cookieStore) {
+angular.module('products').controller('ProductViewController', ['$scope', '$rootScope','$stateParams', '$state', '$location', 'Authentication', 'Products', '$cookieStore', 'FileUploader', '$timeout', '$window',
+  function ($scope, $rootScope, $stateParams, $state, $location, Authentication, Products, $cookieStore, FileUploader, $timeout, $window) {
     $scope.authentication = Authentication;
     $scope.this_product_id = $stateParams.productId;
-    $scope.this_product = Products.get({ productId: $scope.this_product_id });
-        //, function() { console.log($scope.this_product); });
+    $scope.this_product = Products.get({ productId: $scope.this_product_id }, function(data) { 
+          $scope.imageURL = "/modules/products/client/img/products/" + $scope.this_product.name + ".jpg"; 
+    });
     $scope.qty = 1;
     $scope.user = $scope.authentication.user;
+
+    $scope.uploader = new FileUploader({
+      url: 'api/products/picture/' + $scope.this_product_id
+    });
+
+    // Set file uploader image filter
+    $scope.uploader.filters.push({
+      name: 'imageFilter',
+      fn: function (item, options) {
+        var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+        return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+      }
+    });
 
     if ($scope.user.roles !== undefined)
         $scope.admin_eligible = ($scope.user.roles.indexOf("admin") > -1);
@@ -69,22 +83,6 @@ angular.module('products').controller('ProductViewController', ['$scope', '$root
 	    }
 	    return this;
 	};
-
-    $scope.add_cart = function(_id){
-        var prevCookie = "";
-        prevCookie = $cookieStore.get('cart');
-        var updatedCookie = _id;
-        if(prevCookie !== undefined){
-          $cookieStore.remove('cart');
-          updatedCookie = prevCookie + "&" + _id;
-        }
-        // Add the quantity of products
-        for ( var i = 0; i < $scope.qty - 1; ++i )
-          updatedCookie += "&" + _id;
-        $cookieStore.put('cart',updatedCookie);
-        $rootScope.$broadcast('cart_update', { newCookie: updatedCookie});
-        $state.go('cart');
-    };
 
     $scope.newProduct = function () {
       //fill with actual data
@@ -150,7 +148,7 @@ angular.module('products').controller('ProductViewController', ['$scope', '$root
       });
     };
 
-    $scope.add_cart = function(_id, price, quantity){
+    $scope.add_cart = function(_id, price, quantity, discount){
         if($scope.this_product.sizes.length === 0){
           $scope.selected_size = "N/A";
         }
@@ -169,13 +167,76 @@ angular.module('products').controller('ProductViewController', ['$scope', '$root
             $cookieStore.remove('cart');
             updatedCookie = prevCookie + "&" + updatedCookie;
           }
+
+          var disc_price = price;
+          if(discount !== ""){
+            disc_price = parseFloat(price.split('$')[1]) * (1+$scope.parse_discount(discount));
+          }
           $cookieStore.put('cart',updatedCookie);
-          $rootScope.$broadcast('cart_update', { newCookie: updatedCookie, price: quantity*parseFloat(price.split('$')[1])});
+          $rootScope.$broadcast('cart_update', { newCookie: updatedCookie, price: quantity*disc_price});
           $state.go('cart');
         } else {
           alert("select size please");
         }
        
+    };
+
+    $scope.parse_discount = function(discountString) {
+        var discNum =  discountString.split("%")[0];
+        var discFloat = parseFloat(discNum);
+        var lessThanOne = discFloat / 100;
+        return lessThanOne;
+    };    
+
+    // Called after the user selected a new picture file
+    $scope.uploader.onAfterAddingFile = function (fileItem) {
+      if ($window.FileReader) {
+        var fileReader = new FileReader();
+        fileReader.readAsDataURL(fileItem._file);
+
+        fileReader.onload = function (fileReaderEvent) {
+          $timeout(function () {
+            $scope.imageURL = fileReaderEvent.target.result;
+          }, 0);
+        };
+      }
+    };
+
+    // Called after the user has successfully uploaded a new picture
+    $scope.uploader.onSuccessItem = function (fileItem, response, status, headers) {
+      // Show success message
+      $scope.success = true;
+
+      // Clear upload buttons
+      $scope.cancelUpload();
+
+      $scope.imageURL = "/modules/products/client/img/products/" + $scope.this_product.name + ".jpg";
+
+      $scope.$apply();
+    };
+
+    // Called after the user has failed to uploaded a new picture
+    $scope.uploader.onErrorItem = function (fileItem, response, status, headers) {
+      // Clear upload buttons
+      $scope.cancelUpload();
+
+      // Show error message
+      $scope.error = response.message;
+    };
+
+    // Change user profile picture
+    $scope.uploadProfilePicture = function () {
+      // Clear messages
+      $scope.success = $scope.error = null;
+
+      // Start upload
+      $scope.uploader.uploadAll();
+    };
+
+    // Cancel the upload process
+    $scope.cancelUpload = function () {
+      $scope.uploader.clearQueue();
+      $scope.imageURL = "/modules/products/client/img/products/" + $scope.this_product.name + ".jpg";
     };
   }
 ]);

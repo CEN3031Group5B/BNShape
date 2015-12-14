@@ -125,3 +125,7 @@
     width:100%;
     height:300px;
 }
+
+.delete-button {
+    margin-top:10px;
+}

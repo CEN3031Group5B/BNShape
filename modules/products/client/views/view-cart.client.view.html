@@ -27,7 +27,7 @@
 			            <tbody>
 			              <tr ng-repeat="item in display_items track by $index">
 				                <td class="image">
-                    				<img ng-src="/modules/products/client/img/{{item.name}}.jpg" class="img-responsive img-cart" alt="{{item.name}}">
+                    				<img ng-src="/modules/products/client/img/products/{{item.name}}.jpg" class="img-responsive img-cart" alt="{{item.name}}">
 				                </td>
 				                <td class="name">
 				                	{{item.name}}
@@ -40,12 +40,13 @@
 								      <option ng-repeat="n in [1,2,3,4,5,6,7,8,9,10]" value="{{n}}" ng-selected="n == quantity_dict[item._id]">{{n}}</option>
 								    </select>
 				                </td>
-				                <td class="price">{{item.price}}</td>
-				                <td class="total">${{(quantity_dict[item._id + "-" + item._size_id] * parse_price(item.price)).toFixed(2)}}</td>
+				                <td class="price">{{item.price}}<span ng-show="item.discount !== ''" class="discount">{{item.discount}}</span></td>
+				                <td ng-if="item.discount === ''" class="total">${{(quantity_dict[item._id + "-" + item._size_id] * parse_price(item.price)).toFixed(2)}}</td>
+				                <td ng-if="item.discount !== ''" class="total">${{(quantity_dict[item._id + "-" + item._size_id] * (parse_price(item.price)).toFixed(2) * (1+parse_discount(item.discount))).toFixed(2)}}</td>
 				                <td class="action">
-				                	<span class="glyphicon glyphicon-remove remove" ng-click="quick_delete_cart(item._id,quantity_dict[item._id + '-' + item._size_id],$index,item._size_id)"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+				                	<span class="glyphicon glyphicon-remove remove" ng-click="quick_delete_cart(item._id,quantity_dict[item._id + '-' + item._size_id],$index,item._size_id, item.discount)"></span>&nbsp;&nbsp;&nbsp;&nbsp;
 				                	<span class="glyphicon glyphicon-edit edit" ng-click="start_edit($index)" ng-hide="editing_index == $index"></span>
-				                	<span class="glyphicon glyphicon-ok-sign save" ng-show="editing_index == $index" ng-click="save_edit_cart(item._id, select, parse_price(item.price), item._size_id)"></span>
+				                	<span class="glyphicon glyphicon-ok-sign save" ng-show="editing_index == $index" ng-click="save_edit_cart(item._id, select, parse_price(item.price), item._size_id, item.discount)"></span>
 				            	</td>
 			              </tr>
 			              </tbody>

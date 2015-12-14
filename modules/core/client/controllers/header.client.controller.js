@@ -63,6 +63,9 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
     };
     $scope.found_one_cb = function(data){
        var item_price = $scope.parse_price(data.price);
+        if(data.discount !== ""){
+          item_price = item_price * (1+$scope.parse_discount(data.discount));
+        }
        $scope.price += item_price;
     };
 
@@ -70,5 +73,11 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
         return parseFloat(priceString.split('$')[1]);
     };
 
+    $scope.parse_discount = function(discountString) {
+        var discNum =  discountString.split("%")[0];
+        var discFloat = parseFloat(discNum);
+        var lessThanOne = discFloat / 100;
+        return lessThanOne;
+    };
   }
 ]);
