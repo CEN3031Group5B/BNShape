@@ -97,7 +97,7 @@ Your application should run on port 3000 with the *development* environment conf
 That's it! Your application should be running.
 
 ## How To Troubleshoot
-Since our application was created using the MEAN.js boilerplate we recommend you visit the [MEAN](https://github.com/meanjs/mean) repository directly for more information. Also, we recommend you go over the [Official Documentation](http://meanjs.org/docs.html) for additional advice.
+Since our application was created using the MEAN.js boilerplate we recommend you visit the [MEAN](https://github.com/meanjs/mean) repository directly for more information. Also, we recommend you go over the [Official MEAN.js Documentation](http://meanjs.org/docs.html) for additional advice.
 
 ## Credits
 * MEAN.js (https://github.com/meanjs/mean)
