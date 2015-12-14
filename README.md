@@ -100,3 +100,4 @@ Since our application was created using the MEAN.js boilerplate we recommend you
 * Bootstrap (http://getbootstrap.com/)
 * Twitter Widget (https://support.twitter.com/articles/20170071?lang=en)
 * Angularjs (https://angularjs.org/)
+* BNShape clothing (http://bnshapeclothing.com/)
