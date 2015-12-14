@@ -38,10 +38,6 @@ Browse our current site at [https://mysterious-brook-4241.herokuapp.com/](https:
 	<img src="screenshots/12-14-2015/order-view.jpg" />
 * To view more checkout /screenshots directory!
 
-
-	
-	
-
 ## How To Get Started
 Make sure you have installed all of the following prerequisites on your development machine:
 * Node.js - [Download & Install Node.js](http://www.nodejs.org/download/) and the npm package manager. If you encounter any problems, you can also use this [GitHub Gist](https://gist.github.com/isaacs/579814) to install Node.js.
@@ -92,9 +88,9 @@ After the install process is over, you'll be able to run your application using 
 $ grunt
 ```
 
-Your application should run on port 3000 with the *development* environment configuration, so in your browser just go to [http://localhost:3000](http://localhost:3000)
+The application should run on port 3000 with the *development* environment configuration, so in your browser just go to [http://localhost:3000](http://localhost:3000)
 
-That's it! Your application should be running.
+That's it! The application should be running.
 
 ## How To Troubleshoot
 Since our application was created using the MEAN.js boilerplate we recommend you visit the [MEAN](https://github.com/meanjs/mean) repository directly for more information. Also, we recommend you go over the [Official MEAN.js Documentation](http://meanjs.org/docs.html) for additional advice.
