@@ -2,6 +2,46 @@
 
 B.N. Shape Clothing was founded by Dr. Dozie Onunkwo, but it is more than just a clothing brand. It focuses on encouraging individuals to maintain a healthy lifestyle through fitness and appropriate eating habits.
 
+## Deployed Site
+Browse our current site at [https://mysterious-brook-4241.herokuapp.com/](https://mysterious-brook-4241.herokuapp.com/).
+
+## Implented Features
+* Product browsing
+* Product creation and editing
+* BNShape Twitter feed
+* Notification system
+* Cart
+* Product viewing
+* Order page
+
+## Screenshots
+* Landing page
+	<img src="screenshots/12-14-2015/landing-page.jpg" />
+* Products page (user & admin)
+	* user
+	<img src="screenshots/12-14-2015/product-page.jpg" />
+	* admin
+	<img src="screenshots/12-14-2015/admin-product-view.jpg" />
+* Product view (user & admin)
+	* user
+	<img src="screenshots/12-14-2015/product-view.jpg" />
+	* admin
+	<img src="screenshots/12-14-2015/admin-product-edit-view.jpg" />
+* Notifications (creation & list)
+	* creation
+	<img src="screenshots/12-14-2015/admin-create-notification-view.jpg" />
+	* list
+	<img src="screenshots/12-14-2015/notification-view.jpg" />
+* Cart
+	<img src="screenshots/12-14-2015/cart-view.jpg" />
+* Order page
+	<img src="screenshots/12-14-2015/order-view.jpg" />
+* To view more checkout /screenshots directory!
+
+
+	
+	
+
 ## How To Get Started
 Make sure you have installed all of the following prerequisites on your development machine:
 * Node.js - [Download & Install Node.js](http://www.nodejs.org/download/) and the npm package manager. If you encounter any problems, you can also use this [GitHub Gist](https://gist.github.com/isaacs/579814) to install Node.js.
@@ -59,9 +99,8 @@ That's it! Your application should be running.
 ## How To Troubleshoot
 Since our application was created using the MEAN.js boilerplate we recommend you visit the [MEAN](https://github.com/meanjs/mean) repository directly for more information. Also, we recommend you go over the [Official Documentation](http://meanjs.org/docs.html) for additional advice.
 
-## Deployed Site
-Browse our current site at [https://mysterious-brook-4241.herokuapp.com/](https://mysterious-brook-4241.herokuapp.com/).
-
 ## Credits
-Inspired by the great work of [Madhusudhan Srinivasa](https://github.com/madhums/)
-The MEAN name was coined by [Valeri Karpov](http://blog.mongodb.org/post/49262866911/the-mean-stack-mongodb-expressjs-angularjs-and)
+* MEAN.js (https://github.com/meanjs/mean)
+* Bootstrap (http://getbootstrap.com/)
+* Twitter Widget (https://support.twitter.com/articles/20170071?lang=en)
+* Angularjs (https://angularjs.org/)
