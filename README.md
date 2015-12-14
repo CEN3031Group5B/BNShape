@@ -1,4 +1,4 @@
-[![BNShape Logo](./modules/core/client/img/brand/bnshapelogo_black.png)](http://bnshapeclothing.org/)
+[![BNShape Logo](./modules/core/client/img/brand/bnshapelogo_black.png)](http://bnshapeclothing.com/)
 
 B.N. Shape Clothing was founded by Dr. Dozie Onunkwo, but it is more than just a clothing brand. It focuses on encouraging individuals to maintain a healthy lifestyle through fitness and appropriate eating habits.
 
