@@ -24,6 +24,7 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
     };
 
     $scope.add_cart = function(_id, price, sizes, discount){
+      //cookie in format: _id-size&_id-size&etc....
         if(sizes.length === 0){
           $scope.adding = true;
           $scope.selected_size = "N/A";

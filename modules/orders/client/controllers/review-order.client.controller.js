@@ -10,7 +10,7 @@ angular.module('products').controller('OrderController', ['$scope', '$rootScope'
 	$scope.cart_items = [];
 	$scope.quantity_dict = {};
 	$scope.display_items = [];
-  $scope.filter_items = [];
+    $scope.filter_items = [];
 	$scope.cart_total = 0.00;
 	$scope.shipping_price = 5.00;
 
@@ -91,6 +91,7 @@ angular.module('products').controller('OrderController', ['$scope', '$rootScope'
 
 	$scope.confirm = function(){
 		//all valid as well
+        //ToDo: figure out how to integrate with paypal
 		if($scope.terms){
 			
 			$window.open('https://www.paypal.com', '_blank');
