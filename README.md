@@ -55,7 +55,7 @@ $ npm install -g grunt-cli
 ```
 
 ## Downloading Our Repository
-This should be used by future CEN3031 groups working with Dr. Dozie
+This should be used by future CEN3031 groups working with Dr. Dozie.
 
 ### Cloning The GitHub Repository
 The recommended way to download our repository is to use git to directly clone:
@@ -79,7 +79,7 @@ $ npm install
 This command does a few things:
 * First it will install the dependencies needed for the application to run.
 * If you're running in a development environment, it will then also install development dependencies needed for testing and running your application.
-* Finally, when the install process is over, npm will initiate a bower install command to install all the front-end modules needed for the application
+* Finally, when the install process is over, npm will initiate a bower install command to install all the front-end modules needed for the application.
 
 ## How To Run
 After the install process is over, you'll be able to run your application using Grunt, just run grunt default task:
@@ -88,7 +88,7 @@ After the install process is over, you'll be able to run your application using 
 $ grunt
 ```
 
-The application should run on port 3000 with the *development* environment configuration, so in your browser just go to [http://localhost:3000](http://localhost:3000)
+The application should run on port 3000 with the *development* environment configuration, so in your browser just go to [http://localhost:3000](http://localhost:3000).
 
 That's it! The application should be running.
 
