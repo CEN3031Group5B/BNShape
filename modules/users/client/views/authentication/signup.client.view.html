@@ -3,8 +3,14 @@
 
   <div ng-controller="AuthenticationController">
     <h3 class="col-md-12">Register Account</h3>
+    <!--  
+        Changed some text to mirror the actual website
+    -->
     <h5 class="col-md-12">If you already have an account with us, please login <a ui-sref="authentication.signin" class="here-link">here</a>.<br></br></h5>
     <br><br><br>
+    <!--
+      Line that divides the fields/title
+    -->
             <div class="divider">
          </div>
      <h4 class="col-md-12">Your Personal Details<br></br></h4>
@@ -12,6 +18,9 @@
     <div class="row">
         <div class="col-md-6">
             <fieldset>
+            <!--
+                Every field that is required will have a red asterick next to it and should have an error message when nothing is filled in its place.
+            -->
 
               <div class="form-group" show-errors>
                 <label for="firstName"><span class="required">*</span>First Name:</label>
@@ -37,7 +46,9 @@
                   <p class="help-block error-text" ng-message="email">Email address is invalid.</p>
                 </div>
               </div>
-
+             <!--
+                Added an username field
+              -->
               <div class="form-group" show-errors>
                 <label for="username"><span class="required">*</span>Username</label>
                 <input type="text" id="username" name="username" class="form-control" ng-model="credentials.username" placeholder="Username" lowercase required>
@@ -51,6 +62,9 @@
 
         <div class="col-md-6">
          <fieldset>
+             <!--
+                Added a telephone field
+              -->
                   <div class="form-group" show-errors>
                   <label for="firstName"><span class="required">*</span>Telephone:</label>
                   <input type="text" id="telephone" name="telephone" class="form-control" ng-model="credentials.telephone" placeholder="Telephone" required>
@@ -58,22 +72,32 @@
                 <p class="help-block error-text" ng-message="required">Telephone is required.</p>
               </div>
                 </div>
-
+             <!--
+                Added a fax number field
+              -->
                 <div class="form-group">
                   <label for="firstName">Fax:</label>
                   <input type="text" id="fax" name="fax" class="form-control" ng-model="credentials.fax" placeholder="Fax">
                   <div ng-messages="userForm.fax.$error" role="alert">
                   </div>
                 </div>
-
+             <!--
+                Added a company field
+              -->
             <div class="form-group">
                 <label for="company">Company:</label>
                 <input type="text" id="company" name="company" class="form-control" ng-model="credentials.company" placeholder="Company">
             </div>
+            <!--
+                Added a company id field
+              -->
             <div class="form-group">
                 <label for="companyId">Company ID:</label>
                 <input type="text" id="companyId" name="companyId" class="form-control" ng-model="credentials.companyId" placeholder="Company ID">
             </div>
+              <!--
+                 The address is split into 2 fields, but only the first field is required
+              -->
             <div class="form-group" show-errors>
                 <label for="address1"><span class="required">*</span>Address 1:</label>
                 <input type="text" id="address1" name="address1" class="form-control" ng-model="credentials.address1" placeholder="Address 1" required>
@@ -86,18 +110,27 @@
                 <input type="text" id="address2" name="address2" class="form-control" ng-model="credentials.address2" placeholder="Address 2">
             </div>
             <div class="form-group" show-errors>
+              <!--
+                Added a city field
+              -->
                 <label for="city"><span class="required">*</span>City:</label>
                 <input type="text" id="city" name="city" class="form-control" ng-model="credentials.city" placeholder="City" required>
                 <div ng-messages="userForm.city.$error" role="alert">
                   <p class="help-block error-text" ng-message="required">City is required.</p> 
                 </div>
             </div>
+            <!--
+                Added a postal code field
+              -->
                 <div class="form-group">
                     <label for="postCode">Post Code:</label>
                     <input type="text" id="postCode" name="postCode" class="form-control" ng-model="credentials.postCode" placeholder="Post Code">
                 </div>
                         
-
+              <!--
+                Added a dropdown for the country and region
+                Credit to IshanDemon on github
+              -->
                         <div class="dropdown form-group" show-errors>
                           <label for="country"><span class="required">*</span>Country: </label> &nbsp; &nbsp;  
                           <select id="country" name ="country" ng-model="credentials.country" required> </select> </br>
@@ -111,46 +144,17 @@
                             </div> 
                         </div> 
 
-
-                        <!--
-                        <div class="dropdown form-group" show-errors>
-
-                        <label for="singleSelectCountry"><span class="required">*</span>Country: </label> &nbsp; &nbsp;
-                        <select name="singleSelectCountry" ng-model="credentials.country" required>
-                          <option value="united-states">United States</option>
-                          <option value="canada">Canada</option>
-                          <option value="australia">Australia</option>
-                          <option value="antartica">Antartica</option>
-                          <option value="england">England</option>
-                          <option value="china">China</option>
-                        </select>
-                        <div ng-messages="userForm.singleSelectCountry.$error" role="alert">
-                         <p class="help-block error-text" ng-message="required">Country is required.</p>
-                        </div>
-                        </div>
-
-                        <div class="dropdown form-group" show-errors>
-                        <label for="singleSelectState"><span class="required">*</span>Region/State: </label> &nbsp; &nbsp;
-                        <select name="singleSelectState" ng-model="credentials.region" required>
-                          <option value="florida">Florida</option>
-                          <option value="georgia">Georgia</option>
-                        </select>
-                        <div ng-messages="userForm.singleSelectState.$error" role="alert">
-                          <p class="help-block error-text" ng-message="required">Region is required.</p>
-                        </div>
-                        </div>   -->
            </fieldset>
         </div>
-
-          <!--<div class="divider">
-          </div>-->
-
           <div class="col-md-6">
                  <h4>Your Password</h4>
           </div>
             
           <div class="col-md-6">
           <fieldset>
+              <!--
+                Added subsription radio buttons
+              -->
               <h4>Newsletter</h4>
               <h5><br><strong>Subscribe:</strong>
               <span name="radioButton" style="margin-left:100px">
@@ -162,6 +166,9 @@
           </div>
 
           <div class="col-md-6">
+             <!--
+                Left the password to have the same password strength detector as the meanstack boiler plate had
+              -->
               <div class="form-group" show-errors>
                 <label for="password"><span class="required">*</span>Password</label>
                   <input type="password" id="password" name="password" class="form-control" ng-model="credentials.password" placeholder="Password" popover="{{popoverMsg}}" popover-trigger="focus" password-validator required>
@@ -178,6 +185,9 @@
                 <progressbar value="strengthProgress" type="{{strengthColor}}"><span style="color:white; white-space:nowrap;">{{strengthProgress}}%</span></progressbar>
               </div>
 
+             <!--
+                Added an agreement checkbox 
+              -->
               <div class="form-group" show-errors>
                 <label for="checkPolicy"><input type="checkbox" value="" name="checkPolicy" ng-model="credentials.policy" required>
                 I have read and agree to the Private Policy.</label> 
@@ -188,7 +198,7 @@
 
 
               <div class="text-center form-group">
-                  <button type="submit" class="btn btn-default">Continue</button>
+                  <button type="submit" id="register_button" class="btn btn-default">Continue</button>
               </div>
               <span class="signup-error">{{error}}</span>
           </div>
@@ -198,6 +208,9 @@
   </div>
 </div>
 
+<!--
+   This script is for the country and region select box. It automatically filters the region to the corresponding country when the country is selected.
+-->
 <script type= "text/javascript" src = "countries.js"></script>
       <script language="javascript">
          populateCountries("country", "region"); // first parameter is id of country drop-down and second parameter is id of state drop-down
