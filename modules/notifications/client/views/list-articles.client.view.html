@@ -1,6 +1,6 @@
 <section ng-controller="ArticlesController" ng-init="find()">
   <div class="page-header">
-    <h1>My Notifications</h1>
+    <h1>Notifications</h1>
   </div>
   <div class="list-group">
     <a ng-repeat="article in articles" ui-sref="articles.view({articleId: article._id})" class="list-group-item">
@@ -15,6 +15,6 @@
     </a>
   </div>
   <div class="alert alert-warning text-center" ng-if="articles.$resolved && !articles.length">
-    No notifications yet, why don't you <a ui-sref="articles.create">create one</a>?
+    <a ng-show="admin_eligible == true" ui-sref="articles.create">Create Notification.</a>?
   </div>
 </section>

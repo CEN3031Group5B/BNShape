@@ -7,6 +7,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
   }
 ]);
 
+// Controls the images of the carousel displays
 angular.module('core').controller('CarouselCtrl', function ($scope) {
   $scope.myInterval = 5000;
   $scope.noWrapSlides = false;

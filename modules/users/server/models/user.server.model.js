@@ -63,6 +63,9 @@ var UserSchema = new Schema({
     type: String,
     required: 'Please fill in a password'
   },
+  /*
+    Added database schemas for the new input fields that was needed so that the database can store this information
+  */
   telephone: {
     type: String, 
     required: 'Please fill in a telephone number'

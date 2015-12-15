@@ -1,31 +1,59 @@
 'use strict';
 
 // Articles controller
-angular.module('products').controller('ProductsController', ['$scope', '$rootScope','$stateParams', '$state', 'Authentication', 'Products', '$cookieStore',
-  function ($scope, $rootScope, $stateParams, $state, Authentication, Products, $cookieStore) {
+angular.module('products').controller('ProductsController', ['$scope', '$rootScope','$stateParams', '$state', 'Authentication', 'Products', '$cookieStore', '$window',
+  function ($scope, $rootScope, $stateParams, $state, Authentication, Products, $cookieStore, $window) {
     $scope.authentication = Authentication;
     $scope.success_add = false;
     $scope.products = [];
     $scope.display_products = [];
+    $scope.adding = false;
+    $scope.adding_id = "";
+
+    $scope.user = $scope.authentication.user;
+    if ($scope.user.roles !== undefined) {
+      $scope.admin = ($scope.user.roles.indexOf("admin") > -1);
+    } else {
+      $scope.admin = false;
+    }
 
     $scope.init_product = function(){
-      console.log("hi");
       $scope.products = Products.query();
       $scope.display_products = $scope.products;
       //console.log($scope.products);
     };
 
-    $scope.add_cart = function(_id, price){
-        var prevCookie = "";
-        prevCookie = $cookieStore.get('cart');
-        var updatedCookie = _id;
-        if(prevCookie !== undefined){
-          $cookieStore.remove('cart');
-          updatedCookie = prevCookie + "&" + _id;
+    $scope.add_cart = function(_id, price, sizes, discount){
+      //cookie in format: _id-size&_id-size&etc....
+        if(sizes.length === 0){
+          $scope.adding = true;
+          $scope.selected_size = "N/A";
         }
-        $cookieStore.put('cart',updatedCookie);
-        $rootScope.$broadcast('cart_update', { newCookie: updatedCookie, price: parseFloat(price.split('$')[1])});
-        $state.go('cart');
+        if($scope.adding === true){
+            if($scope.selected_size !== undefined) {
+            var prevCookie = "";
+            prevCookie = $cookieStore.get('cart');
+            var updatedCookie = _id + "-" + $scope.selected_size;
+            if(prevCookie !== undefined){
+              $cookieStore.remove('cart');
+              updatedCookie = prevCookie + "&" + _id + "-" + $scope.selected_size;
+            }
+            var updatePrice = parseFloat(price.split('$')[1]);
+            if(discount !== ""){
+              updatePrice = updatePrice * (1+$scope.parse_discount(discount));
+            }
+            $cookieStore.put('cart',updatedCookie);
+            $rootScope.$broadcast('cart_update', { newCookie: updatedCookie, price: updatePrice});
+            $state.go('cart');
+          } else {
+            alert("select size please");
+          }
+        } else {
+          $scope.adding = true;
+          $scope.adding_id = _id;
+        }
+
+
     };
 
     $scope.create = function () {
@@ -52,6 +80,17 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
       }, function (errorResponse) {
         console.log("errored");
       });
+    };
+
+    $scope.parse_price = function(priceString) {
+        return parseFloat(priceString.split('$')[1]);
+    };
+
+    $scope.parse_discount = function(discountString) {
+        var discNum =  discountString.split("%")[0];
+        var discFloat = parseFloat(discNum);
+        var lessThanOne = discFloat / 100;
+        return lessThanOne;
     };
 
     $scope.filter_category = function (category, subcategory) {
@@ -114,14 +153,14 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
       if (str === "high") {
         // define function to sort price field of product Objects in array accordingly
         $scope.display_products.sort(function(a, b) {
-          return b.price-a.price;
+          return $scope.parse_price(b.price)-$scope.parse_price(a.price);
         });
       }
       // user wants to see products sorted low to high
       else if (str === "low") {
         $scope.display_products.sort(function(a, b) {
           // define function to sort price field of product Objects in array accordingly
-          return a.price-b.price;
+          return $scope.parse_price(a.price)-$scope.parse_price(b.price);
         });
       }
     };
@@ -144,6 +183,21 @@ angular.module('products').controller('ProductsController', ['$scope', '$rootSco
     $scope.display_all = function () {
       // reset to original array containing all products
       $scope.display_products = $scope.products;
+    };
+
+    $scope.un_add = function () {
+      $scope.adding = false;
+      $scope.adding_id = "";
+      $scope.selected_size = undefined;
+    };
+
+    $scope.delete_product = function(product) {
+      var a = confirm("Are you sure you want to delete?");
+      if(a){
+        product.$remove(function () {
+          $window.location.reload();
+        });
+      }
     };
   }
 ]);

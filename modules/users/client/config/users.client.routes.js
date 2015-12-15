@@ -14,15 +14,6 @@ angular.module('users').config(['$stateProvider',
         }
       })
 
-	   .state('settings.list-notification', {
-        url: '/NotificationsAll',
-        templateUrl: 'modules/users/client/views/settings/list-notification.client.view.html'
-      })
-	  
-	  .state('settings.view-notification', {
-        url: '/Notification',
-        templateUrl: 'modules/users/client/views/settings/view-notification.client.view.html'
-      })
 	  
 	  
 	  /*	 	Edit phone, email, name, etc. #104148896*/
