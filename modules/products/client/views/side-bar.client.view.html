@@ -11,13 +11,14 @@
           All Products
         </a>
       </div>
-      <!-- Collapsible "Men" -->
+      <!-- Collapsible "Men" --> 
       <div class="category-heading">
         <a class="heading-text" data-toggle="collapse" href="#collapse1">
           Men
         </a>
       </div>
       <div id="collapse1" class="collapse">
+        <!-- Men Filters -->
         <ul class="list-group">
           <li class="subcategory">
             <a class="subcategory-text" ng-click="filter_category('Men', '')" href="#">
@@ -53,6 +54,7 @@
         </a>
       </div>
       <div id="collapse2" class="panel-collapse collapse">
+        <!-- Women Filters -->
         <ul class="list-group">
           <li class="subcategory">
             <a class="subcategory-text" ng-click="filter_category('Women', '')" href="#">
@@ -88,6 +90,7 @@
         </a>
       </div>
       <div id="collapse3" class="panel-collapse collapse">
+        <!-- Kids Filters -->
         <ul class="list-group">
           <li class="subcategory">
             <a class="subcategory-text" ng-click="filter_category('Kids', '')" href="#">
@@ -108,6 +111,7 @@
         </a>
       </div>
       <div id="collapse4" class="panel-collapse collapse">
+        <!-- Accessories Filters -->
         <ul class="list-group">
           <li class="subcategory">
             <a class="subcategory-text" ng-click="filter_category('Accessories', '')" href="#">
@@ -155,7 +159,7 @@
           Discounts
         </a>
       </div>
-      <!-- Price -->
+      <!-- Collapsible Price -->
       <div class="category-heading">
         <a class="heading-text" data-toggle="collapse" href="#collapse5">
           Price
@@ -181,6 +185,7 @@
       Customer Reviews
     </div>
     <ul class="list-group">
+      <!-- 4 Stars -->
       <li class="subcategory">
         <a ng-click="filter_reviews(4)" href="#">
           <button type="button" class="btn bnshape-button btn-md">
@@ -199,6 +204,7 @@
         </a>
       </li>
       <li class="subcategory">
+        <!-- 3 Stars -->
         <a ng-click="filter_reviews(3)" href="#">
           <button type="button" class="btn bnshape-button btn-md">
             <span class="glyphicon glyphicon-star" aria-hidden="true">
@@ -216,6 +222,7 @@
         </a>
       </li>
       <li class="subcategory">
+        <!-- 2 Stars -->
         <a ng-click="filter_reviews(2)" href="#">
           <button type="button" class="btn bnshape-button btn-md">
             <span class="glyphicon glyphicon-star" aria-hidden="true">
@@ -233,6 +240,7 @@
         </a>
       </li>
       <li class="subcategory">
+        <!-- 1 Star -->
         <a ng-click="filter_reviews(1)" href="#">
           <button type="button" class="btn bnshape-button btn-md">
             <span class="glyphicon glyphicon-star" aria-hidden="true">
