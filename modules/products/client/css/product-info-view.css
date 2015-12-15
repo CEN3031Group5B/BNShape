@@ -24,13 +24,13 @@
 
 .product-info .price {
     margin-top: 5px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     font-size: 18px;
     font-weight: 600;
 }
 
 .product-info .reward {
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 10px;
     font-size: 16px;
     font-weight: 500;
@@ -175,4 +175,8 @@ input[type="text"], input[type="password"] {
     padding: 5px 14px;
     color: #000;
     line-height: 2;
+}
+
+.product-pic-upload {
+    padding-top:10px;
 }

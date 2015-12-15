@@ -1,0 +1,254 @@
+<section class="container" ng-controller="OrderController" ng-init="order_init()">
+	    <div class="page-header">
+    		<h2>Checkout</h2>
+  	  </div>
+      <div ng-show = "cart_items.length === 0">
+        <h2>Your shopping cart is empty!</h2>
+        <br />
+        <a href="/products" class="bnshape-button">Continue Shopping</a>
+        <br />
+      </div>
+      <div ng-hide="cart_items.length === 0">
+        <form>
+          <script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-body sign-in-modal">
+              <section ng-include="'modules/users/client/views/authentication/signin.client.view.html'"></section>
+            </div>
+          </script>
+      	  <div class="row">
+    	  		<div class = "col-md-5">
+    	  			<a class="login-link" ng-show="user == ''" ng-click="open()" id="login">Already registered? Click here to login</a>
+    	  			<h3>Your Personal Details</h3>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="firstName">First Name:</label>
+                      <input type="text" class="form-control" ng-readonly="user !== ''" id="firstName" placeholder="" ng-model="user.firstName">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="lastName">Last Name:</label>
+                      <input type="text" class="form-control" ng-readonly="user !== ''" id="lastName" placeholder="" ng-model="user.lastName">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="emailAddr">E-Mail Address:</label>
+                      <input type="email" class="form-control" ng-readonly="user !== ''" id="emailAddr" placeholder="" ng-model="user.email">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="telephone">Telephone:</label>
+                      <input type="text" class="form-control" ng-readonly="user !== ''" id="telephone" placeholder="" ng-model="user.phone">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="fax">Fax:</label>
+                      <input type="text" class="form-control" ng-readonly="user !== ''" id="fax" placeholder="" ng-model="user.fax">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="company">Company:</label>
+                      <input type="text" class="form-control" ng-readonly="user !== ''" id="company" placeholder="" ng-model="user.company">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="addr1">Address 1:</label>
+                      <input type="text" class="form-control" ng-readonly="user !== ''" id="addr1" placeholder="" ng-model="user.address1">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="addr2">Address 2:</label>
+                      <input type="text" class="form-control" ng-readonly="user !== ''" id="addr2" placeholder="">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="city">City:</label>
+                      <input type="text" class="form-control" ng-readonly="user !== ''" id="city" placeholder="" ng-model="user.city">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="postCode">Post Code:</label>
+                      <input type="text" class="form-control" ng-readonly="user !== ''" ng-model="user.postCode" id="postCode" placeholder="">
+                    </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label for="singleSelect">Country: </label> &nbsp; &nbsp;
+                      <select name="singleSelect" ng-model="user.country" ng-readonly="user !== ''" required>
+                        <option value="united-states">United States</option>
+                        <option value="canada">Canada</option>
+                        <option value="australia">Australia</option>
+                        <option value="antartica">Antartica</option>
+                        <option value="england">England</option>
+                        <option value="china">China</option>
+                      </select>
+                      <div ng-messages="userForm.country.$error" role="alert">
+                       <p class="help-block error-text" ng-message="required">Country is required.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label for="singleSelect"> Region/State: </label> &nbsp; &nbsp;
+                      <select name="singleSelect" ng-model="user.region" ng-readonly="user !== ''" required>
+                        <option value="florida">Florida</option>
+                        <option value="georgia">Georgia</option>
+                      </select>
+                    </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p>
+                        <label>
+                          <input type="checkbox" name="shipping_address_same" value="1" class="toggle-option" data-target="#shipping-address-selector" data-reserve="true" checked="checked" ng-model="delivery_details"> My delivery address and personal details are the same.
+                        </label>
+                        <div ng-show="!delivery_details">
+                          <label for="addr1">Delivery Address:</label>
+                          <input type="text" class="form-control" id="addrDeliver" placeholder="" ng-model="user.addressDeliver">
+                          <label for="postCode">Post Code:</label>
+                          <input type="text" class="form-control" ng-model="user.postCodeDeliver" id="postCodeDeliver" placeholder="">
+                          <label for="city">City:</label>
+                          <input type="text" class="form-control" id="city" placeholder="" ng-model="user.cityDeliver">
+                          <label for="singleSelect"> Region/State: </label> &nbsp; &nbsp;
+                          <select name="singleSelect" ng-model="user.regionDeliver" required>
+                            <option value="florida">Florida</option>
+                            <option value="georgia">Georgia</option>
+                          </select>
+                          <label for="singleSelect">Country: </label> &nbsp; &nbsp;
+                          <select name="singleSelect" ng-model="user.countryDeliver" required>
+                            <option value="united-states">United States</option>
+                            <option value="canada">Canada</option>
+                            <option value="australia">Australia</option>
+                            <option value="antartica">Antartica</option>
+                            <option value="england">England</option>
+                            <option value="china">China</option>
+                          </select>
+                        </div>
+                      </p>
+                    </div>
+  <!--                   <div class="col-md-12">
+                      <p>
+                        <label>
+                          <input type="checkbox" name="payment_address_same" value="1" class="toggle-option" data-target="#payment-address-selector" data-reserve="true" checked="checked"> My payment address and personal details are the same.
+                        </label>
+                      </p>
+                    </div> -->
+                  </div>
+                </div>
+      	  		</div>
+      	  		<div class = "col-md-7">
+      	  		   <div class="row">
+                    <div class = "col-md-6">
+                      <h3>Delivery Method</h3>
+                        <div id="shipping-method-content">
+                          <table class="radio table">
+                            <tbody>
+                            <tr>
+                              <td colspan="3"><b>Weight Based Shipping</b></td>
+                            </tr>
+                            <tr class="highlight">
+                              <td>            
+                                <input type="radio" class="radio-align" name="shipping_method" value="weight.weight_5" id="weight.weight_5" checked="checked">
+                                <label for="weight.weight_5">USA  (Weight: 0.44lb)</label>
+                              </td>
+                              <td>
+                                <td style="text-align: right;">
+                                  <label for="weight.weight_5">$5.00</label>
+                                </td>
+                            </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                      <h3>Payment Method</h3>
+                      <div id="payment-method-content">
+                        <table class="radio">
+                          <tbody>
+                            <tr class="highlight">
+                              <td>            
+                                <input type="radio" class="radio-align" name="payment_method" value="pp_standard" id="pp_standard" checked="checked">
+                                <label for="pp_standard">PayPal</label>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class = "row">
+                      <div class = "col-md-12">
+                        <div class="order-total">
+                          <h3>Confirm Order</h3>
+                          <div id="order-total-content">
+                            <div class="checkout-product">
+                              <div class="table-responsive">
+                                <table class="table">
+                                  <thead>
+                                  <tr>
+                                    <td class="name">Product Name</td>
+                                    <td class="model">Model</td>
+                                    <td class="quantity">Quantity</td>
+                                    <td class="price">Price</td>
+                                    <td class="total">Total</td>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr ng-repeat="item in display_items track by $index">
+                                        <td class="name">
+                                          <a href="/products/{{item._id}}">{{item.name}}</a>
+                                          <br>
+                                          &nbsp;<small> - Select Size: {{item._size_id}}</small>
+                                        </td>
+                                        <td class="model">{{item.code}}</td>
+                                        <td class="quantity">{{quantity_dict[item._id + "-" + item._size_id]}}</td>
+                                        <td class="price">{{item.price}} <span ng-show="item.discount !== ''"class="discount">{{item.discount}}</td>
+                                        <td ng-if="item.discount === ''" class="total">${{(quantity_dict[item._id + "-" + item._size_id] * parse_price(item.price)).toFixed(2)}}</td>
+                                        <td ng-if="item.discount !== ''" class="total">${{(quantity_dict[item._id + "-" + item._size_id] * (parse_price(item.price)).toFixed(2) * (1+parse_discount(item.discount))).toFixed(2)}}</td>
+                                      </tr>
+                                  </tbody>
+                                  <tfoot>
+                                      <tr>
+                                        <td colspan="4" class="price"><b>Sub-Total:</b></td>
+                                        <td class="total">$ {{cart_total.toFixed(2)}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="4" class="price"><b>USA:</b></td>
+                                        <td class="total">$ {{shipping_price.toFixed(2)}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="4" class="price"><b>Total:</b></td>
+                                        <td class="total">$ {{(shipping_price + cart_total).toFixed(2)}}</td>
+                                      </tr>
+                                  </tfoot>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <p>
+                          <label>
+                            <input type="checkbox" name="order_agree" value="1" ng-model="terms"> I have read and agree to the 
+                              <a class="colorbox" href="http://bnshapeclothing.com/index.php?route=information/information/info&amp;information_id=5" alt="Terms &amp; Conditions"><b>Terms &amp; Conditions</b>
+                              </a>
+                            </label>
+                            <span class="error">Warning: You must agree to the Terms &amp; Conditions!</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <a href="" class="bnshape-button" ng-click="confirm()">Confirm Order</a>
+                      </div>
+                    </div>
+                 </div>
+      	  	  </div>
+      	    </div>
+        </form>
+      </div>
+</section>

@@ -6,33 +6,33 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
-/**
- * Article Schema
+/*
+ * Product Schema
  */
 var ProductSchema = new Schema({
-  created: {
+  created: { // date created
     type: Date,
     default: Date.now
   },
-  name: {
+  name: { // product name
     type: String,
     default: '',
     trim: true,
     required: 'Name cannot be blank'
   },
-  code: {
+  code: { // product code
     type: String,
     default: '',
     required: 'Code cannot be blank'
   },
-  price: {
+  price: { // product price
     type: String,
     default: '',
     required: 'Price cannot be blank'
   },
-  reward_price: {
-    type: String,
-    default: '',
+  reward_price: { 
+    type: Number,
+    default: 10.00,
   },
   reward_points: {
     type: String,
@@ -42,17 +42,38 @@ var ProductSchema = new Schema({
     type: Array,
     default: [],
   },
-  description: {
+  description: { // product description
     type: String,
     default: '',
-  }, availability: {
+  }, availability: { // in stock?
     type: String,
     default: '',
     required: 'Availability can not be blank'
-  }, sizes: {
+  }, sizes: { // product sizes
     type: Array,
-    default:[],
+    default: [],
     required: 'Must have at least one size'
+  }, category: { // Men, Women, Kids, Accessories
+    type: Array,
+    default: [],
+  }, subcategory: { // Shirts, Hoodies, Pants, etc.
+    type: String,
+    default: ''
+  }, discount: { 
+    type: String,
+    default: ''
+  },
+    new_arrival: {
+    type: Boolean,
+    default: false
+  },
+    best_seller: {
+    type: Boolean,
+    default: false
+  },
+    rating: {
+    type: Number,
+    default: 5
   }
   //,
   // user: {

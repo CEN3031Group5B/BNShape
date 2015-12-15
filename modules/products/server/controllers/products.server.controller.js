@@ -6,7 +6,9 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Product = mongoose.model('Product'),
-  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
+  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+  fs = require('fs');
+
 
 /**
  * Create 
@@ -62,6 +64,7 @@ exports.update = function (req, res) {
  * Delete 
  */
 exports.delete = function (req, res) {
+  console.log("delete");
   var product = req.product;
 
   product.remove(function (err) {
@@ -88,6 +91,23 @@ exports.list = function (req, res) {
       res.json(articles);
     }
   });
+};
+
+exports.uploadPhoto = function(req, res){
+  console.log(req.product);
+  var filePath = './modules/products/client/img/products/' + req.product.name + ".jpg";
+  if(fs.existsSync(filePath)){
+    fs.unlinkSync(filePath);
+  }
+  fs.writeFile(filePath, req.files.file.buffer, function (uploadError) {
+      if (uploadError) {
+        return res.status(400).send({
+          message: 'Error occurred while picture'
+        });
+      }  else {
+          return res.status(200).send();
+      }
+    });
 };
 
 /**

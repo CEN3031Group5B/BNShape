@@ -2,8 +2,13 @@
 	  <div class="page-header">
     		<h2>Shopping Cart</h2>
   	  </div>
-      <h1 ng-show="cart_items.length === 0">No items in cart</h1>
-      <div ng-hide="cart_items.length === 0">
+  	  <div ng-show="display_items.length === 0">
+      	<h1>No items in cart</h1>
+      	<br />
+      	<a ui-sref="products.list" class="bnshape-button">Continue Shopping</a>
+      	<br />
+  	  </div>
+      <div ng-hide="display_items.length === 0">
       	<div>
 			<div class="cart-info">
 			          <table class="table">
@@ -22,25 +27,26 @@
 			            <tbody>
 			              <tr ng-repeat="item in display_items track by $index">
 				                <td class="image">
-				                	<img src="http://bnshapeclothing.com/image/cache/data/website_DSC_0967-90x115.jpg" alt="Yellow Lifestyle Leggings" title="Yellow Lifestyle Leggings">
+                    				<img ng-src="/modules/products/client/img/products/{{item.name}}.jpg" class="img-responsive img-cart" alt="{{item.name}}">
 				                </td>
 				                <td class="name">
 				                	{{item.name}}
 				                </td>
-				                <td class="size">{{item.sizes[0]}}</td>
+				                <td class="size">{{item._size_id}}</td>
 				                <td class="model">{{item.code}}</td>
 				                <td class="quantity">
-				                	<span ng-hide="editing_index == $index">{{quantity_dict[item._id]}}</span>
+				                	<span ng-hide="editing_index == $index">{{quantity_dict[item._id + "-" + item._size_id]}}</span>
 								    <select ng-show="editing_index == $index" name="repeatSelect" id="repeatSelect" ng-model="select">
 								      <option ng-repeat="n in [1,2,3,4,5,6,7,8,9,10]" value="{{n}}" ng-selected="n == quantity_dict[item._id]">{{n}}</option>
 								    </select>
 				                </td>
-				                <td class="price">{{item.price}}</td>
-				                <td class="total">${{(quantity_dict[item._id] * parse_price(item.price)).toFixed(2)}}</td>
+				                <td class="price">{{item.price}}<span ng-show="item.discount !== ''" class="discount">{{item.discount}}</span></td>
+				                <td ng-if="item.discount === ''" class="total">${{(quantity_dict[item._id + "-" + item._size_id] * parse_price(item.price)).toFixed(2)}}</td>
+				                <td ng-if="item.discount !== ''" class="total">${{(quantity_dict[item._id + "-" + item._size_id] * (parse_price(item.price)).toFixed(2) * (1+parse_discount(item.discount))).toFixed(2)}}</td>
 				                <td class="action">
-				                	<span class="glyphicon glyphicon-remove remove" ng-click="quick_delete_cart(item._id,quantity_dict[item._id],$index)"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+				                	<span class="glyphicon glyphicon-remove remove" ng-click="quick_delete_cart(item._id,quantity_dict[item._id + '-' + item._size_id],$index,item._size_id, item.discount)"></span>&nbsp;&nbsp;&nbsp;&nbsp;
 				                	<span class="glyphicon glyphicon-edit edit" ng-click="start_edit($index)" ng-hide="editing_index == $index"></span>
-				                	<span class="glyphicon glyphicon-ok-sign save" ng-show="editing_index == $index" ng-click="save_edit_cart(item._id, select)"></span>
+				                	<span class="glyphicon glyphicon-ok-sign save" ng-show="editing_index == $index" ng-click="save_edit_cart(item._id, select, parse_price(item.price), item._size_id, item.discount)"></span>
 				            	</td>
 			              </tr>
 			              </tbody>
@@ -86,7 +92,7 @@
 			<div class="cart-buttons">
         		<div class="center">
 	          		<a ui-sref="products.list" class="bnshape-button">Continue Shopping</a>
-		        	<a href="" class="bnshape-button">Checkout</a>
+		        	<a href="/checkout/review" class="bnshape-button">Checkout</a>
         		</div>
       		</div>
 	   </div>

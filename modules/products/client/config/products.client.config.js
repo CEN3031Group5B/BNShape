@@ -9,31 +9,31 @@ angular.module('products').run(['Menus',
       roles: ['*']
     });
 
-    // Add the dropdown list item
+    //Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'products', {
       title: 'All Items',
       state: 'products.list'
     });
-    Menus.addSubMenuItem('topbar', 'products', {
-      title: 'Women',
-      state: 'products.list'
-    });
-    Menus.addSubMenuItem('topbar', 'products', {
-      title: 'Men',
-      state: 'products.list'
-    });
-    Menus.addSubMenuItem('topbar', 'products', {
-      title: 'Kid',
-      state: 'products.list'
-    });
-    Menus.addSubMenuItem('topbar', 'products', {
-      title: 'Accessories',
-      state: 'products.list'
-    });
-    Menus.addSubMenuItem('topbar', 'products', {
-      title: 'Clearance',
-      state: 'products.list'
-    });
+    // Menus.addSubMenuItem('topbar', 'products', {
+    //   title: 'Women',
+    //   state: 'products.list'
+    // });
+    // Menus.addSubMenuItem('topbar', 'products', {
+    //   title: 'Men',
+    //   state: 'products.list'
+    // });
+    // Menus.addSubMenuItem('topbar', 'products', {
+    //   title: 'Kid',
+    //   state: 'products.list'
+    // });
+    // Menus.addSubMenuItem('topbar', 'products', {
+    //   title: 'Accessories',
+    //   state: 'products.list'
+    // });
+    // Menus.addSubMenuItem('topbar', 'products', {
+    //   title: 'Clearance',
+    //   state: 'products.list'
+    // });
     // Add the dropdown create item
     // Menus.addSubMenuItem('topbar', 'products', {
     //   title: 'Create Articles',

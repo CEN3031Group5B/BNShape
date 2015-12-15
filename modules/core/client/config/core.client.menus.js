@@ -4,7 +4,7 @@ angular.module('core').run(['Menus',
   function (Menus) {
     Menus.addMenuItem('topbar', {
       title: 'Team',
-      state: 'not-found',
+      state: 'team',
       type: '',
       roles: ['*']
     });

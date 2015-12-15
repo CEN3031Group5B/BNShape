@@ -12,6 +12,9 @@ module.exports = function (app) {
     .get(products.list)
     .post(products.create);
 
+  //upload new product picture
+  app.route('/api/products/picture/:productId').post(products.uploadPhoto);
+
   // // Single article routes
    app.route('/api/products/:productId').all(productsPolicy.isAllowed)
     .get(products.read)

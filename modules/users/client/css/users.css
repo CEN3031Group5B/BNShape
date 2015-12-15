@@ -13,6 +13,9 @@
 }
 
 .divider{
+  /*
+    This is the gray line that separates the sections
+  */
   border-top: 1px solid;
   border-color: #D3D3D3;
   margin-top: 50px;
@@ -82,4 +85,9 @@ input[type="radio"]{
 .user-profile-picture {
   min-height: 150px;
   max-height: 150px;
+}
+
+.signup-error {
+  color:red;
+  font-size:32px;
 }

@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', '$state', 'Authentication', 'Menus','$cookieStore',
-  function ($scope, $state, Authentication, Menus,$cookieStore) {
+angular.module('core').controller('HeaderController', ['$scope', '$state', 'Authentication', 'Menus','$cookieStore', 'Products',
+  function ($scope, $state, Authentication, Menus, $cookieStore, Products) {
     // Expose view variables
     $scope.$state = $state;
     $scope.authentication = Authentication;
     $scope.cart_items = [];
     $scope.cart_popup = "cart_popup.html";
-
+    $scope.price = 0.0;
     // Get the topbar menu
     $scope.menu = Menus.getMenu('topbar');
 
@@ -34,6 +34,11 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
         } else {
           $scope.cart_items = [];
         }
+        if(args.total === undefined){
+          $scope.price += args.price;
+        } else {
+          $scope.price = args.total;
+        }
         //$scope.$apply(); //show the changes
     });
 
@@ -41,10 +46,38 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
       var current_items = String($cookieStore.get('cart'));
       if(current_items !== "undefined"){
         $scope.cart_items = current_items.split('&');
+        $scope.set_price();
       } else {
         $scope.cart_items = [];
       }
     };
+    $scope.set_price = function() {
+        //"562bc2f8b82bbbf8f91f72ba"
+        var i = 0;
+        for(i = 0; i < $scope.cart_items.length; i++){
+            var product = $scope.findOne($scope.cart_items[i].split("-")[0],$scope.found_one_cb);
+        }
+    };
+    $scope.findOne = function (_product_id,cb) {
+      return Products.get({productId: _product_id},cb);
+    };
+    $scope.found_one_cb = function(data){
+       var item_price = $scope.parse_price(data.price);
+        if(data.discount !== ""){
+          item_price = item_price * (1+$scope.parse_discount(data.discount));
+        }
+       $scope.price += item_price;
+    };
 
+    $scope.parse_price = function(priceString) {
+        return parseFloat(priceString.split('$')[1]);
+    };
+
+    $scope.parse_discount = function(discountString) {
+        var discNum =  discountString.split("%")[0];
+        var discFloat = parseFloat(discNum);
+        var lessThanOne = discFloat / 100;
+        return lessThanOne;
+    };
   }
 ]);

@@ -13,7 +13,10 @@ angular.module('users').config(['$stateProvider',
           roles: ['user', 'admin']
         }
       })
-/*	 	Edit phone, email, name, etc. #104148896*/
+
+	  
+	  
+	  /*	 	Edit phone, email, name, etc. #104148896*/
       .state('settings.profile', {
         url: '/profile',
         templateUrl: 'modules/users/client/views/settings/edit-profile.client.view.html'
