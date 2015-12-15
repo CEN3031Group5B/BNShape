@@ -6,31 +6,41 @@
         <section ng-include="'/modules/products/client/views/side-bar.client.view.html'" class="sidebar-products"></section>
       </div>
       <div class="main-view col-md-9">
+        <!-- Title -->
         <div class="page-header">
           <div class="header-text">
             Products
           </div>
         </div>
+        <!-- Iterate over products in database array -->
         <div ng-repeat="item in display_products" class="product-grid">
+          <!-- Product image/info wrapper -->
           <div class="col-lg-4 col-md-4 col-sm-6">
+            <!-- White box outter wrapper -->
             <div class="wrapper">
+              <!-- Divider for product info/description -->
               <div class="thumb">
+                <!-- Product image -->
                 <div class="image">
                   <a ui-sref="products.view({productId:'{{item._id}}'})">
+                    <!-- Reference image folder -->
                     <img ng-src="/modules/products/client/img/products/{{item.name}}.jpg" class="img-responsive product-image">
                   </a>
                 </div>
               </div>
               <div class="name">
+                <!-- Reference product name -->
                 <a class="product-text" ui-sref="products.view({productId:'{{item._id}}'})">
                   {{item.name}}
                 </a>
               </div>
               <div class="price">
+                <!-- Reference product price/discont -->
                 <h5>
                   {{item.price}} <span class="discount">{{item.discount}}</span>
                 </h5>
                 <a>
+                    <!-- Shopping cart button -->
                   <button type="button" class="btn bnshape-button btn-lg bnshape-button" ng-click="add_cart(item._id,item.price, item.sizes, item.discount)">
                     <span class="glyphicon glyphicon-shopping-cart">
                     </span>
